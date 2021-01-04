@@ -7,21 +7,21 @@ public class SimpleName  {
 
     public String get( String str) {
        int i = 0;
-       int iCopy = 0;
+       int iOut = 0;
        int len = str.length();
        strOut.setLength( 0);
-       String sPoint = " ,():;@#<>[]{}";
+       String charPoint = " ,():-+;@#<>[]{}";
        for( i=0; i < len; ++i) {
             char c = str.charAt(i);
-            if(sPoint.indexOf(c) != -1) {
-                strOut.append(str.substring( iCopy, ++i));
-                iCopy = i;
+            if(charPoint.indexOf(c) != -1) {
+                strOut.append(str.substring( iOut, ++i));
+                iOut = i;
                 if(c == ',') { strOut.append(' '); }
             } else if ( c == '.') {
-                iCopy = ++i;
+                iOut = ++i;
             }
         }
-        if(len >= i) { strOut.append(str.substring( iCopy, i)); }
+        if(len >= i) { strOut.append(str.substring( iOut, i)); }
         return String.valueOf(strOut);
     }
 }

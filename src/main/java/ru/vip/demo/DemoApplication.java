@@ -8,28 +8,42 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 @SpringBootApplication
-public class DemoApplication { // Вариант 1 implements CommandLineRunner {
+public class DemoApplication { // Вариант 3 implements CommandLineRunner {
 
-/* Вариант 1
+/**
+ * Вариант 1
+ *
+*/
+	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
+	}
+
+/**
+ * Вариант 2.
+ *
+ public static void main(String[] args)  throws Exception {
+ AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DemoApplication.class);
+ context.getBean( ApplicationContextProvider.class).printBeanContext();
+ }
+ */
+
+
+
+/**
+ * Вариант 3
+ *
 	@Autowired
 	private ApplicationContextProvider applicationContextProvider;
+
+	public static void main(String[] args) throws Exception {
+	SpringApplication.run(DemoApplication.class, args);
+	}
 
 	@Override
 	public void run(String... args)  throws Exception {
 		applicationContextProvider.printBeanContext();
 	}
-*/
-//  Вариант 1 + 2
-	public static void main(String[] args) throws Exception {
-		SpringApplication.run(DemoApplication.class, args);
-	}
 
-/**
- * Вариант 3.
-	public static void main(String[] args)  throws Exception {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DemoApplication.class);
-		context.getBean( ApplicationContextProvider.class).printBeanContext();
-	}
 */
 
 }

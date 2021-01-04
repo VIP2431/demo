@@ -35,9 +35,9 @@ public class ApplicationContextProvider {
         printBeanContext();
     }
 
-    private void parseAnotionMethod( Method  method) {
+    private void parseAnnotationMethod( Method  method) {
         Annotation[][] arrAnnotations = method.getParameterAnnotations();
-        if (arrAnnotations == null) { return; }
+        // if (arrAnnotations == null) { return; }
         SimpleName simpleName = new SimpleName();
         for(Annotation[] annotations : arrAnnotations) {
             if(annotations == null) { return; }
@@ -58,7 +58,7 @@ public class ApplicationContextProvider {
           String str = method.toString();
           System.out.println("->[" + str + "];");
 
-          parseAnotionMethod( method);
+          parseAnnotationMethod( method);
           System.out.println("  " + simpleName.get( str) + "{\n  }");
        }
     }
@@ -67,25 +67,26 @@ public class ApplicationContextProvider {
         BeanDefinition beanDefinition = factory.getBeanDefinition(name);
         String originalClassName = beanDefinition.getBeanClassName();
         ++countBeans;
-        if(countBeans != 110 && countBeans != 110) { return; }  //
+        if(countBeans != 110) { return; }  //
         try {
             if( originalClassName != null)  {
                 Class <?> originalClass = Class.forName(originalClassName);
-                if (originalClass != null) {
-                    Method[] methods = originalClass.getMethods();
-                    if(methods != null) {
-                        ++count;
-                        System.out.print("\n** bean[" + countBeans + "][" + methods.length + "]");
-                        System.out.println("<"+ originalClass.getSimpleName() +">[" + originalClassName + "]<<<");
-                        //if(countBeans != 9 && countBeans != 9 && countBeans != 9) { return; }  //
-                        printMethods(methods);
-                        System.out.println(" ");
-                        return;
-                    }
-                }
+                Method[] methods = originalClass.getMethods();
+                ++count;
+                System.out.print("\n** bean[" + countBeans + "][" + methods.length + "]");
+                System.out.println("<"+ originalClass.getSimpleName() +">[" + originalClassName + "]<<<");
+                //if(countBeans != 9 && countBeans != 9 && countBeans != 9) { return; }  //
+                printMethods(methods);
+                System.out.println(" ");
             }
-            // System.out.println( " +++ bean[" + countBeans + "]::[0]=[" + name + "]<<<");
-        }catch (Exception e){ e.printStackTrace(); }
+            /*
+            else {
+                System.out.println( " +++ bean[" + countBeans + "]::[0]=[" + name + "]<<<");
+            }
+            */
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void printBeanContext() {

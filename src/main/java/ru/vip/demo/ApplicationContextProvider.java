@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+import ru.vip.demo.parse.SimpleName;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -18,7 +19,7 @@ public class ApplicationContextProvider {
     private int allBeans = 0;
     private int countBeans = 0;
     private int count = 0;
-    private StringBuffer strOut = new StringBuffer(500);
+
     private ApplicationContext applicationContext;
     @Autowired
     private ConfigurableListableBeanFactory factory;
@@ -37,18 +38,20 @@ public class ApplicationContextProvider {
     private void parseAnotionMethod( Method  method) {
         Annotation[][] arrAnnotations = method.getParameterAnnotations();
         if (arrAnnotations == null) { return; }
+        SimpleName simpleName = new SimpleName();
         for(Annotation[] annotations : arrAnnotations) {
             if(annotations == null) { return; }
             //System.out.println("  " + annotations.toString());
             for (Annotation ant : annotations) {
                 //System.out.println("  " + ant.toString());
-                System.out.println("  @" + parseString(ant.toString()));
+                System.out.println("  " + simpleName.get(ant.toString()));
             }
         }
     }
 
     private void printMethods( Method[] methods){
         int cnt = 0;
+        SimpleName simpleName = new SimpleName();
         for (Method method : methods) {
           System.out.print("[" + ++cnt + "]<" + method.getName() + ">");
           System.out.print("(" + method.getParameterCount() + ")");
@@ -56,7 +59,7 @@ public class ApplicationContextProvider {
           System.out.println("->[" + str + "];");
 
           parseAnotionMethod( method);
-          System.out.println("  " + parseString( str) + " {\n  }");
+          System.out.println("  " + simpleName.get( str) + "{\n  }");
        }
     }
 
@@ -64,7 +67,7 @@ public class ApplicationContextProvider {
         BeanDefinition beanDefinition = factory.getBeanDefinition(name);
         String originalClassName = beanDefinition.getBeanClassName();
         ++countBeans;
-        //if(countBeans != 3 && countBeans != 7) { return; }  //
+        if(countBeans != 110 && countBeans != 110) { return; }  //
         try {
             if( originalClassName != null)  {
                 Class <?> originalClass = Class.forName(originalClassName);
@@ -74,7 +77,7 @@ public class ApplicationContextProvider {
                         ++count;
                         System.out.print("\n** bean[" + countBeans + "][" + methods.length + "]");
                         System.out.println("<"+ originalClass.getSimpleName() +">[" + originalClassName + "]<<<");
-                        if(countBeans != 9 && countBeans != 9 && countBeans != 9) { return; }  //
+                        //if(countBeans != 9 && countBeans != 9 && countBeans != 9) { return; }  //
                         printMethods(methods);
                         System.out.println(" ");
                         return;
@@ -99,24 +102,4 @@ public class ApplicationContextProvider {
         // process.exit(15);
         process.halt(7);
     }
-
-    // Убирает точки. Из строки "org.spring.Persona" делает "Persona"
-    private String parseString( String  str) {
-        int i = 0;
-        int iCopy = 0;
-        int len = str.length();
-        strOut.setLength( 0);
-        for( i=0; i < len; ++i) {
-            char c = str.charAt(i);
-            if(c == ' ' || c == ',' || c == '(' || c == ')')  {
-                strOut.append(str.substring( iCopy, ++i));
-                iCopy = i;
-            } else if ( c == '.') {
-                iCopy = ++i;
-            }
-        }
-        if(len >= i) { strOut.append(str.substring( iCopy, i)); }
-        return String.valueOf(strOut);
-    }
-
 }

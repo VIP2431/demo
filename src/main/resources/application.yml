@@ -1,0 +1,31 @@
+
+---
+#debug: true
+#trace: true
+
+server:
+  port: 8091
+
+#==========================================
+#     DB H2
+#==========================================
+spring:
+  datasource:
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+    # temporary data storage
+    url: jdbc:h2:mem:customers;DB_CLOSE_ON_EXIT=FALSE
+    # url: jdbc:h2:file:C:/data/customers;DB_CLOSE_DELAY=-1
+    schema: classpath*:database/initDB.sql
+    initialization-mode: ALWAYS
+  h2:
+    console:
+      enabled: true
+
+# ===============================
+# JPA / HIBERNATE
+# ===============================
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+

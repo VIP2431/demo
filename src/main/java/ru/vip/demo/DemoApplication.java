@@ -9,7 +9,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 @SpringBootApplication
 public class DemoApplication { // Вариант 3 implements CommandLineRunner {
-
 /**
  * Вариант 1
  *
@@ -26,8 +25,6 @@ public class DemoApplication { // Вариант 3 implements CommandLineRunner 
  context.getBean( ApplicationContextProvider.class).printBeanContext();
  }
  */
-
-
 
 /**
  * Вариант 3

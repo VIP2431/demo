@@ -1,8 +1,6 @@
 package ru.vip.demo;
 
-import lombok.SneakyThrows;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
+ import lombok.SneakyThrows;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -16,16 +14,14 @@ import java.lang.reflect.Method;
 
 @Component
 public class ApplicationContextProvider {
-    private int allBeans = 0;
     private int countBeans = 0;
     private int count = 0;
 
     private ApplicationContext applicationContext;
-    @Autowired
-    private ConfigurableListableBeanFactory factory;
+    private final ConfigurableListableBeanFactory factory;
 
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
+    public ApplicationContextProvider(ConfigurableListableBeanFactory factory) {
+        this.factory = factory;
     }
 
     @EventListener
@@ -35,15 +31,44 @@ public class ApplicationContextProvider {
         printBeanContext();
     }
 
+    public void printBeanContext() {
+        int allBeans = applicationContext.getBeanDefinitionCount();
+        String[] names = applicationContext.getBeanDefinitionNames();
+        for(String name : names){ printBean( name); }
+        System.out.println(" === countBeans=[" + count + "/"+ countBeans + "] === allBeans=[" + allBeans + "]  ===");
+        Runtime process = Runtime.getRuntime();
+        System.out.println("       **************   Всего памяти: [" + process.totalMemory() + "] *************\n");
+        // process.exit(15);
+        process.halt(25);
+    }
+
+    private void printBean( String name){
+        BeanDefinition beanDefinition = factory.getBeanDefinition(name);
+        String originalClassName = beanDefinition.getBeanClassName();
+        ++countBeans;
+        try {
+            if( originalClassName != null)  {
+                Class <?> originalClass = Class.forName(originalClassName);
+                Method[] methods = originalClass.getMethods();
+                ++count;
+                System.out.print("** Bean[" + countBeans + "][" + methods.length + "]");
+                System.out.println("<"+ originalClass.getSimpleName() +">[" + originalClassName + "]<<<");
+                printMethods(methods);
+            }
+            else {
+                System.out.println( "-- Bean[" + countBeans + "][0]=[" + name + "]<<<");
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void parseAnnotationMethod( Method  method) {
         Annotation[][] arrAnnotations = method.getParameterAnnotations();
-        // if (arrAnnotations == null) { return; }
         SimpleName simpleName = new SimpleName();
         for(Annotation[] annotations : arrAnnotations) {
             if(annotations == null) { return; }
-            //System.out.println("  " + annotations.toString());
             for (Annotation ant : annotations) {
-                //System.out.println("  " + ant.toString());
                 System.out.println("  " + simpleName.get(ant.toString()));
             }
         }
@@ -63,44 +88,5 @@ public class ApplicationContextProvider {
        }
     }
 
-    private void printBean( String name){
-        BeanDefinition beanDefinition = factory.getBeanDefinition(name);
-        String originalClassName = beanDefinition.getBeanClassName();
-        ++countBeans;
-        if(countBeans != 110) { return; }  //
-        try {
-            if( originalClassName != null)  {
-                Class <?> originalClass = Class.forName(originalClassName);
-                Method[] methods = originalClass.getMethods();
-                ++count;
-                System.out.print("\n** bean[" + countBeans + "][" + methods.length + "]");
-                System.out.println("<"+ originalClass.getSimpleName() +">[" + originalClassName + "]<<<");
-                //if(countBeans != 9 && countBeans != 9 && countBeans != 9) { return; }  //
-                printMethods(methods);
-                System.out.println(" ");
-            }
-            /*
-            else {
-                System.out.println( " +++ bean[" + countBeans + "]::[0]=[" + name + "]<<<");
-            }
-            */
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
-    public void printBeanContext() {
-        if(applicationContext != null) {
-            allBeans = applicationContext.getBeanDefinitionCount();
-            String[] names = applicationContext.getBeanDefinitionNames();
-            for(String name : names){ printBean( name); }
-        }
-        System.out.println(" === countBeans=[" + count + "/"+ countBeans + "] === allBeans=[" + allBeans + "]  ===");
-
-        Runtime process = Runtime.getRuntime();
-        System.out.println("       **************   Всего памяти: [" + process.totalMemory() + "] *************\n");
-
-        // process.exit(15);
-        process.halt(7);
-    }
 }

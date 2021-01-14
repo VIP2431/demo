@@ -14,9 +14,20 @@ import java.lang.reflect.Method;
 
 @Component
 public class ApplicationContextProvider {
+    private String TARGET_NAME = "Jxxx";
+    private int NUMBER_BEAN = 64;
+
+    public void setTARGET_NAME(String TARGET_NAME) {
+        this.TARGET_NAME = TARGET_NAME;
+    }
+
+    public void setNUMBER_BEAN(int NUMBER_BEAN) {
+        this.NUMBER_BEAN = NUMBER_BEAN;
+    }
+
     private int countBeans = 0;
     private int count = 0;
-
+    private SimpleName simpleName = new SimpleName();
     private ApplicationContext applicationContext;
     private final ConfigurableListableBeanFactory factory;
 
@@ -29,64 +40,68 @@ public class ApplicationContextProvider {
     public void handleContextRefresh(ContextRefreshedEvent event){
         applicationContext = event.getApplicationContext();
         printBeanContext();
+        Runtime.getRuntime().halt(25);
     }
 
     public void printBeanContext() {
         int allBeans = applicationContext.getBeanDefinitionCount();
         String[] names = applicationContext.getBeanDefinitionNames();
-        for(String name : names){ printBean( name); }
+        for(String name : names){
+            printBean( name);
+        }
         System.out.println(" === countBeans=[" + count + "/"+ countBeans + "] === allBeans=[" + allBeans + "]  ===");
-        Runtime process = Runtime.getRuntime();
-        System.out.println("       **************   Всего памяти: [" + process.totalMemory() + "] *************\n");
-        // process.exit(15);
-        process.halt(25);
     }
 
     private void printBean( String name){
         BeanDefinition beanDefinition = factory.getBeanDefinition(name);
         String originalClassName = beanDefinition.getBeanClassName();
+        boolean flagMetod = false;
+        boolean flagPrint = false;
         ++countBeans;
-        try {
-            if( originalClassName != null)  {
-                Class <?> originalClass = Class.forName(originalClassName);
-                Method[] methods = originalClass.getMethods();
-                ++count;
-                System.out.print("** Bean[" + countBeans + "][" + methods.length + "]");
-                System.out.println("<"+ originalClass.getSimpleName() +">[" + originalClassName + "]<<<");
-                printMethods(methods);
-            }
-            else {
-                System.out.println( "-- Bean[" + countBeans + "][0]=[" + name + "]<<<");
-            }
-        }catch (Exception e) {
-            e.printStackTrace();
+        if(TARGET_NAME == null || NUMBER_BEAN == countBeans || name.indexOf(TARGET_NAME) >= 0) {
+            flagPrint = true;
+        } else { return; }
+        if (NUMBER_BEAN == countBeans) {
+            flagMetod = true;
         }
+        if (originalClassName != null) {
+           ++count;
+           try {
+                Class<?> originalClass = Class.forName(originalClassName);
+                Annotation[] annotations = originalClass.getAnnotations();
+                Method[] methods = originalClass.getMethods();
+                System.out.print("** Bean:[" + countBeans + "]@:[" + annotations.length + "]M:[" + methods.length + "]");
+                System.out.println("<" + originalClass.getSimpleName() + ">[" + originalClassName + "]<<<");
+                if (flagMetod) {
+                    for(Annotation annotation : annotations) {
+                        System.out.println("  " + simpleName.get(annotation.toString()));
+                    }
+                    printMethods(methods);
+                }
+           } catch (Exception e) {
+                e.printStackTrace();
+           }
+       } else {
+           System.out.println("-- Bean:[" + countBeans + "]M:[0]=[" + name + "]<<<");
+       }
     }
 
-    private void parseAnnotationMethod( Method  method) {
-        Annotation[][] arrAnnotations = method.getParameterAnnotations();
-        SimpleName simpleName = new SimpleName();
-        for(Annotation[] annotations : arrAnnotations) {
-            if(annotations == null) { return; }
-            for (Annotation ant : annotations) {
-                System.out.println("  " + simpleName.get(ant.toString()));
-            }
+    private void parseAnnotationMethod( Annotation[] annotations) {
+        for(Annotation annotation : annotations) {
+            System.out.println("  " + simpleName.get(annotation.toString()));
         }
     }
 
     private void printMethods( Method[] methods){
         int cnt = 0;
-        SimpleName simpleName = new SimpleName();
         for (Method method : methods) {
-          System.out.print("[" + ++cnt + "]<" + method.getName() + ">");
+          Annotation[] annotations = method.getAnnotations();
+          System.out.print("[" + ++cnt + "]@[" + annotations.length + "]<" + method.getName() + ">");
           System.out.print("(" + method.getParameterCount() + ")");
           String str = method.toString();
           System.out.println("->[" + str + "];");
-
-          parseAnnotationMethod( method);
+          parseAnnotationMethod( annotations);
           System.out.println("  " + simpleName.get( str) + "{\n  }");
        }
     }
-
-
 }

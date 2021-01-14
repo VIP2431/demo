@@ -1,7 +1,5 @@
 package ru.vip.demo.parse;
 
-import java.lang.management.BufferPoolMXBean;
-
 public class SimpleName  {
     private StringBuffer strOut = new StringBuffer( 500);
 
@@ -10,18 +8,17 @@ public class SimpleName  {
        int iOut = 0;
        int len = str.length();
        strOut.setLength( 0);
-       String charPoint = " ,():-+;@#<>[]{}";
-       for( i=0; i < len; ++i) {
-            char c = str.charAt(i);
+       String charPoint = " ,()@{}=\"";
+       char c;
+       System.out.println(str);
+        for( i=0; i < len; ++i) {
+            c = str.charAt(i);
             if(charPoint.indexOf(c) != -1) {
-                strOut.append(str.substring( iOut, ++i));
-                iOut = i;
-                if(c == ',') { strOut.append(' '); }
-            } else if ( c == '.') {
-                iOut = ++i;
-            }
+                if (!(iOut + 1 >= i)) { strOut.append(str.substring(iOut, i)); }
+                strOut.append(c);
+            }else if( c != '.') { continue; }
+            iOut = i + 1;
         }
-        if(len >= i) { strOut.append(str.substring( iOut, i)); }
         return String.valueOf(strOut);
     }
 }

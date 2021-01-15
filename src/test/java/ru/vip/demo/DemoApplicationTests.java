@@ -20,9 +20,9 @@ class DemoApplicationTests {
 	@Test
 	public void initTestProvider() {
 		provider.setNUMBER_BEAN(58);     // Номер Бина для распечатки Анотаций и Методов
-		provider.setTARGET_NAME("???");  // Строка поиска для распечатки списка Бинов null - печатать все Бины
-		provider.setFLAG_TO_STRING(0);   // Больше 0 Распечатывает первичную информацию
-		provider.setCNT_METHOD(1);       // Распечатывает указанное + 1 Количество методов Бина
+		provider.setTARGET_NAME("Jpa");  // Строка поиска для распечатки списка Бинов null - печатать все Бины
+		provider.setFLAG_TO_STRING(false);   // Больше 0 Распечатывает первичную информацию
+		provider.setCNT_METHOD(3);       // Распечатывает указанное Количество методов Бина
 		provider.handleApplicationContext();
 	}
 }

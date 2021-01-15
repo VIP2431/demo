@@ -1,11 +1,7 @@
 package ru.vip.demo;
 
-import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 @SpringBootApplication
 public class DemoApplication { // Вариант 3 implements CommandLineRunner {
@@ -13,8 +9,18 @@ public class DemoApplication { // Вариант 3 implements CommandLineRunner 
  * Вариант 1
  *
 */
+	static ApplicationContextProvider provider;
+
+	public DemoApplication(ApplicationContextProvider provider) {
+		this.provider = provider;
+	}
+
 	public static void main(String[] args) {
+
 		SpringApplication.run(DemoApplication.class, args);
+		if (provider != null) {
+			provider.handleApplicationContext();
+		}
 	}
 
 /**

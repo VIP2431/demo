@@ -10,15 +10,14 @@ public class SimpleName  {
        strOut.setLength( 0);
        String charPoint = " ,()@{}=\"";
        char c;
-       System.out.println(str);
-        for( i=0; i < len; ++i) {
+       for( i=0; i < len; ++i) {
             c = str.charAt(i);
             if(charPoint.indexOf(c) != -1) {
                 if (!(iOut + 1 >= i)) { strOut.append(str.substring(iOut, i)); }
                 strOut.append(c);
             }else if( c != '.') { continue; }
             iOut = i + 1;
-        }
-        return String.valueOf(strOut);
+       }
+       return String.valueOf(strOut);
     }
 }

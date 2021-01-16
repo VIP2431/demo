@@ -1,7 +1,6 @@
 package ru.vip.demo;
 
- import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import ru.vip.demo.parse.SimpleName;
@@ -13,8 +12,10 @@ import java.lang.reflect.Method;
 public class ApplicationContextProvider {
     private String TARGET_NAME = "Jpa";
     private int NUMBER_BEAN = 64;
-    private boolean FLAG_TO_STRING = true;
     private int CNT_METHOD = 1;
+    private boolean FLAG_TO_STRING = false;
+    private boolean FLAG_PRINT_METHOD = false;
+
     private int countBeans = 0;
     private int count = 0;
 
@@ -37,7 +38,7 @@ public class ApplicationContextProvider {
         int status = -1;
         if (applicationContext != null && factory != null) {
             printBeanContext();
-            status = 15;
+            status = 35;
         }
         Runtime.getRuntime().halt( status);
     }
@@ -45,40 +46,54 @@ public class ApplicationContextProvider {
     public void printBeanContext() {
         int allBeans = applicationContext.getBeanDefinitionCount();
         String[] names = applicationContext.getBeanDefinitionNames();
-        for(String name : names){ printBean( name); }
+        System.out.print("\n Условия:" );
+        System.out.print(" TARGET_NAME=(\"" + TARGET_NAME + "\")" );
+        System.out.print(" NUMBER_BEAN=(" + NUMBER_BEAN + ")");
+        System.out.print(" CNT_METHOD=(" + CNT_METHOD + ")");
+        System.out.print(" FLAG_TO_STRING=(" + FLAG_TO_STRING + ")");
+        System.out.println(" FLAG_PRINT_METHOD=(" + FLAG_PRINT_METHOD + ")");
+        System.out.println(" ");
+        for(String name : names){
+            ++countBeans;
+            String originalClassName =  factory.getBeanDefinition(name).getBeanClassName();
+            if (NUMBER_BEAN == countBeans) {
+                FLAG_PRINT_METHOD = true;
+            } else {
+                FLAG_PRINT_METHOD = false;
+            }
+            if(TARGET_NAME == null || FLAG_PRINT_METHOD || name.contains(TARGET_NAME)) {
+                printBean( name, originalClassName);
+            }
+        }
         System.out.println(" === countBeans=[" + count + "/"+ countBeans + "] === allBeans=[" + allBeans + "]  ===");
     }
 
-    private void printBean( String name){
-        BeanDefinition beanDefinition = factory.getBeanDefinition(name);
-        String originalClassName = beanDefinition.getBeanClassName();
-        boolean flagMethod = false;
-        ++countBeans;
-        if (NUMBER_BEAN == countBeans) { flagMethod = true; }
-        if(TARGET_NAME != null && !flagMethod && !name.contains(TARGET_NAME)) { return; }
+    private void printBean( String name, String originalClassName) {
         if (originalClassName == null) {
            System.out.println("-- Bean:[" + countBeans + "]M:[0]=[" + name + "]<<<");
            return;
         }
-        ++count;
         try {
-                Class<?> originalClass = Class.forName(originalClassName);
-                Annotation[] annotations = originalClass.getAnnotations();
-                Method[] methods = originalClass.getMethods();
-                System.out.print("** Bean:[" + countBeans + "]@:[" + annotations.length + "]M:[" + methods.length + "]");
-                System.out.print("<" + originalClass.getSimpleName() + ">");
-                if (FLAG_TO_STRING) { System.out.print("->[" + originalClassName + "]<<<"); }
-                System.out.println(" ");
-                if (flagMethod) {
-                    printAnnotationMethod( annotations);
-                    printMethods(methods);
-                }
+            Class<?> originalClass = Class.forName(originalClassName);
+            Annotation[] annotations = originalClass.getAnnotations();
+            Method[] methods = originalClass.getMethods();
+            ++count;
+            System.out.print("** Bean:[" + countBeans + "]@:[" + annotations.length + "]M:[" + methods.length + "]");
+            System.out.print("<" + originalClass.getSimpleName() + ">");
+            if (FLAG_TO_STRING) {
+                System.out.print("->[" + originalClassName + "]<<<");
+            }
+            System.out.println(" ");
+            if (FLAG_PRINT_METHOD) {
+                printAnnotation(annotations);
+                printMethods(methods);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void printAnnotationMethod( Annotation[] annotations) {
+    private void printAnnotation( Annotation[] annotations) {
         for(Annotation annotation : annotations) {
             String str = annotation.toString();
             if (FLAG_TO_STRING) { System.out.println("->[" + str + "];"); }
@@ -96,7 +111,7 @@ public class ApplicationContextProvider {
           System.out.print("(" + method.getParameterCount() + ")");
           if (FLAG_TO_STRING) { System.out.print("->[" + str + "]<<<"); }
           System.out.println(" ");
-          printAnnotationMethod( annotations);
+          printAnnotation( annotations);
           System.out.println("  " + simpleName.get(str) + "{\n  }");
        }
     }

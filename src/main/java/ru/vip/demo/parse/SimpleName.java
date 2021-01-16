@@ -15,7 +15,7 @@ public class SimpleName  {
             if(charPoint.indexOf(c) != -1) {
                 if (!(iOut + 1 >= i)) { strOut.append(str.substring(iOut, i)); }
                 strOut.append(c);
-            }else if( c != '.') { continue; }
+            }else if ( c != '.') { continue; }
             iOut = i + 1;
        }
        return String.valueOf(strOut);

@@ -38,34 +38,34 @@ public class ApplicationContextProvider {
         int status = -1;
         if (applicationContext != null && factory != null) {
             printBeanContext();
-            status = 35;
+            status = 15;
         }
         Runtime.getRuntime().halt( status);
     }
 
     public void printBeanContext() {
-        int allBeans = applicationContext.getBeanDefinitionCount();
-        String[] names = applicationContext.getBeanDefinitionNames();
-        System.out.print("\n Условия:" );
-        System.out.print(" TARGET_NAME=(\"" + TARGET_NAME + "\")" );
-        System.out.print(" NUMBER_BEAN=(" + NUMBER_BEAN + ")");
-        System.out.print(" CNT_METHOD=(" + CNT_METHOD + ")");
-        System.out.print(" FLAG_TO_STRING=(" + FLAG_TO_STRING + ")");
-        System.out.println(" FLAG_PRINT_METHOD=(" + FLAG_PRINT_METHOD + ")");
-        System.out.println(" ");
-        for(String name : names){
+         String[] names = applicationContext.getBeanDefinitionNames();
+         printHeadContext();
+         for(String name : names){
             ++countBeans;
             String originalClassName =  factory.getBeanDefinition(name).getBeanClassName();
-            if (NUMBER_BEAN == countBeans) {
-                FLAG_PRINT_METHOD = true;
-            } else {
-                FLAG_PRINT_METHOD = false;
-            }
+            FLAG_PRINT_METHOD = (NUMBER_BEAN == countBeans);
             if(TARGET_NAME == null || FLAG_PRINT_METHOD || name.contains(TARGET_NAME)) {
                 printBean( name, originalClassName);
             }
         }
-        System.out.println(" === countBeans=[" + count + "/"+ countBeans + "] === allBeans=[" + allBeans + "]  ===");
+        System.out.print(" === countBeans=[" + count + "/"+ countBeans + "]");
+        System.out.println(" === allBeans=[" + applicationContext.getBeanDefinitionCount() + "]  ===");
+    }
+
+    private void printHeadContext() {
+        System.out.println("                        ----------------------------");
+        System.out.print(" Условия:" );
+        System.out.print(" TARGET_NAME=(\"" + TARGET_NAME + "\")" );
+        System.out.print(" NUMBER_BEAN=(" + NUMBER_BEAN + ")");
+        System.out.print(" CNT_METHOD=(" + CNT_METHOD + ")");
+        System.out.println(" FLAG_TO_STRING=(" + FLAG_TO_STRING + ")");
+        System.out.println("                        ----------------------------");
     }
 
     private void printBean( String name, String originalClassName) {
@@ -78,8 +78,9 @@ public class ApplicationContextProvider {
             Annotation[] annotations = originalClass.getAnnotations();
             Method[] methods = originalClass.getMethods();
             ++count;
-            System.out.print("** Bean:[" + countBeans + "]@:[" + annotations.length + "]M:[" + methods.length + "]");
-            System.out.print("<" + originalClass.getSimpleName() + ">");
+            System.out.print("** Bean:[" + countBeans + "]<"
+                    + originalClass.getSimpleName() + ">@:["
+                    + annotations.length + "]M:[" + methods.length + "]");
             if (FLAG_TO_STRING) {
                 System.out.print("->[" + originalClassName + "]<<<");
             }
@@ -88,7 +89,7 @@ public class ApplicationContextProvider {
                 printAnnotation(annotations);
                 printMethods(methods);
             }
-        } catch (Exception e) {
+        } catch ( Exception e) {
             e.printStackTrace();
         }
     }
@@ -106,12 +107,15 @@ public class ApplicationContextProvider {
         for (Method method : methods) {
           if (cnt >= CNT_METHOD) { return; }
           Annotation[] annotations = method.getAnnotations();
+
           String str = method.toString();
           System.out.print("M[" + ++cnt + "]@[" + annotations.length + "]<" + method.getName() + ">");
           System.out.print("(" + method.getParameterCount() + ")");
           if (FLAG_TO_STRING) { System.out.print("->[" + str + "]<<<"); }
           System.out.println(" ");
+
           printAnnotation( annotations);
+
           System.out.println("  " + simpleName.get(str) + "{\n  }");
        }
     }

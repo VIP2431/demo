@@ -61,9 +61,8 @@ public class ApplicationContextProvider {
     }
 
     private boolean isNUMBER_BEAN(){
- //       for(int n=0; n < NUMBER_BEAN.length; ++n) {
         for( int n : NUMBER_BEAN) {
-            if( n == countBeans) { return true; }
+            if(n == countBeans) { return true; }
         }
         return false;
     }

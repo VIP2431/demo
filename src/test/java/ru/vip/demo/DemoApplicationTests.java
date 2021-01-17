@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class DemoApplicationTests {
+	private int[] LIST_BEAN = { 34, 58};
 	@Autowired
 	ApplicationContextProvider provider;
 
@@ -19,7 +20,7 @@ class DemoApplicationTests {
 
 	@Test
 	public void initTestProvider() {
-		provider.setNUMBER_BEAN(58);     // Номер Бина для распечатки Анотаций и Методов
+		provider.setNUMBER_BEAN( LIST_BEAN);     // Номер Бина для распечатки Анотаций и Методов
 		provider.setTARGET_NAME("Jpa");  // Строка поиска для распечатки списка Бинов null - печатать все Бины
 		provider.setFLAG_TO_STRING(false);   // Больше 0 Распечатывает первичную информацию
 		provider.setCNT_METHOD(3);       // Распечатывает указанное Количество методов Бина

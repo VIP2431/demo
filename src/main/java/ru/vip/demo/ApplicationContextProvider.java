@@ -10,8 +10,8 @@ import java.lang.reflect.Method;
 
 @Component
 public class ApplicationContextProvider {
-    private String TARGET_NAME = "Jpa";
-    private int NUMBER_BEAN = 64;
+    private String TARGET_NAME = "Data?";
+    private int[] NUMBER_BEAN = { 37, 64};
     private int CNT_METHOD = 1;
     private boolean FLAG_TO_STRING = false;
     private boolean FLAG_PRINT_METHOD = false;
@@ -30,7 +30,7 @@ public class ApplicationContextProvider {
     }
 
     public void setTARGET_NAME(String TARGET_NAME) { this.TARGET_NAME = TARGET_NAME; }
-    public void setNUMBER_BEAN(int NUMBER_BEAN) { this.NUMBER_BEAN = NUMBER_BEAN; }
+    public void setNUMBER_BEAN(int[] NUMBER_BEAN) { this.NUMBER_BEAN = NUMBER_BEAN; }
     public void setFLAG_TO_STRING( boolean FLAG_TO_STRING) { this.FLAG_TO_STRING = FLAG_TO_STRING; }
     public void setCNT_METHOD(int CNT_METHOD) { this.CNT_METHOD = CNT_METHOD; }
 
@@ -49,8 +49,10 @@ public class ApplicationContextProvider {
          for(String name : names){
             ++countBeans;
             String originalClassName =  factory.getBeanDefinition(name).getBeanClassName();
-            FLAG_PRINT_METHOD = (NUMBER_BEAN == countBeans);
-            if(TARGET_NAME == null || FLAG_PRINT_METHOD || name.contains(TARGET_NAME)) {
+            FLAG_PRINT_METHOD = isNUMBER_BEAN();
+            if( FLAG_PRINT_METHOD
+                    || TARGET_NAME == null
+                    || name.contains(TARGET_NAME)) {
                 printBean( name, originalClassName);
             }
         }
@@ -58,11 +60,24 @@ public class ApplicationContextProvider {
         System.out.println(" === allBeans=[" + applicationContext.getBeanDefinitionCount() + "]  ===");
     }
 
+    private boolean isNUMBER_BEAN(){
+ //       for(int n=0; n < NUMBER_BEAN.length; ++n) {
+        for( int n : NUMBER_BEAN) {
+            if( n == countBeans) { return true; }
+        }
+        return false;
+    }
+
     private void printHeadContext() {
         System.out.println("                        ----------------------------");
         System.out.print(" Условия:" );
         System.out.print(" TARGET_NAME=(\"" + TARGET_NAME + "\")" );
-        System.out.print(" NUMBER_BEAN=(" + NUMBER_BEAN + ")");
+        System.out.print(" NUMBER_BEAN=(");
+        for(int n =0; n < NUMBER_BEAN.length; ++n) {
+            if ( n>0 ) System.out.print(",");
+            System.out.print(" " + NUMBER_BEAN[n]);
+        }
+        System.out.print(")");
         System.out.print(" CNT_METHOD=(" + CNT_METHOD + ")");
         System.out.println(" FLAG_TO_STRING=(" + FLAG_TO_STRING + ")");
         System.out.println("                        ----------------------------");
@@ -75,8 +90,9 @@ public class ApplicationContextProvider {
         }
         try {
             Class<?> originalClass = Class.forName(originalClassName);
-            Annotation[] annotations = originalClass.getAnnotations();
             Method[] methods = originalClass.getMethods();
+            Annotation[] annotations = originalClass.getAnnotations();
+
             ++count;
             System.out.print("** Bean:[" + countBeans + "]<"
                     + originalClass.getSimpleName() + ">@:["
@@ -89,6 +105,8 @@ public class ApplicationContextProvider {
                 printAnnotation(annotations);
                 printMethods(methods);
             }
+        } catch ( NullPointerException e) {
+            System.out.println( "  ***** Exception: " + e + " <" + name + ".Class>");
         } catch ( Exception e) {
             e.printStackTrace();
         }

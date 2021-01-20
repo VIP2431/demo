@@ -5,22 +5,24 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class DemoApplication { // Вариант 3 implements CommandLineRunner {
+
+
 /**
  * Вариант 1
  *
 */
 	static ApplicationContextProvider provider;
 
-	public DemoApplication(ApplicationContextProvider provider) {
-		this.provider = provider;
-	}
+//	public DemoApplication(ApplicationContextProvider provider) {
+//		this.provider = provider;
+//	}
 
 	public static void main(String[] args) {
 
 		SpringApplication.run(DemoApplication.class, args);
-		if (provider != null) {
-			provider.handleApplicationContext();
-		}
+//		if (provider != null) {
+//			provider.handleApplicationContext();
+//		}
 	}
 
 /**

@@ -96,11 +96,11 @@ public class ApplicationContextProvider {
             System.out.print("** Bean:[" + countBeans + "]<"
                     + originalClass.getSimpleName() + ">@:["
                     + annotations.length + "]M:[" + methods.length + "]");
-            if (FLAG_TO_STRING) {
+            if (FLAG_TO_STRING) { // Распечатка исходной строки Бина
                 System.out.print("->[" + originalClassName + "]<<<");
             }
             System.out.println(" ");
-            if (FLAG_PRINT_METHOD) {
+            if (FLAG_PRINT_METHOD) { // Распечатка Метода
                 printAnnotation(annotations);
                 printMethods(methods);
             }
@@ -114,7 +114,9 @@ public class ApplicationContextProvider {
     private void printAnnotation( Annotation[] annotations) {
         for(Annotation annotation : annotations) {
             String str = annotation.toString();
-            if (FLAG_TO_STRING) { System.out.println("->[" + str + "];"); }
+            if (FLAG_TO_STRING) {  // Распечатка исходной строки Анотации
+                System.out.println("->[" + str + "];");
+            }
             System.out.println("  " + simpleName.get( str));
         }
     }
@@ -122,13 +124,17 @@ public class ApplicationContextProvider {
     private void printMethods( Method[] methods){
         int cnt = 0;
         for (Method method : methods) {
-          if (cnt >= CNT_METHOD) { return; }
+          if (cnt >= CNT_METHOD) { // Не печатать Метод если его номер больше заданного
+              return;
+          }
           Annotation[] annotations = method.getAnnotations();
 
           String str = method.toString();
           System.out.print("M[" + ++cnt + "]@[" + annotations.length + "]<" + method.getName() + ">");
           System.out.print("(" + method.getParameterCount() + ")");
-          if (FLAG_TO_STRING) { System.out.print("->[" + str + "]<<<"); }
+          if (FLAG_TO_STRING) { // Распечатка исходной строки Метода
+              System.out.print("->[" + str + "]<<<");
+          }
           System.out.println(" ");
 
           printAnnotation( annotations);

@@ -1,11 +1,28 @@
 
 ---
+#error: true
+#warn: true
+#info: true
 #debug: true
 #trace: true
 
 server:
   port: 8091
 
+logging:
+  pattern:
+    console: " %replace(%m%wEx){'\\n','\r'}%n"
+#    console: "%d [%thread] %5p %logger: %replace(%m%wEx){'\\n','\r'}%nopex%n"
+  level:
+#   ru.vip.demo: TRACE#
+   ru.vip.demo: DEBUG#
+#   ru.vip.demo: WARN#
+
+#    org.zalando.logbook.Logbook: TRACE#
+#    org.zalando.logbook.Logbook: TRACE#
+#    ru.x5.omni.messaging.aop.MessageLogging: TRACE
+#   org.springframework.kafka.test.utils: DEBUG
+#    org.hibernate.SQL: DEBUG
 #==========================================
 #     DB H2
 #==========================================

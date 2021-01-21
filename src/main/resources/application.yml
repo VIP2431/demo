@@ -5,28 +5,52 @@
 #info: true
 #debug: true
 #trace: true
+names:
+  test: "TestProviderApplication"
+  number: 23
+
+provider:
+  params:
+    TARGET_BEAN: "JpaRepo"
+    COUNT_METHOD: 3
+    LIST_BEAN: 34, 58, 61, 8
+    ORIGINAL_STRING: true
 
 server:
   port: 8091
 
-logging:
-  pattern:
-    console: " %replace(%m%wEx){'\\n','\r'}%n"
-#    console: "%d [%thread] %5p %logger: %replace(%m%wEx){'\\n','\r'}%nopex%n"
-  level:
-#   ru.vip.demo: TRACE#
-   ru.vip.demo: DEBUG#
-#   ru.vip.demo: WARN#
+#==========================================
+#     LOGGING
+#==========================================
 
-#    org.zalando.logbook.Logbook: TRACE#
-#    org.zalando.logbook.Logbook: TRACE#
-#    ru.x5.omni.messaging.aop.MessageLogging: TRACE
-#   org.springframework.kafka.test.utils: DEBUG
-#    org.hibernate.SQL: DEBUG
+logging:
+  level:
+    org.springframework.*: ERROR#
+    ru.vip.demo: DEBUG#
+  pattern:
+    console: " %msg%n"
+    #  console: " %replace(%m%wEx){'\\n','\r'}%n"
+    #    console: "%d [%thread] %5p %logger: %replace(%m%wEx){'\\n','\r'}%nopex%n"
+    file: "%d{yyyy-MM-DD HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: application.log
+
+#   ru.vip.demo: TRACE#
+#   ru.vip.demo: INFO#
+#    ru.vip.demo: WARN#
+#    ru.vip.demo: ERROR#
+#    ru.vip.demo: FATAL#
+#    ru.vip.demo: OFF#
+
+
+
 #==========================================
 #     DB H2
 #==========================================
 spring:
+  main:
+    banner-mode: off
+
   datasource:
     username: sa
     password:

@@ -1,0 +1,1297 @@
+2021-01-21 11:51:05.126  INFO 20668 --- [main] ru.vip.demo.DemoApplicationTests         : Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 20668 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 11:51:05.134 DEBUG 20668 --- [main] ru.vip.demo.DemoApplicationTests         : Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 11:51:05.141  INFO 20668 --- [main] ru.vip.demo.DemoApplicationTests         : No active profile set, falling back to default profiles: default
+2021-01-21 11:51:06.756  INFO 20668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-01-21 11:51:06.808  INFO 20668 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 0 JPA repository interfaces.
+2021-01-21 11:51:08.521  INFO 20668 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-01-21 11:51:09.388  INFO 20668 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-01-21 11:51:09.723  INFO 20668 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 11:51:09.967  INFO 20668 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 11:51:10.611  INFO 20668 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 11:51:11.311  INFO 20668 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 11:51:12.292  INFO 20668 --- [main] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 11:51:12.936  INFO 20668 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 11:51:12.952  INFO 20668 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-01-21 11:51:13.436  INFO 20668 --- [main] ru.vip.demo.DemoApplicationTests         : Started DemoApplicationTests in 9.895 seconds (JVM running for 14.622)
+2021-01-21 11:51:13.859 ERROR 20668 --- [main] ru.vip.demo.DemoApplicationTests         : ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 11:51:13.860  WARN 20668 --- [main] ru.vip.demo.DemoApplicationTests         : ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 11:51:13.860  INFO 20668 --- [main] ru.vip.demo.DemoApplicationTests         : ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 11:51:13.860 DEBUG 20668 --- [main] ru.vip.demo.DemoApplicationTests         : ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG ***
+2021-01-21 12:00:38.146  INFO 6700 --- [main] o.s.boot.SpringApplication               : 
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.1)
+
+
+2021-01-21 12:00:38.381  INFO 6700 --- [main] ru.vip.demo.DemoApplicationTests         : Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 6700 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 12:00:38.381 DEBUG 6700 --- [main] ru.vip.demo.DemoApplicationTests         : Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 12:00:38.390  INFO 6700 --- [main] ru.vip.demo.DemoApplicationTests         : No active profile set, falling back to default profiles: default
+2021-01-21 12:00:39.913  INFO 6700 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-01-21 12:00:39.957  INFO 6700 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 0 JPA repository interfaces.
+2021-01-21 12:00:41.547  INFO 6700 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-01-21 12:00:42.257  INFO 6700 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-01-21 12:00:42.512  INFO 6700 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 12:00:42.730  INFO 6700 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 12:00:43.313  INFO 6700 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 12:00:44.011  INFO 6700 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 12:00:45.070  INFO 6700 --- [main] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 12:00:45.813  INFO 6700 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 12:00:45.828  INFO 6700 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-01-21 12:00:46.298  INFO 6700 --- [main] ru.vip.demo.DemoApplicationTests         : Started DemoApplicationTests in 9.509 seconds (JVM running for 14.014)
+2021-01-21 12:00:46.716 ERROR 6700 --- [main] ru.vip.demo.DemoApplicationTests         : ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 12:00:46.716  WARN 6700 --- [main] ru.vip.demo.DemoApplicationTests         : ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 12:00:46.723  INFO 6700 --- [main] ru.vip.demo.DemoApplicationTests         : ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 12:00:46.723 DEBUG 6700 --- [main] ru.vip.demo.DemoApplicationTests         : ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG ***
+2021-01-21 12:21:58.055  INFO 1700 --- [main] ru.vip.demo.DemoApplicationTests         : Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 1700 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 12:21:58.057 DEBUG 1700 --- [main] ru.vip.demo.DemoApplicationTests         : Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 12:21:58.059  INFO 1700 --- [main] ru.vip.demo.DemoApplicationTests         : No active profile set, falling back to default profiles: default
+2021-01-21 12:21:58.987  INFO 1700 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-01-21 12:21:59.023  INFO 1700 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 0 JPA repository interfaces.
+2021-01-21 12:21:59.986  INFO 1700 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-01-21 12:22:00.499  INFO 1700 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-01-21 12:22:00.684  INFO 1700 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 12:22:00.837  INFO 1700 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 12:22:01.218  INFO 1700 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 12:22:01.649  INFO 1700 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 12:22:02.228  INFO 1700 --- [main] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 12:22:02.651  INFO 1700 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 12:22:02.666  INFO 1700 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-01-21 12:22:02.996  INFO 1700 --- [main] ru.vip.demo.DemoApplicationTests         : Started DemoApplicationTests in 5.89 seconds (JVM running for 8.584)
+2021-01-21 12:22:03.279 ERROR 1700 --- [main] ru.vip.demo.DemoApplicationTests         : ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 12:22:03.280  WARN 1700 --- [main] ru.vip.demo.DemoApplicationTests         : ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 12:22:03.280  INFO 1700 --- [main] ru.vip.demo.DemoApplicationTests         : ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 12:22:03.280 DEBUG 1700 --- [main] ru.vip.demo.DemoApplicationTests         : ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG ***
+2021-01-21 12:37:50 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 13128 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 12:37:50 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 12:37:50 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 12:37:51 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-01-21 12:37:51 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 JPA repository interfaces.
+2021-01-21 12:37:52 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 12:37:52 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 12:37:53 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 12:37:53 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 12:37:53 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 12:37:54 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 12:37:54 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 12:37:55 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 12:37:55 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-01-21 12:37:55 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 5.823 seconds (JVM running for 8.531)
+2021-01-21 12:37:55 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 12:37:55 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 12:37:55 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 12:37:55 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG ***
+2021-01-21 12:42:52 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 13588 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 12:42:52 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 12:42:52 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 12:42:54 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 12:42:55 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 12:42:55 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 12:42:55 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 12:42:56 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 12:42:56 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 12:42:56 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 12:42:57 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 12:42:57 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 5.575 seconds (JVM running for 8.392)
+2021-01-21 12:42:57 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 12:42:57 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 12:42:57 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 12:42:57 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG ***
+2021-01-21 15:22:51 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 24900 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 15:22:51 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 15:22:51 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 15:22:55 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 15:22:55 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 15:22:56 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 15:22:56 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 15:22:57 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 15:22:57 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 15:22:59 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 15:23:00 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 15:23:01 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 12.208 seconds (JVM running for 19.422)
+2021-01-21 15:23:02 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 15:23:02 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 15:23:02 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 15:23:02 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG ***
+2021-01-21 15:24:21 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 21656 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 15:24:21 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 15:24:21 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 15:24:29 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 15:24:31 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 15:24:32 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 15:24:33 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 15:24:34 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 15:24:34 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 23912 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 15:24:34 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 15:24:35 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 15:24:35 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 15:24:38 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 15:24:40 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 15:24:41 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 15:24:42 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 24.799 seconds (JVM running for 32.251)
+2021-01-21 15:24:43 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 15:24:44 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 15:24:44 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 15:24:44 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 15:24:44 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG ***
+2021-01-21 15:24:44 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 15:24:44 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 15:24:46 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 15:24:47 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 15:24:48 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 15:24:50 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 15:24:50 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 19.437 seconds (JVM running for 29.62)
+2021-01-21 15:24:51 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 15:24:51 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 15:24:51 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 15:24:51 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG ***
+2021-01-21 15:27:08 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 3220 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 15:27:08 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 15:27:08 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 15:27:12 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 15:27:13 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 15:27:14 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 15:27:14 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 15:27:15 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 15:27:15 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 15:27:17 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 15:27:18 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 15:27:19 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 13.065 seconds (JVM running for 19.145)
+2021-01-21 15:27:20 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 15:27:20 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 15:27:20 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 15:27:20 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG ***
+2021-01-21 15:32:21 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 5048 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 15:32:21 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 15:32:21 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 15:32:25 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 15:32:26 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 15:32:26 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 15:32:27 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 15:32:27 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 15:32:28 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 15:32:29 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 15:32:31 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 15:32:31 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 12.265 seconds (JVM running for 18.647)
+2021-01-21 15:32:32 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 15:32:32 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 15:32:32 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 15:32:32 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG ***
+2021-01-21 15:49:53 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 7764 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 15:49:53 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 15:49:53 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 15:49:55 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 15:49:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 15:49:56 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 15:49:56 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 15:49:56 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 15:49:57 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 15:49:57 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 15:49:58 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 15:49:58 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 5.708 seconds (JVM running for 8.521)
+2021-01-21 15:49:58 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 15:49:58 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 15:49:58 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 15:49:58 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG ***
+2021-01-21 15:49:58 [main] INFO  ru.vip.demo.DemoApplicationTests - TestProviderApplication - 12
+2021-01-21 16:12:29 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 10932 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 16:12:29 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 16:12:29 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 16:12:30 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 16:12:31 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 16:12:31 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 16:12:31 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 16:12:32 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 16:12:32 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 16:12:33 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 16:12:33 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 16:12:33 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 5.73 seconds (JVM running for 8.71)
+2021-01-21 16:12:34 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 16:12:34 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 16:12:34 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 16:12:34 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG ***
+2021-01-21 16:12:34 [main] INFO  ru.vip.demo.DemoApplicationTests - TestProviderApplication
+2021-01-21 16:16:04 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 24372 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 16:16:04 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 16:16:04 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 16:16:05 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 16:16:06 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 16:16:06 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 16:16:06 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 16:16:07 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 16:16:07 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 16:16:08 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 16:16:08 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 16:16:09 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 6.31 seconds (JVM running for 9.093)
+2021-01-21 16:16:09 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 16:16:09 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 16:16:09 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 16:16:09 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG 23 ***
+2021-01-21 16:16:09 [main] INFO  ru.vip.demo.DemoApplicationTests - TestProviderApplication
+2021-01-21 16:33:07 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 24664 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 16:33:07 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 16:33:07 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 16:33:11 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 16:33:12 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 16:33:12 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 16:33:13 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 16:33:13 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 16:33:14 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 16:33:16 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 16:33:17 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 16:33:17 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 12.253 seconds (JVM running for 15.407)
+2021-01-21 16:33:18 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 16:33:18 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 16:33:18 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 16:33:18 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG 23 ***
+2021-01-21 16:33:18 [main] INFO  ru.vip.demo.DemoApplicationTests - TestProviderApplication
+2021-01-21 16:37:24 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 12768 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 16:37:24 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 16:37:24 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 16:37:26 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 16:37:27 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 16:37:27 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 16:37:27 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 16:37:28 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 16:37:28 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 16:37:29 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 16:37:30 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 16:37:30 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 7.686 seconds (JVM running for 10.528)
+2021-01-21 16:37:31 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 16:37:31 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 16:37:31 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 16:37:31 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG 23 ***
+2021-01-21 16:37:31 [main] INFO  ru.vip.demo.DemoApplicationTests - TestProviderApplication
+2021-01-21 16:40:34 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 24972 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 16:40:34 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 16:40:34 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 16:40:36 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 16:40:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 16:40:37 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 16:40:37 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 16:40:38 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 16:40:38 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 16:40:39 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 16:40:39 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 16:40:40 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 6.538 seconds (JVM running for 9.285)
+2021-01-21 16:40:40 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 16:40:40 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 16:40:40 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 16:40:40 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG 23 ***
+2021-01-21 16:40:40 [main] INFO  ru.vip.demo.DemoApplicationTests - TestProviderApplication
+2021-01-21 16:43:14 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 24104 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 16:43:14 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 16:43:14 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 16:43:16 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 16:43:16 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 16:43:16 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 16:43:16 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 16:43:17 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 16:43:17 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 16:43:18 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 16:43:18 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 16:43:19 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 5.903 seconds (JVM running for 8.521)
+2021-01-21 16:43:19 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 16:43:19 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 16:43:19 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 16:43:19 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG 23 ***
+2021-01-21 16:43:19 [main] INFO  ru.vip.demo.DemoApplicationTests - TestProviderApplication
+2021-01-21 16:47:05 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 18716 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 16:47:05 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 16:47:05 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 16:47:07 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 16:47:07 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 16:47:07 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 16:47:07 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 16:47:08 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 16:47:08 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 16:47:09 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 16:47:09 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 16:47:09 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 5.582 seconds (JVM running for 8.34)
+2021-01-21 16:47:10 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 16:47:10 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 16:47:10 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 16:47:10 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG 23 ***
+2021-01-21 16:47:10 [main] INFO  ru.vip.demo.DemoApplicationTests - TestProviderApplication
+2021-01-21 20:04:35 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 24356 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 20:04:35 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 20:04:35 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 20:04:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 20:04:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 20:04:37 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 20:04:38 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 20:04:38 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 20:04:38 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 20:04:39 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 20:04:39 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 20:04:39 [main] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-01-21 20:04:39 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-21 20:04:39 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-21 20:04:39 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in ru.vip.demo.Param.ParamProvider required a bean of type 'java.lang.String' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'java.lang.String' in your configuration.
+Consider adding @ConstructorBinding to ru.vip.demo.Param.ParamProvider if you intended to use constructor-based configuration property binding.
+
+2021-01-21 20:08:17 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 24936 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 20:08:17 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 20:08:17 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 20:08:18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 20:08:19 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 20:08:19 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 20:08:19 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 20:08:20 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 20:08:20 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 20:08:20 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 20:08:21 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 20:08:21 [main] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-01-21 20:08:21 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-21 20:08:21 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-21 20:08:21 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in ru.vip.demo.Param.ParamProvider required a bean of type 'java.lang.String' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'java.lang.String' in your configuration.
+Consider adding @ConstructorBinding to ru.vip.demo.Param.ParamProvider if you intended to use constructor-based configuration property binding.
+
+2021-01-21 20:14:24 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 20408 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 20:14:24 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 20:14:24 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 20:14:26 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 20:14:27 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 20:14:27 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 20:14:27 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 20:14:27 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 20:14:28 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 20:14:28 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 20:14:29 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 20:14:29 [main] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-01-21 20:14:29 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-21 20:14:29 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-21 20:14:29 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+ParamProvider is annotated with @ConstructorBinding but it is defined as a regular bean which caused dependency injection to fail.
+
+Action:
+
+Update your configuration so that ParamProvider is defined via @ConfigurationPropertiesScan or @EnableConfigurationProperties.
+
+2021-01-21 20:18:10 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 27116 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 20:18:10 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 20:18:10 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 20:18:13 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 20:18:14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 20:18:14 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 20:18:14 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 20:18:15 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 20:18:16 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 20:18:16 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 20:18:17 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 20:18:17 [main] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-01-21 20:18:17 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-21 20:18:17 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-21 20:18:17 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in ru.vip.demo.Param.ParamProvider required a bean of type 'java.lang.String' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'java.lang.String' in your configuration.
+Consider adding @ConstructorBinding to ru.vip.demo.Param.ParamProvider if you intended to use constructor-based configuration property binding.
+
+2021-01-21 20:42:52 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 21776 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 20:42:52 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 20:42:52 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 20:42:55 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 20:42:55 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 20:42:55 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 20:42:56 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 20:42:56 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 20:42:56 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 20:42:57 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 20:42:57 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 20:42:57 [main] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-01-21 20:42:57 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-21 20:42:57 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-21 20:42:57 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in ru.vip.demo.Param.ParamProvider required a bean of type 'java.lang.String' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'java.lang.String' in your configuration.
+Consider adding @ConstructorBinding to ru.vip.demo.Param.ParamProvider if you intended to use constructor-based configuration property binding.
+
+2021-01-21 20:42:58 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 21776 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 20:42:58 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 20:42:58 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 20:42:58 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2021-01-21 20:42:58 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2021-01-21 20:42:58 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 20:42:58 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 20:42:58 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 20:42:59 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 20:42:59 [main] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-01-21 20:42:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2021-01-21 20:42:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2021-01-21 20:42:59 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in ru.vip.demo.Param.ParamProvider required a bean of type 'java.lang.String' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'java.lang.String' in your configuration.
+Consider adding @ConstructorBinding to ru.vip.demo.Param.ParamProvider if you intended to use constructor-based configuration property binding.
+
+2021-01-21 20:42:59 [main] ERROR o.s.test.context.TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@18cebaa5] to prepare test instance [ru.vip.demo.DemoApplicationTests@3f792b9b]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132) ~[spring-test-5.3.2.jar:5.3.2]
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123) ~[spring-test-5.3.2.jar:5.3.2]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:118) ~[spring-test-5.3.2.jar:5.3.2]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83) ~[spring-test-5.3.2.jar:5.3.2]
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:43) ~[spring-boot-test-autoconfigure-2.4.1.jar:2.4.1]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244) ~[spring-test-5.3.2.jar:5.3.2]
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:137) ~[spring-test-5.3.2.jar:5.3.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:350) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:355) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$7(ClassBasedTestDescriptor.java:350) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:177) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1624) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474) ~[na:na]
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312) ~[na:na]
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735) ~[na:na]
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:734) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:658) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:349) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$4(ClassBasedTestDescriptor.java:270) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:269) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:259) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at java.base/java.util.Optional.orElseGet(Optional.java:362) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:258) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:101) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:100) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:65) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:111) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:111) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:79) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:71) ~[junit5-rt.jar:na]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33) ~[junit-rt.jar:na]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220) ~[junit-rt.jar:na]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53) ~[junit-rt.jar:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'paramProvider' defined in file [C:\Users\Вип\Проекты\Java\demo\target\classes\ru\vip\demo\Param\ParamProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'java.lang.String' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1356) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1206) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:571) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:923) ~[spring-context-5.3.2.jar:5.3.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:588) ~[spring-context-5.3.2.jar:5.3.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767) ~[spring-boot-2.4.1.jar:2.4.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759) ~[spring-boot-2.4.1.jar:2.4.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426) ~[spring-boot-2.4.1.jar:2.4.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326) ~[spring-boot-2.4.1.jar:2.4.1]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:122) ~[spring-boot-test-2.4.1.jar:2.4.1]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99) ~[spring-test-5.3.2.jar:5.3.2]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124) ~[spring-test-5.3.2.jar:5.3.2]
+	... 68 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'java.lang.String' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1777) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1333) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1287) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-5.3.2.jar:5.3.2]
+	... 87 common frames omitted
+2021-01-21 20:44:36 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 8048 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 20:44:36 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 20:44:36 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 20:44:39 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 20:44:40 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 20:44:41 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 20:44:41 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 20:44:41 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 20:44:42 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 20:44:43 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 20:44:44 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 20:44:44 [main] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-01-21 20:44:44 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-21 20:44:44 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-21 20:44:44 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in ru.vip.demo.Param.ParamProvider required a bean of type 'java.lang.String' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'java.lang.String' in your configuration.
+
+2021-01-21 20:44:44 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 8048 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 20:44:44 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 20:44:44 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 20:44:45 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2021-01-21 20:44:45 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2021-01-21 20:44:45 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 20:44:45 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 20:44:45 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 20:44:45 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 20:44:45 [main] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-01-21 20:44:45 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2021-01-21 20:44:45 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2021-01-21 20:44:45 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in ru.vip.demo.Param.ParamProvider required a bean of type 'java.lang.String' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'java.lang.String' in your configuration.
+
+2021-01-21 20:44:45 [main] ERROR o.s.test.context.TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1722011b] to prepare test instance [ru.vip.demo.DemoApplicationTests@10f7f7de]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132) ~[spring-test-5.3.2.jar:5.3.2]
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123) ~[spring-test-5.3.2.jar:5.3.2]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:118) ~[spring-test-5.3.2.jar:5.3.2]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83) ~[spring-test-5.3.2.jar:5.3.2]
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:43) ~[spring-boot-test-autoconfigure-2.4.1.jar:2.4.1]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244) ~[spring-test-5.3.2.jar:5.3.2]
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:137) ~[spring-test-5.3.2.jar:5.3.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:350) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:355) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$7(ClassBasedTestDescriptor.java:350) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:177) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1624) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474) ~[na:na]
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312) ~[na:na]
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735) ~[na:na]
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:734) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:658) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:349) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$4(ClassBasedTestDescriptor.java:270) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:269) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:259) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at java.base/java.util.Optional.orElseGet(Optional.java:362) ~[na:na]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:258) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:101) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:100) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:65) ~[junit-jupiter-engine-5.7.0.jar:5.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:111) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:111) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:79) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51) ~[junit-platform-engine-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75) ~[junit-platform-launcher-1.7.0.jar:1.7.0]
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:71) ~[junit5-rt.jar:na]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33) ~[junit-rt.jar:na]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220) ~[junit-rt.jar:na]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53) ~[junit-rt.jar:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'paramProvider' defined in file [C:\Users\Вип\Проекты\Java\demo\target\classes\ru\vip\demo\Param\ParamProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'java.lang.String' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1356) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1206) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:571) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:923) ~[spring-context-5.3.2.jar:5.3.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:588) ~[spring-context-5.3.2.jar:5.3.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767) ~[spring-boot-2.4.1.jar:2.4.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759) ~[spring-boot-2.4.1.jar:2.4.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426) ~[spring-boot-2.4.1.jar:2.4.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326) ~[spring-boot-2.4.1.jar:2.4.1]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:122) ~[spring-boot-test-2.4.1.jar:2.4.1]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99) ~[spring-test-5.3.2.jar:5.3.2]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124) ~[spring-test-5.3.2.jar:5.3.2]
+	... 68 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'java.lang.String' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1777) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1333) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1287) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887) ~[spring-beans-5.3.2.jar:5.3.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-5.3.2.jar:5.3.2]
+	... 87 common frames omitted
+2021-01-21 20:45:44 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 4984 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 20:45:44 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 20:45:44 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 20:45:47 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 20:45:48 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 20:45:48 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 20:45:48 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 20:45:49 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 20:45:49 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 20:45:50 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 20:45:51 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 20:45:51 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 9.357 seconds (JVM running for 12.538)
+2021-01-21 20:45:51 [main] ERROR o.s.test.context.TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1722011b] to prepare test instance [ru.vip.demo.DemoApplicationTests@10f7f7de]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ru.vip.demo.DemoApplicationTests': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'provider.params.LIST_BEAN' in value "${provider.params.LIST_BEAN}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:405)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1415)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:406)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:119)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:43)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:137)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:350)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:355)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$7(ClassBasedTestDescriptor.java:350)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:177)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1624)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:734)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:658)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:349)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$4(ClassBasedTestDescriptor.java:270)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:269)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:259)
+	at java.base/java.util.Optional.orElseGet(Optional.java:362)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:258)
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:101)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:100)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:65)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:111)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:111)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:79)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:71)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'provider.params.LIST_BEAN' in value "${provider.params.LIST_BEAN}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:178)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:124)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:175)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:931)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1308)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1287)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	... 69 common frames omitted
+2021-01-21 20:45:51 [SpringContextShutdownHook] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-01-21 20:45:51 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-21 20:45:52 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-21 20:51:14 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 19752 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 20:51:14 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 20:51:14 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 20:51:16 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 20:51:16 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 20:51:16 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 20:51:17 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 20:51:17 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 20:51:17 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 20:51:18 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 20:51:18 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 20:51:19 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 5.917 seconds (JVM running for 8.541)
+2021-01-21 20:51:19 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 20:51:19 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 20:51:19 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 20:51:19 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG 23 ***
+2021-01-21 20:51:19 [main] INFO  ru.vip.demo.DemoApplicationTests - TestProviderApplication
+2021-01-21 20:51:19 [SpringContextShutdownHook] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-01-21 20:51:19 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-21 20:51:19 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-21 20:51:57 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 23172 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 20:51:57 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 20:51:57 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 20:51:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 20:51:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 20:52:00 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 20:52:00 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 20:52:00 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 20:52:01 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 20:52:01 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 20:52:02 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 20:52:02 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 5.903 seconds (JVM running for 8.573)
+2021-01-21 20:52:02 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 20:52:02 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 20:52:02 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO ***
+2021-01-21 20:52:02 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG 23 ***
+2021-01-21 20:52:02 [main] INFO  ru.vip.demo.DemoApplicationTests - TestProviderApplication
+2021-01-21 20:52:02 [SpringContextShutdownHook] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-01-21 20:52:02 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-21 20:52:02 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-21 20:53:21 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 19264 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 20:53:21 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 20:53:21 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 20:53:23 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 20:53:24 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 20:53:24 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 20:53:24 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 20:53:24 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 20:53:25 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 20:53:25 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 20:53:26 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 20:53:26 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 5.604 seconds (JVM running for 8.279)
+2021-01-21 20:53:26 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 20:53:26 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 20:53:26 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO Jpa ***
+2021-01-21 20:53:26 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG 23 ***
+2021-01-21 20:53:26 [main] INFO  ru.vip.demo.DemoApplicationTests - TestProviderApplication
+2021-01-21 20:53:26 [SpringContextShutdownHook] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-01-21 20:53:26 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-21 20:53:26 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-21 20:54:12 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 25656 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 20:54:12 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 20:54:12 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 20:54:14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 20:54:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 20:54:15 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 20:54:15 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 20:54:16 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 20:54:16 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 20:54:16 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 20:54:17 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 20:54:17 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 5.818 seconds (JVM running for 8.581)
+2021-01-21 20:54:18 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 20:54:18 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 20:54:18 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO Jpa ***
+2021-01-21 20:54:18 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG 23 ***
+2021-01-21 20:54:18 [main] INFO  ru.vip.demo.DemoApplicationTests - TestProviderApplication
+2021-01-21 20:59:11 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 26140 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 20:59:11 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 20:59:11 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 20:59:13 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 20:59:14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 20:59:14 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 20:59:14 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 20:59:15 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 20:59:15 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 20:59:16 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 20:59:16 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 20:59:16 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 6.56 seconds (JVM running for 9.641)
+2021-01-21 20:59:17 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 20:59:17 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 20:59:17 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO JpaRepo ***
+2021-01-21 20:59:17 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG 23 ***
+2021-01-21 20:59:17 [main] INFO  ru.vip.demo.DemoApplicationTests - TestProviderApplication
+2021-01-21 21:05:40 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 26552 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 21:05:40 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 21:05:40 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 21:05:42 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 21:05:43 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 21:05:43 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 21:05:43 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 21:05:43 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 21:05:44 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 21:05:44 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 21:05:45 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 21:05:45 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 5.76 seconds (JVM running for 8.4)
+2021-01-21 21:05:45 [main] ERROR o.s.test.context.TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4167d97b] to prepare test instance [ru.vip.demo.DemoApplicationTests@1672fe87]
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'ru.vip.demo.DemoApplicationTests': Unsatisfied dependency expressed through field 'originalString'; nested exception is org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'boolean'; nested exception is java.lang.IllegalArgumentException: Invalid boolean value [3]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:643)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1415)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:406)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:119)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:43)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:137)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:350)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:355)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$7(ClassBasedTestDescriptor.java:350)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:177)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1624)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:734)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:658)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:349)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$4(ClassBasedTestDescriptor.java:270)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:269)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:259)
+	at java.base/java.util.Optional.orElseGet(Optional.java:362)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:258)
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:101)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:100)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:65)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:111)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:111)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:79)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:71)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+Caused by: org.springframework.beans.TypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'boolean'; nested exception is java.lang.IllegalArgumentException: Invalid boolean value [3]
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:79)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1315)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1287)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	... 71 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Invalid boolean value [3]
+	at org.springframework.beans.propertyeditors.CustomBooleanEditor.setAsText(CustomBooleanEditor.java:154)
+	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:429)
+	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:402)
+	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:155)
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:73)
+	... 74 common frames omitted
+2021-01-21 21:05:45 [SpringContextShutdownHook] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-01-21 21:05:45 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-21 21:05:45 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-21 21:07:13 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 4300 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 21:07:13 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 21:07:13 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 21:07:17 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 21:07:17 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 21:07:18 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 21:07:18 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 21:07:19 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 21:07:19 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 21:07:21 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 21:07:22 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 21:07:22 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 11.532 seconds (JVM running for 14.458)
+2021-01-21 21:07:23 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 21:07:23 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 21:07:23 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO JpaRepo ***
+2021-01-21 21:07:23 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG 23 ***
+2021-01-21 21:07:23 [main] INFO  ru.vip.demo.DemoApplicationTests - TestProviderApplication
+2021-01-21 21:11:04 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 7396 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 21:11:04 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 21:11:04 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 21:11:07 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 21:11:07 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 21:11:08 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 21:11:08 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 21:11:08 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 21:11:09 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 21:11:10 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 21:11:11 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 21:11:11 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 7.573 seconds (JVM running for 10.286)
+2021-01-21 21:11:11 [main] ERROR o.s.test.context.TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4167d97b] to prepare test instance [ru.vip.demo.DemoApplicationTests@1672fe87]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ru.vip.demo.DemoApplicationTests': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'provider.params.LIST_BEAN' in value "${provider.params.LIST_BEAN}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:405)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1415)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:406)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:119)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:43)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:137)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:350)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:355)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$7(ClassBasedTestDescriptor.java:350)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:177)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1624)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:734)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:658)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:349)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$4(ClassBasedTestDescriptor.java:270)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:269)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:259)
+	at java.base/java.util.Optional.orElseGet(Optional.java:362)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:258)
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:101)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:100)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:65)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:111)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:111)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:79)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:71)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'provider.params.LIST_BEAN' in value "${provider.params.LIST_BEAN}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:178)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:124)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:175)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:931)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1308)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1287)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	... 69 common frames omitted
+2021-01-21 21:11:11 [SpringContextShutdownHook] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-01-21 21:11:11 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-21 21:11:11 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-21 21:12:24 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 24816 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 21:12:24 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 21:12:24 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 21:12:26 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 21:12:27 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 21:12:27 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 21:12:27 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 21:12:27 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 21:12:28 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 21:12:29 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 21:12:30 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 21:12:30 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 6.816 seconds (JVM running for 9.465)
+2021-01-21 21:12:30 [main] ERROR o.s.test.context.TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4167d97b] to prepare test instance [ru.vip.demo.DemoApplicationTests@1672fe87]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ru.vip.demo.DemoApplicationTests': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'provider.params.LIST_BEAN' in value "${provider.params.LIST_BEAN}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:405)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1415)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:406)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:119)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:43)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:137)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:350)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:355)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$7(ClassBasedTestDescriptor.java:350)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:177)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1624)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:734)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:658)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:349)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$4(ClassBasedTestDescriptor.java:270)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:269)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:259)
+	at java.base/java.util.Optional.orElseGet(Optional.java:362)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:258)
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:101)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:100)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:65)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:111)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:111)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:79)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:71)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'provider.params.LIST_BEAN' in value "${provider.params.LIST_BEAN}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:178)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:124)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:175)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:931)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1308)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1287)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	... 69 common frames omitted
+2021-01-21 21:12:30 [SpringContextShutdownHook] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-01-21 21:12:30 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2021-01-21 21:12:30 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2021-01-21 21:13:04 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 9568 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 21:13:04 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 21:13:04 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 21:13:06 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 21:13:07 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 21:13:07 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 21:13:07 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 21:13:07 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 21:13:08 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 21:13:09 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 21:13:09 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 21:13:10 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 6.196 seconds (JVM running for 8.744)
+2021-01-21 21:13:10 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 21:13:10 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 21:13:10 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO JpaRepo ***
+2021-01-21 21:13:10 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG 23 ***
+2021-01-21 21:13:10 [main] INFO  ru.vip.demo.DemoApplicationTests - TestProviderApplication
+2021-01-21 21:14:07 [main] INFO  ru.vip.demo.DemoApplicationTests - Starting DemoApplicationTests using Java 14.0.1 on DESKTOP-HDTP7DH with PID 12024 (started by Вип in C:\Users\Вип\Проекты\Java\demo)
+2021-01-21 21:14:07 [main] DEBUG ru.vip.demo.DemoApplicationTests - Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-01-21 21:14:07 [main] INFO  ru.vip.demo.DemoApplicationTests - No active profile set, falling back to default profiles: default
+2021-01-21 21:14:09 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2021-01-21 21:14:10 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2021-01-21 21:14:10 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-01-21 21:14:10 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.25.Final
+2021-01-21 21:14:11 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-01-21 21:14:11 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-01-21 21:14:12 [main] INFO  org.hibernate.tuple.PojoInstantiator - HHH000182: No default (no-argument) constructor for class: ru.vip.demo.entity.Person (class must be instantiated by Interceptor)
+2021-01-21 21:14:13 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-01-21 21:14:13 [main] INFO  ru.vip.demo.DemoApplicationTests - Started DemoApplicationTests in 7.009 seconds (JVM running for 9.857)
+2021-01-21 21:14:14 [main] ERROR ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* ERROR -->   DemoApplication  *** ERROR ***
+2021-01-21 21:14:14 [main] WARN  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* WARN -->   DemoApplication  *** WARN ***
+2021-01-21 21:14:14 [main] INFO  ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* INFO -->   DemoApplication  *** INFO JpaRepo ***
+2021-01-21 21:14:14 [main] DEBUG ru.vip.demo.DemoApplicationTests - ****** TEST LOGGER ******* DEBUG -->   DemoApplication  *** DEBUG 23 ***
+2021-01-21 21:14:14 [main] INFO  ru.vip.demo.DemoApplicationTests - TestProviderApplication

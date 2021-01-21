@@ -1,6 +1,6 @@
 package ru.vip.demo;
 
- import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import ru.vip.demo.parse.SimpleName;

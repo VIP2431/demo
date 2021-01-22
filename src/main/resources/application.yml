@@ -11,10 +11,10 @@ names:
 
 provider:
   params:
-    TARGET_BEAN: "JpaRepo"
-    COUNT_METHOD: 3
-    LIST_BEAN: 34, 58, 61, 8
-    ORIGINAL_STRING: true
+    TARGET_BEAN: "Jpa"
+    COUNT_METHOD: 2
+    LIST_BEAN: 39, 48, 59
+    ORIGINAL_STRING: false
 
 server:
   port: 8091

@@ -1,8 +1,11 @@
 package ru.vip.demo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
+import ru.vip.demo.Param.ProviderParamsConfig;
 import ru.vip.demo.parse.SimpleName;
 
 import java.lang.annotation.Annotation;
@@ -10,36 +13,43 @@ import java.lang.reflect.Method;
 
 @Component
 public class ApplicationContextProvider {
-    private String TARGET_NAME = "Data?";
-    private int[] NUMBER_BEAN = { 37, 64};
-    private int CNT_METHOD = 1;
-    private boolean FLAG_TO_STRING = false;
-    private boolean FLAG_PRINT_METHOD = false;
 
+    private static final Logger log = LoggerFactory.getLogger(ApplicationContextProvider.class);
+
+    private String TARGET_NAME = "Data?";
+    private int CNT_METHOD = 1;
+    private int[] NUMBER_BEAN = { 37, 64};
+
+    private boolean FLAG_PRINT_METHOD = false;
     private int countBeans = 0;
     private int count = 0;
 
-    private final ApplicationContext applicationContext;
-    private final ConfigurableListableBeanFactory factory;
-
     private final SimpleName simpleName = new SimpleName();
 
-    public ApplicationContextProvider(ApplicationContext applicationContext, ConfigurableListableBeanFactory factory) {
+    private final ApplicationContext applicationContext;
+    private final ConfigurableListableBeanFactory factory;
+    private final ProviderParamsConfig paramsConfig;
+
+    public ApplicationContextProvider(ApplicationContext applicationContext,
+                                      ConfigurableListableBeanFactory factory,
+                                      ProviderParamsConfig providerParamsConfig)
+    {
         this.applicationContext = applicationContext;
         this.factory = factory;
+        this.paramsConfig = providerParamsConfig;
     }
-
-    public void setTARGET_NAME(String TARGET_NAME) { this.TARGET_NAME = TARGET_NAME; }
-    public void setNUMBER_BEAN(int[] NUMBER_BEAN) { this.NUMBER_BEAN = NUMBER_BEAN; }
-    public void setFLAG_TO_STRING( boolean FLAG_TO_STRING) { this.FLAG_TO_STRING = FLAG_TO_STRING; }
-    public void setCNT_METHOD(int CNT_METHOD) { this.CNT_METHOD = CNT_METHOD; }
 
     public void handleApplicationContext(){
         int status = -1;
+        log.info("****** TEST LOGGER ******* Info -->  Start ApplicationContextProvider  *** info ***");
+        TARGET_NAME = paramsConfig.getTARGET_BEAN();// Строка поиска для распечатки списка Бинов null - печатать все Бины
+		CNT_METHOD = paramsConfig.getCOUNT_METHOD();// Распечатывает указанное Количество методов Бина
+		NUMBER_BEAN = paramsConfig.getLIST_BEAN();  // Распечатывает заданный список бинов и их методы
         if (applicationContext != null && factory != null) {
             printBeanContext();
             status = 15;
         }
+        log.info("****** TEST LOGGER ******* Info -->  Exit ApplicationContextProvider  *** info ***");
         Runtime.getRuntime().halt( status);
     }
 
@@ -78,7 +88,7 @@ public class ApplicationContextProvider {
         }
         System.out.print(")");
         System.out.print(" CNT_METHOD=(" + CNT_METHOD + ")");
-        System.out.println(" FLAG_TO_STRING=(" + FLAG_TO_STRING + ")");
+        System.out.println(" FLAG_TO_STRING=(" + paramsConfig.isORIGINAL_STRING() + ")");
         System.out.println("                        ----------------------------");
     }
 
@@ -96,7 +106,7 @@ public class ApplicationContextProvider {
             System.out.print("** Bean:[" + countBeans + "]<"
                     + originalClass.getSimpleName() + ">@:["
                     + annotations.length + "]M:[" + methods.length + "]");
-            if (FLAG_TO_STRING) { // Распечатка исходной строки Бина
+            if (paramsConfig.isORIGINAL_STRING()) { // Распечатка исходной строки Бина
                 System.out.print("->[" + originalClassName + "]<<<");
             }
             System.out.println(" ");
@@ -105,7 +115,7 @@ public class ApplicationContextProvider {
                 printMethods(methods);
             }
         } catch ( NullPointerException e) {
-            System.out.println( "  ***** Exception: " + e + " <" + name + ".Class>");
+            log.error( " *** ERROR **** NullPointerException: <{}.class>",name , e);
         } catch ( Exception e) {
             e.printStackTrace();
         }
@@ -114,7 +124,7 @@ public class ApplicationContextProvider {
     private void printAnnotation( Annotation[] annotations) {
         for(Annotation annotation : annotations) {
             String str = annotation.toString();
-            if (FLAG_TO_STRING) {  // Распечатка исходной строки Анотации
+            if (paramsConfig.isORIGINAL_STRING()) {  // Распечатка исходной строки Анотации
                 System.out.println("->[" + str + "];");
             }
             System.out.println("  " + simpleName.get( str));
@@ -132,7 +142,7 @@ public class ApplicationContextProvider {
           String str = method.toString();
           System.out.print("M[" + ++cnt + "]@[" + annotations.length + "]<" + method.getName() + ">");
           System.out.print("(" + method.getParameterCount() + ")");
-          if (FLAG_TO_STRING) { // Распечатка исходной строки Метода
+          if (paramsConfig.isORIGINAL_STRING()) { // Распечатка исходной строки Метода
               System.out.print("->[" + str + "]<<<");
           }
           System.out.println(" ");

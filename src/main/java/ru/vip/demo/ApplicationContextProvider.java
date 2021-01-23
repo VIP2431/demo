@@ -2,6 +2,7 @@ package ru.vip.demo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,9 @@ import java.lang.reflect.Method;
 public class ApplicationContextProvider {
 
     private static final Logger log = LoggerFactory.getLogger(ApplicationContextProvider.class);
+
+    @Value("${provider.params.ORIGINAL_STRING}")    // Передача еденичного параметра из application.yml
+    private boolean ORIGINAL_STRING = true;
 
     private String TARGET_NAME = "Data?";
     private int CNT_METHOD = 1;
@@ -41,7 +45,7 @@ public class ApplicationContextProvider {
 
     public void handleApplicationContext(){
         int status = -1;
-        log.info("****** TEST LOGGER ******* Info -->  Start ApplicationContextProvider  *** info ***");
+        log.info("** Start **");
         TARGET_NAME = paramsConfig.getTARGET_BEAN();// Строка поиска для распечатки списка Бинов null - печатать все Бины
 		CNT_METHOD = paramsConfig.getCOUNT_METHOD();// Распечатывает указанное Количество методов Бина
 		NUMBER_BEAN = paramsConfig.getLIST_BEAN();  // Распечатывает заданный список бинов и их методы
@@ -49,7 +53,7 @@ public class ApplicationContextProvider {
             printBeanContext();
             status = 15;
         }
-        log.info("****** TEST LOGGER ******* Info -->  Exit ApplicationContextProvider  *** info ***");
+        log.info("** Exit **");
         Runtime.getRuntime().halt( status);
     }
 
@@ -88,7 +92,7 @@ public class ApplicationContextProvider {
         }
         System.out.print(")");
         System.out.print(" CNT_METHOD=(" + CNT_METHOD + ")");
-        System.out.println(" FLAG_TO_STRING=(" + paramsConfig.isORIGINAL_STRING() + ")");
+        System.out.println(" ORIGINAL_STRING=(" + ORIGINAL_STRING + ")");
         System.out.println("                        ----------------------------");
     }
 
@@ -106,7 +110,7 @@ public class ApplicationContextProvider {
             System.out.print("** Bean:[" + countBeans + "]<"
                     + originalClass.getSimpleName() + ">@:["
                     + annotations.length + "]M:[" + methods.length + "]");
-            if (paramsConfig.isORIGINAL_STRING()) { // Распечатка исходной строки Бина
+            if (ORIGINAL_STRING) { // Распечатка исходной строки Бина
                 System.out.print("->[" + originalClassName + "]<<<");
             }
             System.out.println(" ");
@@ -124,7 +128,7 @@ public class ApplicationContextProvider {
     private void printAnnotation( Annotation[] annotations) {
         for(Annotation annotation : annotations) {
             String str = annotation.toString();
-            if (paramsConfig.isORIGINAL_STRING()) {  // Распечатка исходной строки Анотации
+            if (ORIGINAL_STRING) {  // Распечатка исходной строки Анотации
                 System.out.println("->[" + str + "];");
             }
             System.out.println("  " + simpleName.get( str));
@@ -142,7 +146,7 @@ public class ApplicationContextProvider {
           String str = method.toString();
           System.out.print("M[" + ++cnt + "]@[" + annotations.length + "]<" + method.getName() + ">");
           System.out.print("(" + method.getParameterCount() + ")");
-          if (paramsConfig.isORIGINAL_STRING()) { // Распечатка исходной строки Метода
+          if (ORIGINAL_STRING) { // Распечатка исходной строки Метода
               System.out.print("->[" + str + "]<<<");
           }
           System.out.println(" ");

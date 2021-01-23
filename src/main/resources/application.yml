@@ -1,56 +1,37 @@
 
 ---
-#error: true
-#warn: true
-#info: true
-#debug: true
-#trace: true
+server:
+  port: 8091
+
+# Передача отдельных переменных (names.test & names.number) в Класс приложения
 names:
   test: "TestProviderApplication"
   number: 23
 
+# Передача блока переменных (provider.params) в Класс приложения
 provider:
   params:
-    TARGET_BEAN: "Jpa"
+    TARGET_BEAN: "Jpa?"
     COUNT_METHOD: 2
-    LIST_BEAN: 39, 48, 59
-    ORIGINAL_STRING: false
-
-server:
-  port: 8091
+    LIST_BEAN: 39   #, 48, 59
+    ORIGINAL_STRING: false # Передача как отдельная переменная так и в блоке
 
 #==========================================
-#     LOGGING
+#     LOGGING -настройка логирования
 #==========================================
-
 logging:
   level:
-    org.springframework.*: ERROR#
-    ru.vip.demo: DEBUG#
-  pattern:
-    console: " %msg%n"
-    #  console: " %replace(%m%wEx){'\\n','\r'}%n"
-    #    console: "%d [%thread] %5p %logger: %replace(%m%wEx){'\\n','\r'}%nopex%n"
-    file: "%d{yyyy-MM-DD HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    ru.vip.demo: debug                                                      # Уровень DEBUG
+  pattern:                                                                  # Формат вывода
+    console: "%d{HH:mm:ss} [%thread] %-5level %logger{44} - %msg%n"         # В консоль
+    file: "%d{yyyy-MM-DD HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" # В файл
   file:
-    name: application.log
+    name: application.log                                                   # Файл вывода логов
 
-#   ru.vip.demo: TRACE#
-#   ru.vip.demo: INFO#
-#    ru.vip.demo: WARN#
-#    ru.vip.demo: ERROR#
-#    ru.vip.demo: FATAL#
-#    ru.vip.demo: OFF#
-
-
-
-#==========================================
-#     DB H2
-#==========================================
+  #==========================================
+  #     DB H2 -настройка Базы Данных
+  #==========================================
 spring:
-  main:
-    banner-mode: off
-
   datasource:
     username: sa
     password:
@@ -69,4 +50,3 @@ spring:
 # ===============================
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
-

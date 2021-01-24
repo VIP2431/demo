@@ -28,10 +28,10 @@ public class DemoApplication { // Вариант 3 implements CommandLineRunner 
  * Вариант 2.
  *
  public static void main(String[] args)  throws Exception {
- AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DemoApplication.class);
- context.getBean( ApplicationContextProvider.class).printBeanContext();
+ 	AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DemoApplication.class);
+ 	context.getBean( ApplicationContextProvider.class).printBeanContext();
  }
- */
+*/
 
 /**
  * Вариант 3
@@ -40,7 +40,7 @@ public class DemoApplication { // Вариант 3 implements CommandLineRunner 
 	private ApplicationContextProvider applicationContextProvider;
 
 	public static void main(String[] args) throws Exception {
-	SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(DemoApplication.class, args);
 	}
 
 	@Override

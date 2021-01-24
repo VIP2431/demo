@@ -49,7 +49,7 @@ public class ApplicationContextProvider {
         int status = -1;
         log.info("** Start *****");
         if (applicationContext != null && factory != null) {
-            TARGET_NAME = paramsConfig.getTARGET_BEAN();// Строка поиска для распечатки списка Бинов null - печатать все Бины
+            TARGET_NAME = paramsConfig.getTARGET_BEAN();// Строка образца имени для поиска списка Бинов null - все Бины
             CNT_METHOD = paramsConfig.getCOUNT_METHOD();// Распечатывает указанное Количество методов Бина
             NUMBER_BEAN = paramsConfig.getLIST_BEAN();  // Распечатывает заданный список бинов и их методы
             log.info("{}", printHeadContext(strBuffer));

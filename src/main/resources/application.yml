@@ -8,11 +8,11 @@ names:
   test: "TestProviderApplication"
   number: 23
 
-# Передача блока переменных (provider.params) в Класс приложения
+# Передача блока переменных 4шт (provider.params) в Класс приложения
 provider:
   params:
-    TARGET_BEAN: "Jpa?"
-    COUNT_METHOD: 2
+#    TARGET_BEAN: "Jpa?"
+    COUNT_METHOD: 1
     LIST_BEAN: 39   #, 48, 59
     ORIGINAL_STRING: false # Передача как отдельная переменная так и в блоке
 

@@ -17,10 +17,10 @@ public class ApplicationContextProvider {
 
     private static final Logger log = LoggerFactory.getLogger(ApplicationContextProvider.class);
 
-    @Value("${provider.params.ORIGINAL_STRING}")    // Передача еденичного параметра из application.yml
+    @Value("${provider.params.ORIGINAL_STRING}")    // Передача еденичного параметра из "application.yml"
     private boolean ORIGINAL_STRING = true;
-
-    private String TARGET_NAME = "Data?";
+    // Прием блока параметров из "application.yml" через "providerParamsConfig"
+    private String TARGET_NAME = "Data?"; // Default param
     private int CNT_METHOD = 1;
     private int[] NUMBER_BEAN = { 37, 64};
 
@@ -28,6 +28,7 @@ public class ApplicationContextProvider {
     private int countBeans = 0;
     private int count = 0;
 
+    private StringBuffer strBuffer = new StringBuffer( 1000);
     private final SimpleName simpleName = new SimpleName();
 
     private final ApplicationContext applicationContext;
@@ -40,26 +41,50 @@ public class ApplicationContextProvider {
     {
         this.applicationContext = applicationContext;
         this.factory = factory;
+        // Прием блока параметров из "application.yml" через "providerParamsConfig"
         this.paramsConfig = providerParamsConfig;
     }
 
     public void handleApplicationContext(){
         int status = -1;
-        log.info("** Start **");
-        TARGET_NAME = paramsConfig.getTARGET_BEAN();// Строка поиска для распечатки списка Бинов null - печатать все Бины
-		CNT_METHOD = paramsConfig.getCOUNT_METHOD();// Распечатывает указанное Количество методов Бина
-		NUMBER_BEAN = paramsConfig.getLIST_BEAN();  // Распечатывает заданный список бинов и их методы
+        log.info("** Start *****");
         if (applicationContext != null && factory != null) {
+            TARGET_NAME = paramsConfig.getTARGET_BEAN();// Строка поиска для распечатки списка Бинов null - печатать все Бины
+            CNT_METHOD = paramsConfig.getCOUNT_METHOD();// Распечатывает указанное Количество методов Бина
+            NUMBER_BEAN = paramsConfig.getLIST_BEAN();  // Распечатывает заданный список бинов и их методы
+            log.info("{}", printHeadContext(strBuffer));
             printBeanContext();
             status = 15;
-        }
-        log.info("** Exit **");
-        Runtime.getRuntime().halt( status);
+
+            strBuffer.setLength( 0);
+            strBuffer.append("\n countBeans=[" + count + "/"+ countBeans + "]");
+            strBuffer.append(" allBeans=[" + applicationContext.getBeanDefinitionCount() + "] ");
+         } else { strBuffer.setLength( 0); }
+        strBuffer.append(" ** Exit *****");
+        log.info("{}", strBuffer);
+        Runtime.getRuntime().halt( status); // Принудительное завершение Приложения с кодом status
     }
 
-    public void printBeanContext() {
+    private StringBuffer printHeadContext( StringBuffer strBuf) {
+        strBuf.setLength( 0);
+        strBuf.append("\n\r                        ----------------------------\n\r");
+        strBuf.append(" Условия:" );
+        strBuf.append(" TARGET_NAME=(\"" + TARGET_NAME + "\")" );
+        strBuf.append(" NUMBER_BEAN=(");
+        for(int n =0; n < NUMBER_BEAN.length; ++n) {
+            if ( n>0 ) System.out.print(",");
+            strBuf.append(" " + NUMBER_BEAN[n]);
+        }
+        strBuf.append(")");
+        strBuf.append(" CNT_METHOD=(" + CNT_METHOD + ")");
+        strBuf.append(" ORIGINAL_STRING=(" + ORIGINAL_STRING + ")\n");
+        strBuf.append("                        ----------------------------");
+        return strBuf;
+    }
+
+    private void printBeanContext() {
          String[] names = applicationContext.getBeanDefinitionNames();
-         printHeadContext();
+         printHeadContext(strBuffer);
          for(String name : names){
             ++countBeans;
             String originalClassName =  factory.getBeanDefinition(name).getBeanClassName();
@@ -70,30 +95,6 @@ public class ApplicationContextProvider {
                 printBean( name, originalClassName);
             }
         }
-        System.out.print(" === countBeans=[" + count + "/"+ countBeans + "]");
-        System.out.println(" === allBeans=[" + applicationContext.getBeanDefinitionCount() + "]  ===");
-    }
-
-    private boolean isNUMBER_BEAN(){
-        for( int n : NUMBER_BEAN) {
-            if(n == countBeans) { return true; }
-        }
-        return false;
-    }
-
-    private void printHeadContext() {
-        System.out.println("                        ----------------------------");
-        System.out.print(" Условия:" );
-        System.out.print(" TARGET_NAME=(\"" + TARGET_NAME + "\")" );
-        System.out.print(" NUMBER_BEAN=(");
-        for(int n =0; n < NUMBER_BEAN.length; ++n) {
-            if ( n>0 ) System.out.print(",");
-            System.out.print(" " + NUMBER_BEAN[n]);
-        }
-        System.out.print(")");
-        System.out.print(" CNT_METHOD=(" + CNT_METHOD + ")");
-        System.out.println(" ORIGINAL_STRING=(" + ORIGINAL_STRING + ")");
-        System.out.println("                        ----------------------------");
     }
 
     private void printBean( String name, String originalClassName) {
@@ -125,35 +126,42 @@ public class ApplicationContextProvider {
         }
     }
 
+    private void printMethods( Method[] methods){
+        int cnt = 0;
+        for (Method method : methods) {
+            if (cnt >= CNT_METHOD) { // Не печатать Метод если его номер больше заданного
+                return;
+            }
+            Annotation[] annotations = method.getAnnotations();
+
+            String str = method.toString();
+            System.out.print("M[" + ++cnt + "]@[" + annotations.length + "]<" + method.getName() + ">");
+            System.out.print("(" + method.getParameterCount() + ")");
+            if (ORIGINAL_STRING) { // Распечатка исходной строки Метода
+                System.out.print("->[" + str + "]<<<");
+            }
+            System.out.println(" ");
+
+            printAnnotation( annotations);
+
+            System.out.println("  " + simpleName.get(str, strBuffer) + "{\n  }");
+        }
+    }
+
     private void printAnnotation( Annotation[] annotations) {
         for(Annotation annotation : annotations) {
             String str = annotation.toString();
             if (ORIGINAL_STRING) {  // Распечатка исходной строки Анотации
                 System.out.println("->[" + str + "];");
             }
-            System.out.println("  " + simpleName.get( str));
+            System.out.println("  " + simpleName.get( str, strBuffer));
         }
     }
 
-    private void printMethods( Method[] methods){
-        int cnt = 0;
-        for (Method method : methods) {
-          if (cnt >= CNT_METHOD) { // Не печатать Метод если его номер больше заданного
-              return;
-          }
-          Annotation[] annotations = method.getAnnotations();
-
-          String str = method.toString();
-          System.out.print("M[" + ++cnt + "]@[" + annotations.length + "]<" + method.getName() + ">");
-          System.out.print("(" + method.getParameterCount() + ")");
-          if (ORIGINAL_STRING) { // Распечатка исходной строки Метода
-              System.out.print("->[" + str + "]<<<");
-          }
-          System.out.println(" ");
-
-          printAnnotation( annotations);
-
-          System.out.println("  " + simpleName.get(str) + "{\n  }");
-       }
+    private boolean isNUMBER_BEAN(){
+        for( int n : NUMBER_BEAN) {
+            if(n == countBeans) { return true; }
+        }
+        return false;
     }
 }

@@ -1,17 +1,14 @@
 package ru.vip.demo.parse;
 
 public class SimpleName  {
-    private StringBuffer strOut = new StringBuffer( 500);
+    private String charPoint = " ,()@{}=\"";
 
-    public String get( String str) {
-       int i = 0;
+    public String get( String str, StringBuffer strOut) {
        int iOut = 0;
        int len = str.length();
        strOut.setLength( 0);
-       String charPoint = " ,()@{}=\"";
-       char c;
-       for( i=0; i < len; ++i) {
-            c = str.charAt(i);
+       for( int i=0; i < len; ++i) {
+            char c = str.charAt(i);
             if(charPoint.indexOf(c) != -1) {
                 if (!(iOut + 1 >= i)) { strOut.append(str.substring(iOut, i)); }
                 strOut.append(c);

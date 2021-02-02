@@ -1,7 +1,10 @@
 package ru.vip.demo;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+
+//@ComponentScan
 
 @SpringBootApplication
 public class DemoApplication { // Вариант 3 implements CommandLineRunner {
@@ -12,16 +15,34 @@ public class DemoApplication { // Вариант 3 implements CommandLineRunner 
  *
 */
 
-//	static ApplicationContextProvider provid
-//	public DemoApplication(ApplicationContextProvider provider) {
-//		this.provider = provider;
-//	}
-//
+	static ApplicationContextProvider provider;
+
+	public DemoApplication(ApplicationContextProvider provider) {
+		this.provider = provider;
+	}
+
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+//
+//		SpringApplication.run(DemoApplication.class, args);
+//
 //		if (provider != null) {
 //			provider.handleApplicationContext();
 //		}
+//
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DemoApplication.class);
+
+		if (provider != null) { provider.handleApplicationContext(); }
+
+
+//		ClassLoader.getSystemResource(classFilter);
+//		context.getBean( ApplicationContextProvider.class).printBeanContext();
+//		private static String classFilter = "demo.";
+//		ApplicationContext ctx= new AnnotationConfigApplicationContext(classFilter);
+//		int i = 0;
+//		for (String str : ctx.getBeanDefinitionNames()){
+//			System.out.println("-- [" + ++i + "] " + str);
+//		}
+
 	}
 
 /**

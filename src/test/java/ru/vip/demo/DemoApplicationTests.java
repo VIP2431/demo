@@ -17,8 +17,9 @@ class DemoApplicationTests {
 	ApplicationContextProvider provider;
 
 	@Test
-	public void initTestProvider() {
-
-		provider.handleApplicationContext();
+	public void initTestProvider() throws Throwable  { //}  throws InterruptedException {
+		for(int i = 0; i <3; ++i) {
+			provider.handleApplicationContext();
+		}
 	}
 }

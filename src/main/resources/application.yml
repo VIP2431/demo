@@ -11,9 +11,9 @@ names:
 # Передача блока переменных 4шт (provider.params) в Класс приложения
 provider:
   params:
-#    TARGET_BEAN: "Jpa?"
-    COUNT_METHOD: 1
-    LIST_BEAN: 39   #, 48, 59
+    TARGET_BEAN: "???"
+    COUNT_METHOD: 0
+    LIST_BEAN: 0   #, 48, 59
     ORIGINAL_STRING: false # Передача как отдельная переменная так и в блоке
 
 #==========================================
@@ -21,6 +21,7 @@ provider:
 #==========================================
 logging:
   level:
+    # root: off #
     ru.vip.demo: debug                                                      # Уровень DEBUG
   pattern:                                                                  # Формат вывода
     console: "%d{HH:mm:ss} [%thread] %-5level %logger{44} - %msg%n"         # В консоль
@@ -31,22 +32,24 @@ logging:
   #==========================================
   #     DB H2 -настройка Базы Данных
   #==========================================
-spring:
-  datasource:
-    username: sa
-    password:
-    driverClassName: org.h2.Driver
+#spring:
+  #main:
+   #log-startup-info: false #
+  #datasource:
+ #   username: sa
+#    password:
+#   driverClassName: org.h2.Driver
     # temporary data storage
-    url: jdbc:h2:mem:customers;DB_CLOSE_ON_EXIT=FALSE
+#    url: jdbc:h2:mem:customers;DB_CLOSE_ON_EXIT=FALSE
     # url: jdbc:h2:file:C:/data/customers;DB_CLOSE_DELAY=-1
-    schema: classpath*:database/initDB.sql
-    initialization-mode: ALWAYS
-  h2:
-    console:
-      enabled: true
+#    schema: classpath*:database/initDB.sql
+#   initialization-mode: ALWAYS
+#  h2:
+#    console:
+#     enabled: true
 
 # ===============================
 # JPA / HIBERNATE
 # ===============================
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+#  jpa:
+#   database-platform: org.hibernate.dialect.H2Dialect

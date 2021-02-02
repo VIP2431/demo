@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 public class ProviderParamsConfig {
 
     // Передача группы параметров из application.yml
-    private String TARGET_BEAN = "DataJpa"; // Definition param
-    private int COUNT_METHOD= 1;
-    private int[] LIST_BEAN = { 1, 7, 23 };
+    private String TARGET_BEAN = "*"; // Definition param
+    private int COUNT_METHOD= 0;
+    private int[] LIST_BEAN = { 0 };
     private boolean ORIGINAL_STRING = false;
 }

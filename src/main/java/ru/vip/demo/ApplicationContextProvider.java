@@ -2,11 +2,11 @@ package ru.vip.demo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import ru.vip.demo.Param.ProviderParamsConfig;
+import ru.vip.demo.aop.LogExecutionTime;
 import ru.vip.demo.parse.SimpleName;
 
 import java.lang.annotation.Annotation;
@@ -17,12 +17,14 @@ public class ApplicationContextProvider {
 
     private static final Logger log = LoggerFactory.getLogger(ApplicationContextProvider.class);
 
-    @Value("${provider.params.ORIGINAL_STRING}")    // Передача еденичного параметра из "application.yml"
-    private boolean ORIGINAL_STRING = true;
+
+//    private boolean ORIGINAL_STRING = true;
     // Прием блока параметров из "application.yml" через "providerParamsConfig"
     private String TARGET_NAME = "Data?"; // Default param
     private int CNT_METHOD = 1;
     private int[] NUMBER_BEAN = { 37, 64};
+ //   @Value("${provider.params.ORIGINAL_STRING}")    // Передача еденичного параметра из "application.yml"
+    private boolean ORIGINAL_STRING = true;
 
     private boolean FLAG_PRINT_METHOD = false;
     private int countBeans = 0;
@@ -45,13 +47,19 @@ public class ApplicationContextProvider {
         this.paramsConfig = providerParamsConfig;
     }
 
+    @LogExecutionTime
     public void handleApplicationContext(){
         int status = -1;
         log.info("** Start *****");
         if (applicationContext != null && factory != null) {
+
             TARGET_NAME = paramsConfig.getTARGET_BEAN();// Строка образца имени для поиска списка Бинов null - все Бины
             CNT_METHOD = paramsConfig.getCOUNT_METHOD();// Распечатывает указанное Количество методов Бина
             NUMBER_BEAN = paramsConfig.getLIST_BEAN();  // Распечатывает заданный список бинов и их методы
+            ORIGINAL_STRING = paramsConfig.isORIGINAL_STRING();
+
+            countBeans = 0;
+            count = 0;
             log.info("{}", printHeadContext(strBuffer));
             printBeanContext();
             status = 15;
@@ -62,7 +70,7 @@ public class ApplicationContextProvider {
          } else { strBuffer.setLength( 0); }
         strBuffer.append(" ** Exit *****");
         log.info("{}", strBuffer);
-        Runtime.getRuntime().halt( status); // Принудительное завершение Приложения с кодом status
+        // Runtime.getRuntime().halt( status); // Принудительное завершение Приложения с кодом status
     }
 
     private StringBuffer printHeadContext( StringBuffer strBuf) {
@@ -89,8 +97,8 @@ public class ApplicationContextProvider {
             ++countBeans;
             String originalClassName =  factory.getBeanDefinition(name).getBeanClassName();
             FLAG_PRINT_METHOD = isNUMBER_BEAN();
-            if( FLAG_PRINT_METHOD
-                    || TARGET_NAME == null
+            if(FLAG_PRINT_METHOD
+                    || TARGET_NAME.contains("*")
                     || name.contains(TARGET_NAME)) {
                 printBean( name, originalClassName);
             }

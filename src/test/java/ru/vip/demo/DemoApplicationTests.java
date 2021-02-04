@@ -9,15 +9,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 class DemoApplicationTests {
 
 	@Value("${names.test}")    // Передача еденичного параметра из application.yml
-	private String nameTest;
+	String nameTest;
+
 	@Value("${names.number}")   // Передача еденичного параметра из application.yml
-	private int number;
+	int number;
 
 	@Autowired
 	ApplicationContextProvider provider;
 
 	@Test
-	public void initTestProvider() throws Throwable  { //}  throws InterruptedException {
+	public void initTestProvider() {//} throws Throwable  { //}  throws InterruptedException {
 		for(int i = 0; i <3; ++i) {
 			provider.handleApplicationContext();
 		}

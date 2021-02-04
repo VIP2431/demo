@@ -11,9 +11,9 @@ names:
 # Передача блока переменных 4шт (provider.params) в Класс приложения
 provider:
   params:
-    TARGET_BEAN: "???"
-    COUNT_METHOD: 0
-    LIST_BEAN: 0   #, 48, 59
+    TARGET_BEAN: "Jpa"
+    COUNT_METHOD: 1
+    LIST_BEAN: 48, 59
     ORIGINAL_STRING: false # Передача как отдельная переменная так и в блоке
 
 #==========================================

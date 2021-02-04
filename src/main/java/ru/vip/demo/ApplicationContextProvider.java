@@ -20,7 +20,7 @@ public class ApplicationContextProvider {
 
 //    private boolean ORIGINAL_STRING = true;
     // Прием блока параметров из "application.yml" через "providerParamsConfig"
-    private String TARGET_NAME = "Data?"; // Default param
+    private String TARGET_NAME = "???"; // Default param
     private int CNT_METHOD = 1;
     private int[] NUMBER_BEAN = { 37, 64};
  //   @Value("${provider.params.ORIGINAL_STRING}")    // Передача еденичного параметра из "application.yml"
@@ -30,7 +30,7 @@ public class ApplicationContextProvider {
     private int countBeans = 0;
     private int count = 0;
 
-    private StringBuffer strBuffer = new StringBuffer( 1000);
+    private final StringBuffer strBuffer = new StringBuffer( 1000);
     private final SimpleName simpleName = new SimpleName();
 
     private final ApplicationContext applicationContext;
@@ -49,7 +49,7 @@ public class ApplicationContextProvider {
 
     @LogExecutionTime
     public void handleApplicationContext(){
-        int status = -1;
+        //int status = -1;
         log.info("** Start *****");
         if (applicationContext != null && factory != null) {
 
@@ -62,31 +62,41 @@ public class ApplicationContextProvider {
             count = 0;
             log.info("{}", printHeadContext(strBuffer));
             printBeanContext();
-            status = 15;
-
+            //status = 15;
             strBuffer.setLength( 0);
-            strBuffer.append("\n countBeans=[" + count + "/"+ countBeans + "]");
-            strBuffer.append(" allBeans=[" + applicationContext.getBeanDefinitionCount() + "] ");
+            int allBean = applicationContext.getBeanDefinitionCount();
+            //strBuffer.append("\n countBeans=[" + count + "/"+ countBeans + "]");
+            strBuffer.append("\n countBeans=[");
+            strBuffer.append( count);
+            strBuffer.append("/");
+            strBuffer.append(countBeans);
+            strBuffer.append("]");
+
+            strBuffer.append( " allBeans=[");
+            strBuffer.append( allBean );
+            strBuffer.append("]");
+
          } else { strBuffer.setLength( 0); }
         strBuffer.append(" ** Exit *****");
         log.info("{}", strBuffer);
-        // Runtime.getRuntime().halt( status); // Принудительное завершение Приложения с кодом status
+        //Runtime.getRuntime().halt( status); // Принудительное завершение Приложения с кодом status
     }
 
     private StringBuffer printHeadContext( StringBuffer strBuf) {
         strBuf.setLength( 0);
         strBuf.append("\n\r                        ----------------------------\n\r");
-        strBuf.append(" Условия:" );
-        strBuf.append(" TARGET_NAME=(\"" + TARGET_NAME + "\")" );
-        strBuf.append(" NUMBER_BEAN=(");
+        strBuf.append(" Условия: TARGET_NAME=(\"" );
+        strBuf.append( TARGET_NAME );
+        strBuf.append("\") NUMBER_BEAN=(");
         for(int n =0; n < NUMBER_BEAN.length; ++n) {
-            if ( n>0 ) System.out.print(",");
-            strBuf.append(" " + NUMBER_BEAN[n]);
+            if ( n>0 ) strBuf.append(",");
+            strBuf.append( NUMBER_BEAN[n]);
         }
-        strBuf.append(")");
-        strBuf.append(" CNT_METHOD=(" + CNT_METHOD + ")");
-        strBuf.append(" ORIGINAL_STRING=(" + ORIGINAL_STRING + ")\n");
-        strBuf.append("                        ----------------------------");
+        strBuf.append(")  CNT_METHOD=(");
+        strBuf.append( CNT_METHOD );
+        strBuf.append(") ORIGINAL_STRING=(");
+        strBuf.append( ORIGINAL_STRING);
+        strBuf.append(")\n                        ----------------------------");
         return strBuf;
     }
 

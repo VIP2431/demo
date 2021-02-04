@@ -13,7 +13,9 @@ public class ExampleAspect {
     public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
 
         final long start = System.currentTimeMillis();
+        //final long start = System.nanoTime();
         final Object proceed = joinPoint.proceed();
+        //final long executionTime = System.nanoTime() - start;
         final long executionTime = System.currentTimeMillis() - start;
         System.out.println(" Время исполнения = " + executionTime + "ms");
 

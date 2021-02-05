@@ -1,4 +1,7 @@
 HELP.md
+*.log
+*.gz
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -18,8 +21,6 @@ target/
 *.iws
 *.iml
 *.ipr
-*.log
-*.gz
 
 ### NetBeans ###
 /nbproject/private/

@@ -17,34 +17,24 @@ public class ApplicationContextProvider {
 
     private static final Logger log = LoggerFactory.getLogger(ApplicationContextProvider.class);
 
-
-//    private boolean ORIGINAL_STRING = true;
-    // Прием блока параметров из "application.yml" через "providerParamsConfig"
-    private String TARGET_NAME = "???"; // Default param
-    private int CNT_METHOD = 1;
-    private int[] NUMBER_BEAN = { 37, 64};
- //   @Value("${provider.params.ORIGINAL_STRING}")    // Передача еденичного параметра из "application.yml"
-    private boolean ORIGINAL_STRING = true;
-
     private boolean FLAG_PRINT_METHOD = false;
     private int countBeans = 0;
     private int count = 0;
-
     private final StringBuffer strBuffer = new StringBuffer( 1000);
     private final SimpleName simpleName = new SimpleName();
 
     private final ApplicationContext applicationContext;
     private final ConfigurableListableBeanFactory factory;
-    private final ProviderParamsConfig paramsConfig;
+    private final ProviderParamsConfig prm;
 
-    public ApplicationContextProvider(ApplicationContext applicationContext,
+    public ApplicationContextProvider(ApplicationContext context,
                                       ConfigurableListableBeanFactory factory,
-                                      ProviderParamsConfig providerParamsConfig)
+                                      ProviderParamsConfig paramsConfig)
     {
-        this.applicationContext = applicationContext;
+        this.applicationContext = context;
         this.factory = factory;
         // Прием блока параметров из "application.yml" через "providerParamsConfig"
-        this.paramsConfig = providerParamsConfig;
+        this.prm = paramsConfig;
     }
 
     @LogExecutionTime
@@ -52,12 +42,6 @@ public class ApplicationContextProvider {
         //int status = -1;
         log.info("** Start *****");
         if (applicationContext != null && factory != null) {
-
-            TARGET_NAME = paramsConfig.getTARGET_BEAN();// Строка образца имени для поиска списка Бинов null - все Бины
-            CNT_METHOD = paramsConfig.getCOUNT_METHOD();// Распечатывает указанное Количество методов Бина
-            NUMBER_BEAN = paramsConfig.getLIST_BEAN();  // Распечатывает заданный список бинов и их методы
-            ORIGINAL_STRING = paramsConfig.isORIGINAL_STRING();
-
             countBeans = 0;
             count = 0;
             log.info("{}", printHeadContext(strBuffer));
@@ -86,16 +70,18 @@ public class ApplicationContextProvider {
         strBuf.setLength( 0);
         strBuf.append("\n\r                        ----------------------------\n\r");
         strBuf.append(" Условия: TARGET_NAME=(\"" );
-        strBuf.append( TARGET_NAME );
-        strBuf.append("\") NUMBER_BEAN=(");
-        for(int n =0; n < NUMBER_BEAN.length; ++n) {
-            if ( n>0 ) strBuf.append(",");
-            strBuf.append( NUMBER_BEAN[n]);
+        strBuf.append( prm.getTARGET_BEAN() );
+        strBuf.append("\") LIST_BEAN=(");
+        int i = 0;
+        for( int n : prm.getLIST_BEAN()) {
+            if ( i++ > 0 ) strBuf.append(",");
+            strBuf.append( n);
         }
+
         strBuf.append(")  CNT_METHOD=(");
-        strBuf.append( CNT_METHOD );
+        strBuf.append( prm.getCOUNT_METHOD());
         strBuf.append(") ORIGINAL_STRING=(");
-        strBuf.append( ORIGINAL_STRING);
+        strBuf.append( prm.isORIGINAL_STRING());
         strBuf.append(")\n                        ----------------------------");
         return strBuf;
     }
@@ -108,8 +94,8 @@ public class ApplicationContextProvider {
             String originalClassName =  factory.getBeanDefinition(name).getBeanClassName();
             FLAG_PRINT_METHOD = isNUMBER_BEAN();
             if(FLAG_PRINT_METHOD
-                    || TARGET_NAME.contains("*")
-                    || name.contains(TARGET_NAME)) {
+                    || prm.getTARGET_BEAN().contains("*")
+                    || name.contains(prm.getTARGET_BEAN())) {
                 printBean( name, originalClassName);
             }
         }
@@ -129,7 +115,7 @@ public class ApplicationContextProvider {
             System.out.print("** Bean:[" + countBeans + "]<"
                     + originalClass.getSimpleName() + ">@:["
                     + annotations.length + "]M:[" + methods.length + "]");
-            if (ORIGINAL_STRING) { // Распечатка исходной строки Бина
+            if (prm.isORIGINAL_STRING()) { // Распечатка исходной строки Бина
                 System.out.print("->[" + originalClassName + "]<<<");
             }
             System.out.println(" ");
@@ -147,7 +133,7 @@ public class ApplicationContextProvider {
     private void printMethods( Method[] methods){
         int cnt = 0;
         for (Method method : methods) {
-            if (cnt >= CNT_METHOD) { // Не печатать Метод если его номер больше заданного
+            if (cnt >= prm.getCOUNT_METHOD()) { // Не печатать Метод если его номер больше заданного
                 return;
             }
             Annotation[] annotations = method.getAnnotations();
@@ -155,7 +141,7 @@ public class ApplicationContextProvider {
             String str = method.toString();
             System.out.print("M[" + ++cnt + "]@[" + annotations.length + "]<" + method.getName() + ">");
             System.out.print("(" + method.getParameterCount() + ")");
-            if (ORIGINAL_STRING) { // Распечатка исходной строки Метода
+            if (prm.isORIGINAL_STRING()) { // Распечатка исходной строки Метода
                 System.out.print("->[" + str + "]<<<");
             }
             System.out.println(" ");
@@ -169,7 +155,7 @@ public class ApplicationContextProvider {
     private void printAnnotation( Annotation[] annotations) {
         for(Annotation annotation : annotations) {
             String str = annotation.toString();
-            if (ORIGINAL_STRING) {  // Распечатка исходной строки Анотации
+            if (prm.isORIGINAL_STRING()) {  // Распечатка исходной строки Анотации
                 System.out.println("->[" + str + "];");
             }
             System.out.println("  " + simpleName.get( str, strBuffer));
@@ -177,7 +163,7 @@ public class ApplicationContextProvider {
     }
 
     private boolean isNUMBER_BEAN(){
-        for( int n : NUMBER_BEAN) {
+        for( int n : prm.getLIST_BEAN()) {
             if(n == countBeans) { return true; }
         }
         return false;

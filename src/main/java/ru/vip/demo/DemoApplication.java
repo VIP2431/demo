@@ -24,6 +24,7 @@ public class DemoApplication { // Вариант 3 implements CommandLineRunner 
 
 		if (provider != null) {
 			provider.handleApplicationContext();
+			provider.handleApplicationContext();
 		}
 
 /*

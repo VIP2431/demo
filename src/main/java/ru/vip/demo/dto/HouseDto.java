@@ -1,19 +1,16 @@
-package ru.vip.demo.entity;
+package ru.vip.demo.dto;
 
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import ru.vip.demo.dto.NodeDto;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.UUID;
 
 @Data
-@Entity
-public class House extends NodeDto {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+@AllArgsConstructor
+@NoArgsConstructor
+public class HouseDto extends NodeDto {
     private UUID id;
 
     private String address;     // Адресс объекта
@@ -21,4 +18,5 @@ public class House extends NodeDto {
     private String email;       //
     private String telephone;   // Телефон собственника
     private String foreman;     // Прораб\Бригадир
+
 }

@@ -1,4 +1,4 @@
-package ru.vip.demo.Param;
+package ru.vip.demo.param;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

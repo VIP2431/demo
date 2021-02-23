@@ -1,25 +1,20 @@
-package ru.vip.demo.entity;
+package ru.vip.demo.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import ru.vip.demo.type.Category;
 import ru.vip.demo.type.Unit;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
-//@AllArgsConstructor
-//@NoArgsConstructor
-@Entity
-//@Table(name = "item_desc_t")
-public class Item implements Serializable{
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class ItemDto {
     private UUID id;
 
     private BigDecimal quantity = BigDecimal.valueOf(1);    // Количество
@@ -32,4 +27,5 @@ public class Item implements Serializable{
     private String name = null;                             // Название
     private Unit unit = Unit.NOT_UNIT;                      // Еденица измерения
     private BigDecimal price = BigDecimal.valueOf(0);       // Цена еденицы
+
 }

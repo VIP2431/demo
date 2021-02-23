@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
-import ru.vip.demo.Param.ProviderParamsConfig;
+import ru.vip.demo.param.ProviderParamsConfig;
 import ru.vip.demo.aop.LogExecutionTime;
 import ru.vip.demo.parse.SimpleName;
 

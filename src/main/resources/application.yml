@@ -32,24 +32,32 @@ logging:
   #==========================================
   #     DB H2 -настройка Базы Данных
   #==========================================
-#spring:
+spring:
   #main:
-   #log-startup-info: false #
-  #datasource:
- #   username: sa
-#    password:
-#   driverClassName: org.h2.Driver
-    # temporary data storage
-#    url: jdbc:h2:mem:customers;DB_CLOSE_ON_EXIT=FALSE
-    # url: jdbc:h2:file:C:/data/customers;DB_CLOSE_DELAY=-1
-#    schema: classpath*:database/initDB.sql
-#   initialization-mode: ALWAYS
-#  h2:
-#    console:
-#     enabled: true
+    #log-startup-info: true
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:customers;DB_CLOSE_ON_EXIT=FALSE
+    # url: jdbc:h2:file:C:/data/demo;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
 
+
+    # temporary data storage
+    # schema: classpath*:database/initDB.sql
+    # initialization-mode: ALWAYS
 # ===============================
 # JPA / HIBERNATE
 # ===============================
-#  jpa:
-#   database-platform: org.hibernate.dialect.H2Dialect
+  jpa:
+    hibernate.ddl-auto: create
+    generate-ddl: true
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+    # database-platform: org.hibernate.dialect.H2Dialect

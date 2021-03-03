@@ -2,14 +2,12 @@ package ru.vip.demo;
 
 //import com.fasterxml.jackson.databind.ObjectMapper;
 
-import com.google.common.collect.ImmutableList;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.vip.demo.entity.ItemDirectory;
 import ru.vip.demo.serviceimpl.EstimateImpl;
-import ru.vip.demo.util.LoadDB;
 
 import java.util.List;
 
@@ -17,35 +15,34 @@ import java.util.List;
 @SpringBootTest
 public class DemoApplicationTests {
 
-	@Value("${names.test}")    // Передача еденичного параметра из application.yml
-	String nameTest;
+	@Value("${names.item_directory}")    // Передача еденичного параметра из application.yml
+	String item_directory;
 
 	@Value("${names.number}")   // Передача еденичного параметра из application.yml
 	int number;
 	/*
-	* Date Test
+	* Data Test
 	*/
 
 	@Autowired
 	public EstimateImpl repository;
-	@Autowired
-	private LoadDB loadDB;
 
 	//@BeforeAll
 	private void init() throws Exception {
-//		loadDB.loadItemDirectory();
 
-		ImmutableList<ItemDirectory> itemDirectories = loadDB.getItemDirectory();
+		String outFile = "src/main/resources/test_" + item_directory;
+
+		List<ItemDirectory> itemDirectories = repository.getJSON(item_directory);
 		for (ItemDirectory item : itemDirectories) {
 			repository.save(item);
 		}
+
+		repository.writeJSON( outFile, itemDirectories); // запмсь  в файл
 	}
 
 	@Test
-	public void dateTest()throws Exception {
-
+	public void dataTest()throws Exception {
 		init();
-
 		List<ItemDirectory>	allItemDirectory = repository.getAllItemDirectory();
 		for ( ItemDirectory item : allItemDirectory) {
 			System.out.println(item.toString());

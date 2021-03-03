@@ -5,7 +5,7 @@ server:
 
 # Передача отдельных переменных (names.test & names.number) в Класс приложения
 names:
-  test: "TestProviderApplication"
+  item_directory: "item_directory.json"
   number: 23
 
 # Передача блока переменных 4шт (provider.params) в Класс приложения

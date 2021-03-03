@@ -1,5 +1,8 @@
 package ru.vip.demo.serviceimpl;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.io.Resources;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -8,6 +11,9 @@ import ru.vip.demo.entity.*;
 import ru.vip.demo.repository.*;
 import ru.vip.demo.service.EstimateService;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @Service
@@ -15,6 +21,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class EstimateImpl implements EstimateService {
+
+    ObjectMapper mapper = new ObjectMapper();
 
     private final ItemDirectoryRepository itemDirectoryRepository;
     private final ItemRepository itemRepository;
@@ -46,5 +54,21 @@ public class EstimateImpl implements EstimateService {
     public List<Room> getAllRoom() { return roomRepository.findAll(); }
     @Override
     public List<Section> getAllSection() { return sectionRepository.findAll(); }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+//        JSON Десериализация нескольких объектов
+    private InputStream inputStream( String resourceName) throws IOException { // Открыть поток чтения
+        return Resources.getResource(resourceName).openStream();
+    }
+
+    public List<ItemDirectory> getJSON( String resourceName) throws IOException {
+        return mapper.readValue(inputStream(resourceName), new TypeReference<List<ItemDirectory>>() {});
+    }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+//        JSON Сериализация нескольких объектов в файл
+    public void writeJSON( String outFile, List<ItemDirectory> itemDirectories) throws IOException {
+        mapper.writeValue( new FileOutputStream(outFile), itemDirectories);
+    }
 
 }

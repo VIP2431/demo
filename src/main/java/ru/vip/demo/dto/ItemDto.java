@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import ru.vip.demo.type.Category;
 import ru.vip.demo.type.Unit;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -14,7 +15,7 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ItemDto {
+public class ItemDto implements Serializable {
     private UUID id;
 
     private BigDecimal quantity = BigDecimal.valueOf(1);    // Количество

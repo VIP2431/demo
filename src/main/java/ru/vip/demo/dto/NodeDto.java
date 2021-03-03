@@ -17,7 +17,6 @@ import java.util.List;
 public class NodeDto implements Serializable {
     String name = null;        // Название
 
-
     private List<NodeDto> listNode;
 
     private List <Item> listItem;

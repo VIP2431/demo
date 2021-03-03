@@ -4,6 +4,7 @@ import lombok.*;
 import ru.vip.demo.type.Category;
 import ru.vip.demo.type.Unit;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -11,7 +12,7 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ItemDirectoryDto {
+public class ItemDirectoryDto implements Serializable {
     private UUID idItemDirectory;
     @NonNull
     private Category category = Category.NOT_CATEGORY;  // Категория товара

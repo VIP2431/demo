@@ -20,10 +20,10 @@ public class ItemDirectory implements Serializable {             // Позици
     @Id
     @GeneratedValue //(strategy= GenerationType.AUTO)
     private UUID idItemDirectory;
-    private Category category = Category.NOT_CATEGORY;  // Категория товара
+    private Category category = Category.NOT_CATEGORY;   // Категория товара
     private String vendor = "Нет поставщика1";           // Код поставщика товара
     private String code = "Нет кода1";                   // Код товара
     private String name = "Нет наименования1";           // Название
-    private Unit unit = Unit.NOT_UNIT;                  // Еденица измерения
-    private BigDecimal price = BigDecimal.valueOf(1.10);// Цена еденицы
+    private Unit unit = Unit.NOT_UNIT;                   // Еденица измерения
+    private BigDecimal price = BigDecimal.valueOf(1.10); // Цена еденицы
 }

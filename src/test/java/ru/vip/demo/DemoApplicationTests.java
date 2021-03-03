@@ -2,6 +2,7 @@ package ru.vip.demo;
 
 //import com.fasterxml.jackson.databind.ObjectMapper;
 
+import com.google.common.collect.ImmutableList;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,22 +29,25 @@ public class DemoApplicationTests {
 	@Autowired
 	public EstimateImpl repository;
 	@Autowired
-	public LoadDB loadDB;
+	private LoadDB loadDB;
 
 	//@BeforeAll
-	private void init() {
-		loadDB.loadItemDirectory();
+	private void init() throws Exception {
+//		loadDB.loadItemDirectory();
 
+		ImmutableList<ItemDirectory> itemDirectories = loadDB.getItemDirectory();
+		for (ItemDirectory item : itemDirectories) {
+			repository.save(item);
+		}
 	}
 
 	@Test
-	public void dateTest() {
+	public void dateTest()throws Exception {
 
 		init();
 
-		List<ItemDirectory>	allItem = repository.getAll();
-
-		for ( ItemDirectory item : allItem) {
+		List<ItemDirectory>	allItemDirectory = repository.getAllItemDirectory();
+		for ( ItemDirectory item : allItemDirectory) {
 			System.out.println(item.toString());
 		}
 	}

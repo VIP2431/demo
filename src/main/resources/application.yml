@@ -29,35 +29,34 @@ logging:
   file:
     name: application.log                                                   # Файл вывода логов
 
-  #==========================================
-  #     DB H2 -настройка Базы Данных
-  #==========================================
+#==========================================
+#     DB H2 -настройка Базы Данных
+#==========================================
 spring:
   #main:
-    #log-startup-info: true
+  #  log-startup-info: true
+
   datasource:
     driverClassName: org.h2.Driver
-    url: jdbc:h2:mem:customers;DB_CLOSE_ON_EXIT=FALSE
-    # url: jdbc:h2:file:C:/data/demo;DB_CLOSE_DELAY=-1
+
+    #url:  jdbc:h2:file:./demo;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE;DB_CLOSE_DELAY=-1 # БД в файле demo
+    url: jdbc:h2:mem:demo;DB_CLOSE_ON_EXIT=FALSE # БД в памяти
+
     username: sa
     password:
-  h2:
-    console:
-      enabled: true
 
+  #h2:
+  #  console:
+  #    enabled: true
 
-    # temporary data storage
-    # schema: classpath*:database/initDB.sql
-    # initialization-mode: ALWAYS
 # ===============================
 # JPA / HIBERNATE
 # ===============================
   jpa:
-    hibernate.ddl-auto: create
-    generate-ddl: true
-    show-sql: false
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.H2Dialect
 
-    # database-platform: org.hibernate.dialect.H2Dialect
+    #hibernate.ddl-auto: update #create
+    #generate-ddl: true
+    #show-sql: false
+
+

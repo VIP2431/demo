@@ -27,30 +27,24 @@ public class EstimateImpl implements EstimateService {
     public ItemDirectory save(ItemDirectory itemDirectory) {
         return itemDirectoryRepository.save(itemDirectory);
     }
+    @Override
+    public Item save(Item item) { return itemRepository.save(item); }
+    @Override
+    public House save(House house) { return houseRepository.save(house); }
+    @Override
+    public Room save(Room room) { return roomRepository.save(room); }
+    @Override
+    public Section save(Section section) { return sectionRepository.save(section); }
 
     @Override
-    public List<ItemDirectory> getAll() {
-        return itemDirectoryRepository.findAll();
-    }
-
+    public List<ItemDirectory> getAllItemDirectory() { return itemDirectoryRepository.findAll(); }
     @Override
-    public Item save(Item item) {
-        return null;
-    }
-
+    public List<Item> getAllItem() { return itemRepository.findAll(); }
     @Override
-    public House save(House house) {
-        return null;
-    }
-
+    public List<House> getAllHouse() { return houseRepository.findAll(); }
     @Override
-    public Room save(Room room) {
-        return null;
-    }
-
+    public List<Room> getAllRoom() { return roomRepository.findAll(); }
     @Override
-    public Section save(Section section) {
-        return null;
-    }
+    public List<Section> getAllSection() { return sectionRepository.findAll(); }
 
 }

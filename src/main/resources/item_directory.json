@@ -1,0 +1,7 @@
+[
+{"idItemDirectory":"","category":"NOT_CATEGORY","vendor":"Поставщик_1","code":"Код поставщика1","name":"Накладные расходы1","unit":"NOT_UNIT","price":1.10},
+{"idItemDirectory":"","category":"SERVICE","vendor":"Поставщик_2","code":"Код поставщика2","name":"Накладные расходы2","unit":"STEP","price":1.20},
+{"idItemDirectory":"","category":"MATERIAL","vendor":"Поставщик_3","code":"Код поставщика3","name":"Накладные расходы3","unit":"STEP","price":1.30},
+{"idItemDirectory":"","category":"TOOLS","vendor":"Поставщик_4","code":"Код поставщика4","name":"Накладные расходы4","unit":"STEP","price":1.40},
+{"idItemDirectory":"","category":"WORK","vendor":"Поставщик_5","code":"Код поставщика5","name":"Накладные расходы5","unit":"STEP","price":1.50}
+]

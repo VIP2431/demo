@@ -1,7 +1,5 @@
 package ru.vip.demo;
 
-//import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,45 +13,35 @@ import java.util.List;
 @SpringBootTest
 public class DemoApplicationTests {
 
-	@Value("${names.item_directory}")    // Передача еденичного параметра из application.yml
-	String item_directory;
-
-	@Value("${names.number}")   // Передача еденичного параметра из application.yml
-	int number;
-	/*
-	* Data Test
-	*/
+	@Value("${file_json.in_item_directory}")  // Передача параметра из application.yml
+	String in_item_directory;
+	@Value("${file_json.out_prefix}")         // Передача параметра из application.yml
+	String out_prefix;
 
 	@Autowired
 	public EstimateImpl repository;
 
-	//@BeforeAll
 	private void init() throws Exception {
-
-		String outFile = "src/main/resources/test_" + item_directory;
-
-		List<ItemDirectory> itemDirectories = repository.getJSON(item_directory);
-		for (ItemDirectory item : itemDirectories) {
+		List<ItemDirectory> itemDirectories = repository.readJSON(in_item_directory);// Чтение из JSON file в List
+		for (ItemDirectory item : itemDirectories) {								 // Запись из List в базу данных
 			repository.save(item);
 		}
-
-		repository.writeJSON( outFile, itemDirectories); // запмсь  в файл
 	}
 
 	@Test
 	public void dataTest()throws Exception {
+		String outFile = out_prefix + in_item_directory;
 		init();
-		List<ItemDirectory>	allItemDirectory = repository.getAllItemDirectory();
-		for ( ItemDirectory item : allItemDirectory) {
+		List<ItemDirectory>	lst = repository.getAllItemDirectory();					// Чтение из базы данных в List
+		for ( ItemDirectory item : lst) {											// Вывод из List в System.out
 			System.out.println(item.toString());
 		}
+		repository.writeJSON( outFile, lst); 										// Запмсь из List в JSON файл
 	}
 
-	/*
-	 * Test ApplicationContextProvider
-	 */
-
-//
+/* *****************************************************************
+*            Test ApplicationContextProvider
+*/
 //	@Autowired
 //	ApplicationContextProvider provider;
 //

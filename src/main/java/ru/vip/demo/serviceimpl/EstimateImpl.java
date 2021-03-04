@@ -2,6 +2,7 @@ package ru.vip.demo.serviceimpl;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.io.Resources;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +23,7 @@ import java.util.List;
 @Slf4j
 public class EstimateImpl implements EstimateService {
 
-    ObjectMapper mapper = new ObjectMapper();
+    ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT); // pretty print JSON
 
     private final ItemDirectoryRepository itemDirectoryRepository;
     private final ItemRepository itemRepository;
@@ -56,17 +57,17 @@ public class EstimateImpl implements EstimateService {
     public List<Section> getAllSection() { return sectionRepository.findAll(); }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-//        JSON Десериализация нескольких объектов
+//        JSON Десериализация в List объектов из JSON файла
     private InputStream inputStream( String resourceName) throws IOException { // Открыть поток чтения
         return Resources.getResource(resourceName).openStream();
     }
 
-    public List<ItemDirectory> getJSON( String resourceName) throws IOException {
+    public List<ItemDirectory> readJSON( String resourceName) throws IOException {
         return mapper.readValue(inputStream(resourceName), new TypeReference<List<ItemDirectory>>() {});
     }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-//        JSON Сериализация нескольких объектов в файл
+//        JSON Сериализация из List объектов в JSON файл
     public void writeJSON( String outFile, List<ItemDirectory> itemDirectories) throws IOException {
         mapper.writeValue( new FileOutputStream(outFile), itemDirectories);
     }

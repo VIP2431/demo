@@ -1,1 +1,41 @@
-[{"idItemDirectory":"2fcb7017-2180-4728-a8ed-d7340cb39317","category":"NOT_CATEGORY","vendor":"Поставщик_1","code":"Код поставщика1","name":"Накладные расходы1","unit":"NOT_UNIT","price":1.10},{"idItemDirectory":"05364845-c0d3-4665-9184-32c091b9bd87","category":"SERVICE","vendor":"Поставщик_2","code":"Код поставщика2","name":"Накладные расходы2","unit":"STEP","price":1.20},{"idItemDirectory":"5c52741d-3009-4182-8e68-c19cec108750","category":"MATERIAL","vendor":"Поставщик_3","code":"Код поставщика3","name":"Накладные расходы3","unit":"STEP","price":1.30},{"idItemDirectory":"796124df-6ec2-4c3c-9516-547d4e13b25d","category":"TOOLS","vendor":"Поставщик_4","code":"Код поставщика4","name":"Накладные расходы4","unit":"STEP","price":1.40},{"idItemDirectory":"3a8e07ce-f61b-48e9-965f-bcc929cf1471","category":"WORK","vendor":"Поставщик_5","code":"Код поставщика5","name":"Накладные расходы5","unit":"STEP","price":1.50}]
+[ {
+  "idItemDirectory" : "9c0f76bd-d7cb-4e8c-80f4-3eacb1f4aae6",
+  "category" : "NOT_CATEGORY",
+  "vendor" : "Поставщик_1",
+  "code" : "Код поставщика1",
+  "name" : "Накладные расходы1",
+  "unit" : "NOT_UNIT",
+  "price" : 1.10
+}, {
+  "idItemDirectory" : "e5f1826c-c7fb-44b5-953f-c11bcfcd47cf",
+  "category" : "SERVICE",
+  "vendor" : "Поставщик_2",
+  "code" : "Код поставщика2",
+  "name" : "Накладные расходы2",
+  "unit" : "STEP",
+  "price" : 1.20
+}, {
+  "idItemDirectory" : "38c96053-a6af-49bc-adc1-82b84d3e5f12",
+  "category" : "MATERIAL",
+  "vendor" : "Поставщик_3",
+  "code" : "Код поставщика3",
+  "name" : "Накладные расходы3",
+  "unit" : "STEP",
+  "price" : 1.30
+}, {
+  "idItemDirectory" : "306678cf-9c0f-4c6e-bf37-902f79bdda33",
+  "category" : "TOOLS",
+  "vendor" : "Поставщик_4",
+  "code" : "Код поставщика4",
+  "name" : "Накладные расходы4",
+  "unit" : "STEP",
+  "price" : 1.40
+}, {
+  "idItemDirectory" : "1bfcc57f-b224-49fd-b7bd-339473103bd0",
+  "category" : "WORK",
+  "vendor" : "Поставщик_5",
+  "code" : "Код поставщика5",
+  "name" : "Накладные расходы5",
+  "unit" : "STEP",
+  "price" : 1.50
+} ]

@@ -3,10 +3,11 @@
 server:
   port: 8091
 
-# Передача отдельных переменных (names.test & names.number) в Класс приложения
-names:
-  item_directory: "item_directory.json"
-  number: 23
+# Передача переменных в приложение
+file_json:
+  out_prefix: "src/main/resources/test_"
+  in_item_directory: "item_directory.json"
+
 
 # Передача блока переменных 4шт (provider.params) в Класс приложения
 provider:
@@ -38,9 +39,10 @@ spring:
 
   datasource:
     driverClassName: org.h2.Driver
-
-    #url:  jdbc:h2:file:./demo;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE;DB_CLOSE_DELAY=-1 # БД в файле demo
-    url: jdbc:h2:mem:demo;DB_CLOSE_ON_EXIT=FALSE # БД в памяти
+    # БД в файле demo
+    #url:  jdbc:h2:file:./demo;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE;DB_CLOSE_DELAY=-1
+    # БД в памяти
+    url: jdbc:h2:mem:demo;DB_CLOSE_ON_EXIT=FALSE
 
     username: sa
     password:

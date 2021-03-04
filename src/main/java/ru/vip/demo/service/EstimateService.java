@@ -21,7 +21,7 @@ public interface EstimateService {
     public List<Room> getAllRoom();
     public List<Section> getAllSection();
 
-    public List<ItemDirectory> getJSON( String resourceName) throws IOException;
+    public List<ItemDirectory> readJSON( String resourceName) throws IOException;
 
     public void writeJSON( String outFile, List<ItemDirectory> itemDirectories) throws IOException;
 }

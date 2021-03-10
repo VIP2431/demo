@@ -15,12 +15,11 @@ import java.util.UUID;
 public class ItemDirectoryDto implements Serializable {
     private UUID idItemDirectory;
     @NonNull
-    private Category category = Category.NOT_CATEGORY;  // Категория товара
-    private String vendor = "Нет поставщика";           // Код поставщика товара
-    private String code = "Нет кода";                   // Код товара
-    private String name = "Нет наименования";           // Название
-    @NonNull
-    private Unit unit = Unit.NOT_UNIT;                  // Еденица измерения
-    private BigDecimal price = BigDecimal.valueOf(1.25);// Цена еденицы
+    private Category category = Category.CTG_NOT;       // Категория товара
+    private String code = "CODE_NOT";                   // Код товара
+    private String name = "Пустая позиция";             // Название
+    private Unit unit = Unit.UN_NOT;                    // Еденица измерения
+    private BigDecimal price = BigDecimal.valueOf(0);   // Цена еденицы
+    private String vendor = "Поставщика нет";           // Код поставщика товара
 
 }

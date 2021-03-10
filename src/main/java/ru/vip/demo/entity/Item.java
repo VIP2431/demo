@@ -27,9 +27,9 @@ public class Item implements Serializable{
 
     private UUID idItemDirectory = null;
     private String vendor = null;                           // Код поставщика товара
-    private Category category =  Category.NOT_CATEGORY;     // Категория товара
+    private Category category =  Category.CTG_NOT;     // Категория товара
     private String code = null;                             // Код товара
     private String name = null;                             // Название
-    private Unit unit = Unit.NOT_UNIT;                      // Еденица измерения
+    private Unit unit = Unit.UN_NOT;                      // Еденица измерения
     private BigDecimal price = BigDecimal.valueOf(0);       // Цена еденицы
 }

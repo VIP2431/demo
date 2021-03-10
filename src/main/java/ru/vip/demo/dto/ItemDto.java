@@ -1,9 +1,6 @@
 package ru.vip.demo.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import ru.vip.demo.type.Category;
 import ru.vip.demo.type.Unit;
 
@@ -18,15 +15,14 @@ import java.util.UUID;
 public class ItemDto implements Serializable {
     private UUID id;
 
-    private BigDecimal quantity = BigDecimal.valueOf(1);    // Количество
-    private BigDecimal cost = BigDecimal.valueOf(0);        // Стоимость
+    private BigDecimal quantity = BigDecimal.valueOf(1);// Количество
+    private BigDecimal cost = BigDecimal.valueOf(0);    // Стоимость
 
-    private UUID idItemDirectory = null;
-    private String vendor = null;                           // Код поставщика товара
-    private Category category =  Category.NOT_CATEGORY;     // Категория товара
-    private String code = null;                             // Код товара
-    private String name = null;                             // Название
-    private Unit unit = Unit.NOT_UNIT;                      // Еденица измерения
-    private BigDecimal price = BigDecimal.valueOf(0);       // Цена еденицы
-
+    private UUID idItemDirectory;
+    private Category category;                          // Категория товара
+    private String code;                                // Код товара
+    private String name;                                // Название
+    private Unit unit;                                  // Еденица измерения
+    private BigDecimal price;                           // Цена еденицы
+    private String vendor;                              // Код поставщика товара
 }

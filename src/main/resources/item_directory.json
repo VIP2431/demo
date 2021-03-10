@@ -1,7 +1,57 @@
-[
-{"idItemDirectory":"","category":"NOT_CATEGORY","vendor":"Поставщик_1","code":"Код поставщика1","name":"Накладные расходы1","unit":"NOT_UNIT","price":1.10},
-{"idItemDirectory":"","category":"SERVICE","vendor":"Поставщик_2","code":"Код поставщика2","name":"Накладные расходы2","unit":"STEP","price":1.20},
-{"idItemDirectory":"","category":"MATERIAL","vendor":"Поставщик_3","code":"Код поставщика3","name":"Накладные расходы3","unit":"STEP","price":1.30},
-{"idItemDirectory":"","category":"TOOLS","vendor":"Поставщик_4","code":"Код поставщика4","name":"Накладные расходы4","unit":"STEP","price":1.40},
-{"idItemDirectory":"","category":"WORK","vendor":"Поставщик_5","code":"Код поставщика5","name":"Накладные расходы5","unit":"STEP","price":1.50}
-]
+[ {
+  "idItemDirectory" : "",
+  "category" : "CTG_NOT",
+  "code" : "CODE_NOT",
+  "name" : "Пустая позиция",
+  "unit" : "UN_NOT",
+  "price" : 1.10,
+  "vendor" : "Поставщика нет"
+}, {
+  "idItemDirectory" : "",
+  "category" : "CTG_WORK",
+  "code" : "Кладка_стен_А_1",
+  "name" : "Кладка стен блоками 100мм",
+  "unit" : "UN_METER_2",
+  "price" : 1.50,
+  "vendor" : "Хаким"
+}, {
+  "idItemDirectory" : "",
+  "category" : "CTG_SERVICE",
+  "code" : "Дизайн_А_1",
+  "name" : "Дизайн квартиры",
+  "unit" : "UN_TIME",
+  "price" : 1.20,
+  "vendor" : "Максим"
+}, {
+  "idItemDirectory" : "",
+  "category" : "CTG_MATERIAL",
+  "code" : "Краска_Тикурилла_А_1",
+  "name" : "Краска Тикурилла белая Премиум",
+  "unit" : "UN_LITRE",
+  "price" : 1.30,
+  "vendor" : "Умид"
+}, {
+  "idItemDirectory" : "",
+  "category" : "CTG_TOOLS",
+  "code" : "Шуруповерт_Макита_А_1",
+  "name" : "Шуруповерт Макита",
+  "unit" : "UN_THING",
+  "price" : 1.40,
+  "vendor" : "Федя"
+}, {
+  "idItemDirectory" : "",
+  "category" : "CTG_SUM",
+  "code" : "Суммарные итоги 1",
+  "name" : "Сумма накладных расходов",
+  "unit" : "UN_TIME",
+  "price" : 1.40,
+  "vendor" : "Михаил"
+}, {
+  "idItemDirectory" : "",
+  "category" : "CTG_COM",
+  "code" : "Общий объем материалов 1",
+  "name" : "Расходы на материалы по смете",
+  "unit" : "UN_TIME",
+  "price" : 1.40,
+  "vendor" : "Михаил"
+} ]

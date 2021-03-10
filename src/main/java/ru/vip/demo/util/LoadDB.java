@@ -11,11 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.vip.demo.entity.ItemDirectory;
 import ru.vip.demo.serviceimpl.EstimateImpl;
-import ru.vip.demo.type.Category;
-import ru.vip.demo.type.Unit;
 
 import java.io.*;
-import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -117,38 +114,15 @@ public class LoadDB {
 	public void loadItemDirectory() {
 
 		repository.save(itemDirectory);
-		repository.save(ItemDirectory.builder()
-				.category(Category.SERVICE)
-				.vendor("Поставщик2")
-				.code("Код поставщика2")
-				.name("Накладные расходы2")
-				.unit(Unit.STEP)
-				.price(BigDecimal.valueOf(1.2))
-				.build());
-		repository.save(ItemDirectory.builder()
-				.category(Category.MATERIAL)
-				.vendor("Поставщик3")
-				.code("Код поставщика3")
-				.name("Накладные расходы3")
-				.unit(Unit.STEP)
-				.price(BigDecimal.valueOf(1.3))
-				.build());
-		repository.save(ItemDirectory.builder()
-				.category(Category.TOOLS)
-				.vendor("Поставщик4")
-				.code("Код поставщика4")
-				.name("Накладные расходы4")
-				.unit(Unit.STEP)
-				.price(BigDecimal.valueOf(1.4))
-				.build());
-		repository.save(ItemDirectory.builder()
-				.category(Category.WORK)
-				.vendor("Поставщик5")
-				.code("Код поставщика5")
-				.name("Накладные расходы5")
-				.unit(Unit.STEP)
-				.price(BigDecimal.valueOf(1.5))
-				.build());
+//		repository.save(ItemDirectory.builder()
+//				.category(Category.SERVICE)
+//				.code("Код поставщика2")
+//				.name("Накладные расходы2")
+//				.unit(Unit.STEP)
+//				.price(BigDecimal.valueOf(1.2)
+//				.vendor("Поставщик2"))
+//
+//				.build());
 	}
 
 

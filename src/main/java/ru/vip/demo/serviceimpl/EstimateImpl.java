@@ -27,10 +27,7 @@ public class EstimateImpl implements EstimateService {
 
     private final ItemDirectoryRepository itemDirectoryRepository;
     private final ItemRepository itemRepository;
-
-    private final HouseRepository houseRepository;
-    private final RoomRepository roomRepository;
-    private final SectionRepository sectionRepository;
+    private final NodeRepository nodeRepository;
 
     @Override
     public ItemDirectory save(ItemDirectory itemDirectory) {
@@ -38,23 +35,15 @@ public class EstimateImpl implements EstimateService {
     }
     @Override
     public Item save(Item item) { return itemRepository.save(item); }
-    @Override
-    public House save(House house) { return houseRepository.save(house); }
-    @Override
-    public Room save(Room room) { return roomRepository.save(room); }
-    @Override
-    public Section save(Section section) { return sectionRepository.save(section); }
+      @Override
+    public Node save(Node node) { return nodeRepository.save(node); }
 
     @Override
     public List<ItemDirectory> getAllItemDirectory() { return itemDirectoryRepository.findAll(); }
     @Override
     public List<Item> getAllItem() { return itemRepository.findAll(); }
     @Override
-    public List<House> getAllHouse() { return houseRepository.findAll(); }
-    @Override
-    public List<Room> getAllRoom() { return roomRepository.findAll(); }
-    @Override
-    public List<Section> getAllSection() { return sectionRepository.findAll(); }
+    public List<Node> getAllNode() { return nodeRepository.findAll(); }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //        JSON Десериализация в List объектов из JSON файла
@@ -66,10 +55,18 @@ public class EstimateImpl implements EstimateService {
         return mapper.readValue(inputStream(resourceName), new TypeReference<List<ItemDirectory>>() {});
     }
 
+    public List<Node> readJsonNode( String resourceName) throws IOException {
+        return mapper.readValue(inputStream(resourceName), new TypeReference<List<Node>>() {});
+    }
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //        JSON Сериализация из List объектов в JSON файл
     public void writeJSON( String outFile, List<ItemDirectory> itemDirectories) throws IOException {
         mapper.writeValue( new FileOutputStream(outFile), itemDirectories);
+    }
+
+   public void writeJsonNode( String outFile, List<Node> nodeList) throws IOException {
+        mapper.writeValue( new FileOutputStream(outFile), nodeList);
     }
 
 }

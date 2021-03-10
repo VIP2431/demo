@@ -1,41 +1,57 @@
 [ {
-  "idItemDirectory" : "9c0f76bd-d7cb-4e8c-80f4-3eacb1f4aae6",
-  "category" : "NOT_CATEGORY",
-  "vendor" : "Поставщик_1",
-  "code" : "Код поставщика1",
-  "name" : "Накладные расходы1",
-  "unit" : "NOT_UNIT",
-  "price" : 1.10
+  "idItemDirectory" : "dff56de8-2bc1-4ebe-afb1-2dd688490fdb",
+  "category" : "CTG_NOT",
+  "code" : "CODE_NOT",
+  "name" : "Пустая позиция",
+  "unit" : "UN_NOT",
+  "price" : 1.10,
+  "vendor" : "Поставщика нет"
 }, {
-  "idItemDirectory" : "e5f1826c-c7fb-44b5-953f-c11bcfcd47cf",
-  "category" : "SERVICE",
-  "vendor" : "Поставщик_2",
-  "code" : "Код поставщика2",
-  "name" : "Накладные расходы2",
-  "unit" : "STEP",
-  "price" : 1.20
+  "idItemDirectory" : "d8e5632e-7770-4dd4-8077-483e41e96e02",
+  "category" : "CTG_WORK",
+  "code" : "Кладка_стен_А_1",
+  "name" : "Кладка стен блоками 100мм",
+  "unit" : "UN_METER_2",
+  "price" : 1.50,
+  "vendor" : "Хаким"
 }, {
-  "idItemDirectory" : "38c96053-a6af-49bc-adc1-82b84d3e5f12",
-  "category" : "MATERIAL",
-  "vendor" : "Поставщик_3",
-  "code" : "Код поставщика3",
-  "name" : "Накладные расходы3",
-  "unit" : "STEP",
-  "price" : 1.30
+  "idItemDirectory" : "beb38370-3e61-4e20-af2d-03c849398175",
+  "category" : "CTG_SERVICE",
+  "code" : "Дизайн_А_1",
+  "name" : "Дизайн квартиры",
+  "unit" : "UN_TIME",
+  "price" : 1.20,
+  "vendor" : "Максим"
 }, {
-  "idItemDirectory" : "306678cf-9c0f-4c6e-bf37-902f79bdda33",
-  "category" : "TOOLS",
-  "vendor" : "Поставщик_4",
-  "code" : "Код поставщика4",
-  "name" : "Накладные расходы4",
-  "unit" : "STEP",
-  "price" : 1.40
+  "idItemDirectory" : "ed9a8e50-fdbb-4c2f-8160-b140e92145c9",
+  "category" : "CTG_MATERIAL",
+  "code" : "Краска_Тикурилла_А_1",
+  "name" : "Краска Тикурилла белая Премиум",
+  "unit" : "UN_LITRE",
+  "price" : 1.30,
+  "vendor" : "Умид"
 }, {
-  "idItemDirectory" : "1bfcc57f-b224-49fd-b7bd-339473103bd0",
-  "category" : "WORK",
-  "vendor" : "Поставщик_5",
-  "code" : "Код поставщика5",
-  "name" : "Накладные расходы5",
-  "unit" : "STEP",
-  "price" : 1.50
+  "idItemDirectory" : "766d0d04-b0f6-4e37-b540-9347fd1525b0",
+  "category" : "CTG_TOOLS",
+  "code" : "Шуруповерт_Макита_А_1",
+  "name" : "Шуруповерт Макита",
+  "unit" : "UN_THING",
+  "price" : 1.40,
+  "vendor" : "Федя"
+}, {
+  "idItemDirectory" : "71e7e318-d775-4541-9afe-a68802377992",
+  "category" : "CTG_SUM",
+  "code" : "Суммарные итоги 1",
+  "name" : "Сумма накладных расходов",
+  "unit" : "UN_TIME",
+  "price" : 1.40,
+  "vendor" : "Михаил"
+}, {
+  "idItemDirectory" : "673b4d81-f0ce-44da-ab92-e2aa0761f964",
+  "category" : "CTG_COM",
+  "code" : "Общий объем материалов 1",
+  "name" : "Расходы на материалы по смете",
+  "unit" : "UN_TIME",
+  "price" : 1.40,
+  "vendor" : "Михаил"
 } ]

@@ -1,0 +1,109 @@
+[{
+  "id": "",
+  "name": "Смета Шереметьевская 8",
+  "status": "STAT_HOUSE",
+  "unit": "UN_METER_2",
+  "quantity": 78.4,
+  "price": 1.25,
+  "listNode": [],
+  "listItem": []
+}, {
+  "id": "",
+  "name": "Гостинная",
+  "status": "STAT_ROOM",
+  "unit": "UN_METER_2",
+  "quantity": 78.4,
+  "price": 1.25,
+  "listNode": [],
+  "listItem": []
+}, {
+  "id": "",
+  "name": "Спальня",
+  "status": "STAT_ROOM",
+  "unit": "UN_METER_2",
+  "quantity": 78.4,
+  "price": 1.25,
+  "listNode": [],
+  "listItem": []
+}, {
+  "id": "",
+  "name": "Детская",
+  "status": "STAT_ROOM",
+  "unit": "UN_METER_2",
+  "quantity": 78.4,
+  "price": 1.25,
+  "listNode": [],
+  "listItem": []
+}, {
+  "id": "",
+  "name": "Ванная",
+  "status": "STAT_ROOM",
+  "unit": "UN_METER_2",
+  "quantity": 78.4,
+  "price": 1.25,
+  "listNode": [],
+  "listItem": []
+}, {
+  "id": "",
+  "name": "Санузел",
+  "status": "STAT_ROOM",
+  "unit": "UN_METER_2",
+  "quantity": 78.4,
+  "price": 1.25,
+  "listNode": [],
+  "listItem": []
+}, {
+  "id": "",
+  "name": "Кухня",
+  "status": "STAT_ROOM",
+  "unit": "UN_METER_2",
+  "quantity": 78.4,
+  "price": 1.25,
+  "listNode": [],
+  "listItem": []
+},{
+  "id": "",
+  "name": "Демонтаж старых конструкций",
+  "status": "STAT_BLOCK",
+  "unit": "UN_METER_2",
+  "quantity": 78.4,
+  "price": 1.25,
+  "listNode": [],
+  "listItem": []
+}, {
+  "id": "",
+  "name": "Штукатурные работы",
+  "status": "STAT_BLOCK",
+  "unit": "UN_METER_2",
+  "quantity": 78.4,
+  "price": 1.25,
+  "listNode": [],
+  "listItem": []
+}, {
+  "id": "",
+  "name": "Малярные работы",
+  "status": "STAT_BLOCK",
+  "unit": "UN_METER_2",
+  "quantity": 78.4,
+  "price": 1.25,
+  "listNode": [],
+  "listItem": []
+}, {
+  "id": "",
+  "name": "Итог по смете",
+  "status": "STAT_SUM",
+  "unit": "UN_METER_2",
+  "quantity": 78.4,
+  "price": 1.25,
+  "listNode": [],
+  "listItem": []
+}, {
+  "id": "",
+  "name": "Общие затраты",
+  "status": "STAT_COM",
+  "unit": "UN_METER_2",
+  "quantity": 78.4,
+  "price": 1.25,
+  "listNode": [],
+  "listItem": []
+}]

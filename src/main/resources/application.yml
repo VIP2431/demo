@@ -5,9 +5,9 @@ server:
 
 # Передача переменных в приложение
 file_json:
-  out_prefix: "src/main/resources/test_"
+  in_node: "node.json"
   in_item_directory: "item_directory.json"
-
+  out_prefix: "src/main/resources/test_"
 
 # Передача блока переменных 4шт (provider.params) в Класс приложения
 provider:

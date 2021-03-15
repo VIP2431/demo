@@ -9,11 +9,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.vip.demo.entity.EstimateBuilder;
+import ru.vip.demo.entity.Item;
 import ru.vip.demo.entity.ItemDirectory;
+import ru.vip.demo.entity.Node;
 import ru.vip.demo.serviceimpl.EstimateImpl;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -25,6 +30,147 @@ public class LoadDB {
 
 	@Autowired
 	public EstimateImpl repository;
+
+
+	public void writeNodeToJson(String out_node){
+
+		List<Node> nodeList = repository.getAllNode();
+
+		try (PrintWriter outFile = new PrintWriter(out_node, StandardCharsets.UTF_8)){
+			int n = 0;
+			outFile.print("[");
+			for (Node node : nodeList) {
+				if (n++ > 0) { outFile.print(","); }
+				outFile.print(" {" +
+						"\n  \"id\" : \"" + node.getId() + "\"," +
+						"\n  \"name\" : \"" + node.getName() + "\"," +
+						"\n  \"title\" : \"" + node.getTitle() + "\"," +
+						"\n  \"status\" : \"" + node.getStatus() + "\"," +
+						"\n  \"unit\" : \"" + node.getUnit() + "\"," +
+						"\n  \"quantity\" : " + node.getQuantity() + "," +
+						"\n  \"price\" : " + node.getPrice() + "," +
+						"\n  \"nodes\" : []," +
+						"\n  \"items\" : []");
+				outFile.print("\n}");
+			}
+			outFile.println("]");
+			outFile.println(" ");
+		} catch (IOException e) {
+			System.out.println("Ошибка сериализации \"Node\" в файл Json:" + e);
+		}
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//
+	public void itemAndItemDirectToDB(String in_item_directory, String in_item) throws Exception {
+
+//		List<ItemDirectory> itemDirectories;
+
+//		try {// Чтение из JSON file в List
+//			itemDirectories = repository.readJSON(in_item_directory);
+//		}catch (JsonParseException e) {
+//			e.printStackTrace ();
+//		}catch (JsonMappingException e) {
+//			e.printStackTrace ();
+//		}catch (IOException e) {
+//			e.printStackTrace ();
+//		}
+
+		List<ItemDirectory> itemDirectories = repository.readJsonItemDirectory(in_item_directory);
+
+		for (ItemDirectory item : itemDirectories){ repository.save(item);} // Запись из List в базу данных
+
+		List<Item> items = repository.readJsonItem(in_item);                // Чтение из JSON file в List
+		List<ItemDirectory>	itemDirs = repository.getAllItemDirectory();	// Чтение из базы данных в List
+		for (Item item : items) {
+			String name = item.getCode();
+			for (ItemDirectory dir : itemDirs) {
+				if(name.equals(dir.getCode())) {
+					item.setIdItemDirectory(dir.getIdItemDirectory());
+					item.setCategory(dir.getCategory());
+					item.setCode(dir.getCode());
+					item.setTitle(dir.getTitle());
+					item.setUnit(dir.getUnit());
+					item.setPrice(dir.getPrice());
+					item.setVendor(dir.getVendor());
+
+					repository.save(item);									// Запись из List в базу данных
+				}
+			}
+		}
+	}
+//
+	public void builderToDB(String in_builder, String in_node) throws Exception {
+
+		List<EstimateBuilder> builders = repository.readJsonBuilder(in_builder);// Чтение из JSON file в List
+		List<Node> nodes = repository.readJsonNode(in_node);
+		List<Item> itemList = repository.getAllItem();	// Чтение из базы данных в List
+
+		List<Node> nodeList = repository.getAllNode();
+		List<Node> nodeList1 = repository.getAllNode();
+
+		System.out.println(" ");
+		for (EstimateBuilder builder : builders) {
+			String name = builder.getNameNode();
+			for (Node node : nodeList) {
+				int i = 0;
+				if(name.equals(node.getName())) {
+//					System.out.println("-3-++>name:" + name + "           node.name:" + node.getName() + "                node.id:" + node.getId());
+					Node cloneNode = (Node) node.clone();
+					try {
+						cloneNode.setId(UUID.fromString("00000000-0000-0000-0000-000000000000"));
+					}catch (Exception e) {
+						System.out.println(" Exception_2:" + e);
+					}
+					cloneNode.setName(builder.getNewName());
+					cloneNode.setTitle(builder.getTitleNode());
+//					System.out.println("-4-::>name:" + name + "  cloneNode.newName:" + cloneNode.getName() + "      node.id:" + node.getId());
+
+					cloneNode.setNodes(null);
+					cloneNode.setItems(null);
+
+					Node newNode = repository.save(cloneNode);
+//					System.out.println("-7-==>name:" + name + "   cloneNode.newName:" + cloneNode.getName() + "   cloneNode.id:" + cloneNode.getId());
+//					System.out.println("-9-==>name:" + name + "     newNode.newName:" + newNode.getName() + "     newNode.id:" + newNode.getId());
+
+//					for (String str : builder.getListNode()) {
+//						for (Node node1 : nodeList1) {              // ??? nodeList head for
+//							if (str.equals(node1.getName())) {
+//								node1.setId(null);
+////								node1.getListNode().add(repository.save(node1));
+//								++i;
+//							}
+//						}
+//					}
+//					for (String str : builder.getListItem()) {
+//						for (Item item :  itemList) {
+//							if(str.equals(item.getName())) {
+//								item.setId(null);
+//								node.getListItem().add(repository.save(item));
+//								++i;
+//							}
+//						}
+//					}
+				}
+//				if(i>0){
+//					node.setId(null);
+//					repository.save(node);
+//				}
+			}
+		}
+//		System.out.println(" ");
+	}
+
+
+
+
+
+
+
+
+
+
 
 // ///////////////////////////////////////////////////////////////////////////////////////////////
 //        JSON Десериализация нескольких объектов с применением "Jackson" и "com.google.guava"

@@ -51,7 +51,7 @@ public class EstimateImpl implements EstimateService {
         return Resources.getResource(resourceName).openStream();
     }
 
-    public List<ItemDirectory> readJSON( String resourceName) throws IOException {
+    public List<ItemDirectory> readJsonItemDirectory( String resourceName) throws IOException {
         return mapper.readValue(inputStream(resourceName), new TypeReference<List<ItemDirectory>>() {});
     }
 
@@ -59,14 +59,30 @@ public class EstimateImpl implements EstimateService {
         return mapper.readValue(inputStream(resourceName), new TypeReference<List<Node>>() {});
     }
 
+    public List<Item> readJsonItem( String resourceName) throws IOException {
+        return mapper.readValue(inputStream(resourceName), new TypeReference<List<Item>>() {});
+    }
+
+    public List<EstimateBuilder> readJsonBuilder( String resourceName) throws IOException {
+        return mapper.readValue(inputStream(resourceName), new TypeReference<List<EstimateBuilder>>() {});
+    }
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //        JSON Сериализация из List объектов в JSON файл
-    public void writeJSON( String outFile, List<ItemDirectory> itemDirectories) throws IOException {
+    public void writeJsonItemDirectory( String outFile, List<ItemDirectory> itemDirectories) throws IOException {
         mapper.writeValue( new FileOutputStream(outFile), itemDirectories);
     }
 
    public void writeJsonNode( String outFile, List<Node> nodeList) throws IOException {
         mapper.writeValue( new FileOutputStream(outFile), nodeList);
+    }
+
+   public void writeJsonItem( String outFile, List<Item> itemList) throws IOException {
+        mapper.writeValue( new FileOutputStream(outFile), itemList);
+    }
+
+   public void writeJsonBuilder (String outFile, List<EstimateBuilder> builderList) throws IOException {
+        mapper.writeValue( new FileOutputStream(outFile), builderList);
     }
 
 }

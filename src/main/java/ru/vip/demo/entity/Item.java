@@ -1,35 +1,35 @@
 package ru.vip.demo.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import ru.vip.demo.type.Category;
 import ru.vip.demo.type.Unit;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
-//@AllArgsConstructor
-//@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-//@Table(name = "item_desc_t")
+//@Table(name = "item_t")
 public class Item implements Serializable{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private UUID id;
+    private String name;            // Имя
+    private BigDecimal quantity;    // Количество
+    private BigDecimal cost;        // Стоимость
 
-    private BigDecimal quantity = BigDecimal.valueOf(1);    // Количество
-    private BigDecimal cost = BigDecimal.valueOf(0);        // Стоимость
+    private UUID idItemDirectory;
+    private Category category;      // Категория товара
+    private String code;            // Код товара
+    private String title;           // Наименование
+    private Unit unit;              // Еденица измерения
+    private BigDecimal price;       // Цена еденицы
+    private String vendor;          // Код поставщика товара
 
-    private UUID idItemDirectory = null;
-    private String vendor = null;                           // Код поставщика товара
-    private Category category =  Category.CTG_NOT;     // Категория товара
-    private String code = null;                             // Код товара
-    private String name = null;                             // Название
-    private Unit unit = Unit.UN_NOT;                      // Еденица измерения
-    private BigDecimal price = BigDecimal.valueOf(0);       // Цена еденицы
 }

@@ -1,8 +1,152 @@
 [ {
-  "id" : "0807d976-187c-4fac-b952-cb9ea5a86ab7",
-  "name" : "Смета Шереметьевская 8",
+  "id" : "8e2ea83f-2159-489d-ad93-11839ea17024",
+  "name" : "Шереметьевская",
+  "title" : "Смета Шереметьевская 8",
   "status" : "STAT_HOUSE",
   "unit" : "UN_METER_2",
   "quantity" : 78.40,
-  "price" : 1.25,
-  "listNode"
+  "price" : 1.10,
+  "nodes" : [],
+  "items" : []
+}, {
+  "id" : "51cf62e2-6154-4b1f-8977-c21385d1ca16",
+  "name" : "Гостинная",
+  "title" : "Гостинная",
+  "status" : "STAT_ROOM",
+  "unit" : "UN_METER_2",
+  "quantity" : 78.40,
+  "price" : 1.20,
+  "nodes" : [],
+  "items" : []
+}, {
+  "id" : "ae4c2fa2-1564-4c13-8ce2-0f18c535ab09",
+  "name" : "Спальня",
+  "title" : "Спальня",
+  "status" : "STAT_ROOM",
+  "unit" : "UN_METER_2",
+  "quantity" : 78.40,
+  "price" : 1.30,
+  "nodes" : [],
+  "items" : []
+}, {
+  "id" : "176ac2ff-abe7-4628-b30b-16e8b154ba97",
+  "name" : "Детская",
+  "title" : "Детская",
+  "status" : "STAT_ROOM",
+  "unit" : "UN_METER_2",
+  "quantity" : 78.40,
+  "price" : 1.40,
+  "nodes" : [],
+  "items" : []
+}, {
+  "id" : "4cf43a8c-c3f6-4022-8781-d63961b463b1",
+  "name" : "Ванная",
+  "title" : "Ванная",
+  "status" : "STAT_ROOM",
+  "unit" : "UN_METER_2",
+  "quantity" : 78.40,
+  "price" : 1.50,
+  "nodes" : [],
+  "items" : []
+}, {
+  "id" : "2c4aef78-2591-4ab0-9185-1890914cddff",
+  "name" : "Санузел",
+  "title" : "Санузел",
+  "status" : "STAT_ROOM",
+  "unit" : "UN_METER_2",
+  "quantity" : 78.40,
+  "price" : 1.60,
+  "nodes" : [],
+  "items" : []
+}, {
+  "id" : "c7907dbf-1134-45e4-a277-66afe4940df0",
+  "name" : "Кухня",
+  "title" : "Кухня",
+  "status" : "STAT_ROOM",
+  "unit" : "UN_METER_2",
+  "quantity" : 78.40,
+  "price" : 1.70,
+  "nodes" : [],
+  "items" : []
+}, {
+  "id" : "9d3cdb5f-e773-4f08-a60f-c43b33360ece",
+  "name" : "Демонтаж",
+  "title" : "Демонтаж старых конструкций",
+  "status" : "STAT_BLOCK",
+  "unit" : "UN_METER_2",
+  "quantity" : 78.40,
+  "price" : 1.80,
+  "nodes" : [],
+  "items" : []
+}, {
+  "id" : "ae13b13b-c64f-474e-87b9-47acc265c77c",
+  "name" : "Штукатурка",
+  "title" : "Штукатурные работы",
+  "status" : "STAT_BLOCK",
+  "unit" : "UN_METER_2",
+  "quantity" : 78.40,
+  "price" : 1.90,
+  "nodes" : [],
+  "items" : []
+}, {
+  "id" : "5978f6fb-f43b-4d0e-8567-f3a1d6dc22fe",
+  "name" : "Малярка",
+  "title" : "Малярные работы",
+  "status" : "STAT_BLOCK",
+  "unit" : "UN_METER_2",
+  "quantity" : 78.40,
+  "price" : 2.00,
+  "nodes" : [],
+  "items" : []
+}, {
+  "id" : "3a79e87b-edd1-4a40-8bef-5405186cb298",
+  "name" : "Итог",
+  "title" : "Итог по смете",
+  "status" : "STAT_SUM",
+  "unit" : "UN_METER_2",
+  "quantity" : 78.40,
+  "price" : 2.10,
+  "nodes" : [],
+  "items" : []
+}, {
+  "id" : "451a5b62-fa63-4b0a-aaf4-8bd56d2244b4",
+  "name" : "Общие",
+  "title" : "Общие работы",
+  "status" : "STAT_COM",
+  "unit" : "UN_METER_2",
+  "quantity" : 78.40,
+  "price" : 2.20,
+  "nodes" : [],
+  "items" : []
+}, {
+  "id" : "ba367c82-d810-4292-87a0-443bff929e7c",
+  "name" : "Демонтаж_стен_А1",
+  "title" : "Демонтаж старых кирпичных стен в квартире",
+  "status" : "STAT_BLOCK",
+  "unit" : "UN_METER_2",
+  "quantity" : 78.40,
+  "price" : 1.80,
+  "nodes" : [],
+  "items" : []
+}, {
+  "id" : "ece03a63-22d6-40dc-b12c-9070ed5469cf",
+  "name" : "Штукатурка_стен_А1",
+  "title" : "Штукатурка_стен",
+  "status" : "STAT_BLOCK",
+  "unit" : "UN_METER_2",
+  "quantity" : 78.40,
+  "price" : 1.90,
+  "nodes" : [],
+  "items" : []
+}, {
+  "id" : "af122910-a0bf-4f98-8386-94f5f8bd8a77",
+  "name" : "Покраска_стен_А1",
+  "title" : "Покраска стен",
+  "status" : "STAT_BLOCK",
+  "unit" : "UN_METER_2",
+  "quantity" : 78.40,
+  "price" : 2.00,
+  "nodes" : [],
+  "items" : []
+}]
+ 

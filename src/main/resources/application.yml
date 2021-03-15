@@ -5,7 +5,9 @@ server:
 
 # Передача переменных в приложение
 file_json:
+  in_item: "item.json"
   in_node: "node.json"
+  in_builder: "estimate_builder.json"
   in_item_directory: "item_directory.json"
   out_prefix: "src/main/resources/test_"
 
@@ -28,7 +30,14 @@ logging:
     console: "%d{HH:mm:ss} [%thread] %-5level %logger{44} - %msg%n"         # В консоль
     file: "%d{yyyy-MM-DD HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" # В файл
   file:
-    name: application.log                                                   # Файл вывода логов
+    name: application.log     # Файл вывода логов
+# JPA logging
+ #   org:
+ #     hibernate:
+#        SQL: DEBUG
+#        type:
+#          descriptor:
+#            sql: TRACE
 
 #==========================================
 #     DB H2 -настройка Базы Данных
@@ -57,8 +66,11 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
 
-    #hibernate.ddl-auto: update #create
+    hibernate.ddl-auto: update #create none update create-drop validate
     #generate-ddl: true
-    #show-sql: false
+    #show-sql: true
+    properties:
+      default-schema: jpa
+
 
 

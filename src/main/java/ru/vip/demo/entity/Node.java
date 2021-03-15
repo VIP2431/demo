@@ -18,23 +18,26 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @Builder
-public class Node implements Serializable {
+//@Table(name = "node_t")
+public class Node implements Serializable, Cloneable {
     @Id
-    @GeneratedValue //(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private UUID id;
-    private String name;                                // Наименование узла
+    private String name;                                // Имя блока
+    private String title;                               // Наименование
     private Status status;                              // Статус узла
 
     private Unit unit = Unit.UN_NOT;                    // Еденица измерения
     private BigDecimal quantity = BigDecimal.valueOf(0);// Количество
     private BigDecimal price = BigDecimal.valueOf(0);   // Цена еденицы
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany (cascade = CascadeType.ALL) //, fetch = FetchType.EAGER)
     @JoinColumn(name = "node_id")
-    private List<Node> listNode;                        //Список Комнат/Разделов
+    private List<Node> nodes;                        //Список Комнат/Разделов
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "item_id")
-    private List<Item> listItem;                        //Список Позиций
+    @OneToMany (cascade = CascadeType.ALL) //, fetch = FetchType.EAGER)
+    @JoinColumn(name = "node_id")
+    private List<Item> items;                        //Список Позиций
 
+    public Node clone() throws CloneNotSupportedException{ return (Node) super.clone(); }
 }

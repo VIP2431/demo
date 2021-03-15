@@ -17,11 +17,19 @@ public interface EstimateService {
     public List<Item> getAllItem();
     public List<Node> getAllNode();
 
-    public List<ItemDirectory> readJSON( String resourceName) throws IOException;
+    public List<ItemDirectory> readJsonItemDirectory( String resourceName) throws IOException;
 
-    public void writeJSON( String outFile, List<ItemDirectory> itemDirectories) throws IOException;
+    public void writeJsonItemDirectory( String outFile, List<ItemDirectory> itemDirectories) throws IOException;
+
+    public List<Item> readJsonItem( String resourceName) throws IOException;
+
+    public void writeJsonItem( String outFile, List<Item> itemList) throws IOException;
 
     public List<Node> readJsonNode( String resourceName) throws IOException;
 
     public void writeJsonNode( String outFile, List<Node> nodeList) throws IOException;
+
+    public List<EstimateBuilder> readJsonBuilder( String resourceName) throws IOException;
+
+    public void writeJsonBuilder( String outFile, List<EstimateBuilder> builderList) throws IOException;
 }

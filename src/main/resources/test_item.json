@@ -1,4 +1,8 @@
 [ {
+  "id" : "7f207677-e0bf-4ea3-87ae-a661ff4c8abf",
+  "name" : "Пусто",
+  "quantity" : 0.00,
+  "cost" : 0.00,
   "idItemDirectory" : "ee225373-d2f7-4ad9-8b6c-cabb42cc90b1",
   "category" : "CTG_NOT",
   "code" : "CODE_NOT",
@@ -7,6 +11,10 @@
   "price" : 1.10,
   "vendor" : "Поставщика нет"
 }, {
+  "id" : "2532a4fc-89a3-481b-ae6f-5d5e34370d7c",
+  "name" : "Кладка",
+  "quantity" : 0.00,
+  "cost" : 0.00,
   "idItemDirectory" : "92977e41-41ef-4f6d-98b8-86a4230741df",
   "category" : "CTG_WORK",
   "code" : "Кладка_А1",
@@ -15,6 +23,10 @@
   "price" : 1.50,
   "vendor" : "Хаким"
 }, {
+  "id" : "76e67b1b-e2df-4fd2-b9b7-2522bb6d51ae",
+  "name" : "Демонтаж",
+  "quantity" : 0.00,
+  "cost" : 0.00,
   "idItemDirectory" : "c57a9d02-ba43-46a0-827b-922e8c3d00eb",
   "category" : "CTG_WORK",
   "code" : "Демонтаж_А1",
@@ -23,6 +35,10 @@
   "price" : 1.50,
   "vendor" : "Хаким"
 }, {
+  "id" : "b0aab43b-4787-4b96-927e-dd6907127dc6",
+  "name" : "Штукатурка",
+  "quantity" : 0.00,
+  "cost" : 0.00,
   "idItemDirectory" : "85561cf3-9a4f-4c50-b783-4df397922bf5",
   "category" : "CTG_WORK",
   "code" : "Штукатурка_А1",
@@ -31,6 +47,10 @@
   "price" : 1.50,
   "vendor" : "Хаким"
 }, {
+  "id" : "5af1598c-78e1-4289-a96a-54ce190fc20a",
+  "name" : "Малярка",
+  "quantity" : 0.00,
+  "cost" : 0.00,
   "idItemDirectory" : "03fd589e-a7e9-49c1-ad09-2dfca57d06dd",
   "category" : "CTG_WORK",
   "code" : "Малярка_А1",
@@ -39,6 +59,10 @@
   "price" : 1.50,
   "vendor" : "Хаким"
 }, {
+  "id" : "510c42a3-92a1-4cea-a022-b0f60373e1be",
+  "name" : "Дизайн",
+  "quantity" : 0.00,
+  "cost" : 0.00,
   "idItemDirectory" : "c47dc1db-3d62-43ea-a95c-edba5b348453",
   "category" : "CTG_SERVICE",
   "code" : "Дизайн_А1",
@@ -47,6 +71,10 @@
   "price" : 1.20,
   "vendor" : "Максим"
 }, {
+  "id" : "989c8c7d-16a9-4ae0-9c00-bab30962cebb",
+  "name" : "Краска",
+  "quantity" : 0.00,
+  "cost" : 0.00,
   "idItemDirectory" : "5b9f4016-01be-4412-85eb-ca7a9976ce9b",
   "category" : "CTG_MATERIAL",
   "code" : "Краска_А1",
@@ -55,6 +83,10 @@
   "price" : 1.30,
   "vendor" : "Умид"
 }, {
+  "id" : "03966d17-1ecf-4545-9564-7abc3df047cd",
+  "name" : "Штукатурная_смесь",
+  "quantity" : 0.00,
+  "cost" : 0.00,
   "idItemDirectory" : "ddc52126-c2b2-4b05-8252-f01c1bd3949b",
   "category" : "CTG_MATERIAL",
   "code" : "Штукатурная_смесь_А1",
@@ -63,6 +95,10 @@
   "price" : 1.30,
   "vendor" : "Умид"
 }, {
+  "id" : "1f88ca02-37d6-419a-99ca-c800ebcaec26",
+  "name" : "Цемент_А1",
+  "quantity" : 0.00,
+  "cost" : 0.00,
   "idItemDirectory" : "c83713fd-70b3-4d4b-9958-94c19c141cfa",
   "category" : "CTG_MATERIAL",
   "code" : "Цемент_А1",
@@ -71,6 +107,10 @@
   "price" : 1.30,
   "vendor" : "Умид"
 }, {
+  "id" : "7a943130-927a-43e6-9cac-5a6af2dbf9f6",
+  "name" : "Блоки_А1",
+  "quantity" : 0.00,
+  "cost" : 0.00,
   "idItemDirectory" : "5532ea8d-1e08-4cd6-a878-614feb4853d5",
   "category" : "CTG_MATERIAL",
   "code" : "Блоки_А1",
@@ -79,6 +119,10 @@
   "price" : 1.30,
   "vendor" : "Умид"
 }, {
+  "id" : "f169f760-fcd1-4eef-92c3-c2d2d7cf1bfc",
+  "name" : "Шуруповерт",
+  "quantity" : 0.00,
+  "cost" : 0.00,
   "idItemDirectory" : "1028ec4b-d2d8-4683-8690-8a56b9c5aedb",
   "category" : "CTG_TOOLS",
   "code" : "Шр_Макита_А1",
@@ -87,6 +131,10 @@
   "price" : 1.40,
   "vendor" : "Федя"
 }, {
+  "id" : "ed526095-740a-4117-bc91-f64758cdd088",
+  "name" : "Перфоратор",
+  "quantity" : 0.00,
+  "cost" : 0.00,
   "idItemDirectory" : "5e8dadd6-b691-4b78-bb86-8ad022429f74",
   "category" : "CTG_TOOLS",
   "code" : "Перфоратор_А1",
@@ -95,6 +143,10 @@
   "price" : 1.40,
   "vendor" : "Федя"
 }, {
+  "id" : "3c6d4ec2-ccd1-4ff1-a01e-b88efb922469",
+  "name" : "Итоги",
+  "quantity" : 0.00,
+  "cost" : 0.00,
   "idItemDirectory" : "2bc80728-fd70-4fe7-8357-8ad88d4fdb40",
   "category" : "CTG_SUM",
   "code" : "Итоги_А1",
@@ -103,6 +155,10 @@
   "price" : 1.40,
   "vendor" : "Михаил"
 }, {
+  "id" : "11d29d59-85b4-491f-aa5e-24648e6e7642",
+  "name" : "Общий",
+  "quantity" : 0.00,
+  "cost" : 0.00,
   "idItemDirectory" : "68cc8ef8-cd99-4fdf-81a1-18f96ce6c454",
   "category" : "CTG_COM",
   "code" : "Общий_А1",

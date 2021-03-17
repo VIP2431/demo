@@ -54,23 +54,8 @@ public class DemoApplicationTests {
 		List<Node> nodes = repository.readJsonNode(in_node);				// Чтение из JSON file в List
 		for (Node node : nodes) {	repository.save(node);	}				// Запись из List в базу данных
 
-		loadDB.builderToDB(in_builder, in_node);
+		loadDB.builderToDB(in_builder);
 
 		loadDB.writeNodeToJson(out_prefix + in_node);
 	}
-
-/* *****************************************************************
-*            Test ApplicationContextProvider
-*/
-//	@Autowired
-//	ApplicationContextProvider provider;
-//
-//	@Test
-//	public void initTestProvider() {//} throws Throwable  { //}  throws InterruptedException {
-//		for(int i = 0; i < 3; ++i) {
-//			provider.handleApplicationContext();
-//		}
-//	}
-
-
 }

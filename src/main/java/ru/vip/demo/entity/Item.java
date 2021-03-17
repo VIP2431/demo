@@ -16,7 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 //@Table(name = "item_t")
-public class Item implements Serializable{
+public class Item implements Serializable, Cloneable {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private UUID id;
@@ -32,4 +32,5 @@ public class Item implements Serializable{
     private BigDecimal price;       // Цена еденицы
     private String vendor;          // Код поставщика товара
 
+    public Item clone() throws CloneNotSupportedException{ return (Item) super.clone(); }
 }

@@ -35,7 +35,7 @@ public class Node implements Serializable, Cloneable {
     @JoinColumn(name = "node_id")
     private List<Node> nodes;                        //Список Комнат/Разделов
 
-    @OneToMany (cascade = CascadeType.ALL) //, fetch = FetchType.EAGER)
+    @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "node_id")
     private List<Item> items;                        //Список Позиций
 

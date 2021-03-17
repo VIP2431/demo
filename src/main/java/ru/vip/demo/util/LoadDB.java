@@ -1,12 +1,8 @@
 package ru.vip.demo.util;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.collect.ImmutableList;
-import com.google.common.io.Resources;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.vip.demo.entity.EstimateBuilder;
@@ -26,14 +22,13 @@ import java.util.UUID;
 @Slf4j
 public class LoadDB {
 
-	private final ItemDirectory itemDirectory = new ItemDirectory();
+	public final EstimateImpl repository;
 
-	@Autowired
-	public EstimateImpl repository;
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//
 	public void writeNodeToJson(String out_node){
 
+		ObjectMapper mapper = repository.getMapper();
 		List<Node> nodeList = repository.getAllNode();
 
 		try (PrintWriter outFile = new PrintWriter(out_node, StandardCharsets.UTF_8)){
@@ -42,19 +37,24 @@ public class LoadDB {
 			for (Node node : nodeList) {
 				if (n++ > 0) { outFile.print(","); }
 				outFile.print(" {" +
-						"\n  \"id\" : \"" + node.getId() + "\"," +
-						"\n  \"name\" : \"" + node.getName() + "\"," +
-						"\n  \"title\" : \"" + node.getTitle() + "\"," +
-						"\n  \"status\" : \"" + node.getStatus() + "\"," +
-						"\n  \"unit\" : \"" + node.getUnit() + "\"," +
-						"\n  \"quantity\" : " + node.getQuantity() + "," +
-						"\n  \"price\" : " + node.getPrice() + "," +
-						"\n  \"nodes\" : []," +
-						"\n  \"items\" : []");
+						"\n    \"id\" : \"" + node.getId() + "\"," +
+						"\n    \"name\" : \"" + node.getName() + "\"," +
+						"\n    \"title\" : \"" + node.getTitle() + "\"," +
+						"\n    \"status\" : \"" + node.getStatus() + "\"," +
+						"\n    \"unit\" : \"" + node.getUnit() + "\"," +
+						"\n    \"quantity\" : " + node.getQuantity() + "," +
+						"\n    \"price\" : " + node.getPrice() + ",");
+
+				List<Node> nodes = node.getNodes();
+				if(nodes.isEmpty()) { outFile.print("\n    \"nodes\" : [],");}
+				else{outFile.print("\n    \"nodes\" :\n" + mapper.writeValueAsString( nodes));}
+
+				List<Item> items = node.getItems();
+				if (items.isEmpty()) { outFile.print("\n    \"items\" : []"); }
+				else { outFile.print("\n    \"items\" :" + mapper.writeValueAsString( items)); }
 				outFile.print("\n}");
 			}
-			outFile.println("]");
-			outFile.println(" ");
+			outFile.println(" ]");
 		} catch (IOException e) {
 			System.out.println("Ошибка сериализации \"Node\" в файл Json:" + e);
 		}
@@ -62,20 +62,7 @@ public class LoadDB {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
-//
 	public void itemAndItemDirectToDB(String in_item_directory, String in_item) throws Exception {
-
-//		List<ItemDirectory> itemDirectories;
-
-//		try {// Чтение из JSON file в List
-//			itemDirectories = repository.readJSON(in_item_directory);
-//		}catch (JsonParseException e) {
-//			e.printStackTrace ();
-//		}catch (JsonMappingException e) {
-//			e.printStackTrace ();
-//		}catch (IOException e) {
-//			e.printStackTrace ();
-//		}
 
 		List<ItemDirectory> itemDirectories = repository.readJsonItemDirectory(in_item_directory);
 
@@ -100,177 +87,142 @@ public class LoadDB {
 			}
 		}
 	}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
 //
-	public void builderToDB(String in_builder, String in_node) throws Exception {
+	public void builderToDB(String in_builder ) throws Exception {
 
 		List<EstimateBuilder> builders = repository.readJsonBuilder(in_builder);// Чтение из JSON file в List
-		List<Node> nodes = repository.readJsonNode(in_node);
 		List<Item> itemList = repository.getAllItem();	// Чтение из базы данных в List
-
 		List<Node> nodeList = repository.getAllNode();
 		List<Node> nodeList1 = repository.getAllNode();
 
-		System.out.println(" ");
-		for (EstimateBuilder builder : builders) {
-			String name = builder.getNameNode();
-			for (Node node : nodeList) {
-				int i = 0;
-				if(name.equals(node.getName())) {
-//					System.out.println("-3-++>name:" + name + "           node.name:" + node.getName() + "                node.id:" + node.getId());
-					Node cloneNode = (Node) node.clone();
-					try {
-						cloneNode.setId(UUID.fromString("00000000-0000-0000-0000-000000000000"));
-					}catch (Exception e) {
-						System.out.println(" Exception_2:" + e);
-					}
+		for (EstimateBuilder builder : builders) {		// взять следующей шаблон из заданного в "builder.json" списка
+			Node newNode;
+			String nameNode = builder.getNameNode(); 	// взять nameNode из выбранного "builder"
+			for (Node node : nodeList) {				// просмотр списка Node взятого из ВД
+				if(nameNode.equals(node.getName())) {	// Node с заданным именем найден
+					Node cloneNode = node.clone();// Клонировать  Node
 					cloneNode.setName(builder.getNewName());
 					cloneNode.setTitle(builder.getTitleNode());
-//					System.out.println("-4-::>name:" + name + "  cloneNode.newName:" + cloneNode.getName() + "      node.id:" + node.getId());
+//
+//					System.out.println(" -1.1- cloneNode.getName()" + cloneNode.getName() + "\" cloneNode.id: \"" + cloneNode.getId() + "\"");
+//					System.out.println(" -1.2- cloneNode.name: \"" + cloneNode.getName() + "\"   cloneNode.getNodes().isEmpty(): \"" + cloneNode.getNodes().isEmpty() + "\"");
+//					System.out.println(" -1.3- cloneNode.name: \"" + cloneNode.getName() + "\"   cloneNode.getItems().isEmpty(): \"" + cloneNode.getItems().isEmpty() + "\"");
 
-					cloneNode.setNodes(null);
-					cloneNode.setItems(null);
+					boolean flagItems = cloneNode.getItems().isEmpty(); //  ?????????????????????????????????????????
+					boolean flagNodes = cloneNode.getNodes().isEmpty();	//  ?????????????????????????????????????????
+					cloneNode.setId(UUID.fromString("00000000-0000-0000-0000-000000000000"));
 
-					Node newNode = repository.save(cloneNode);
-//					System.out.println("-7-==>name:" + name + "   cloneNode.newName:" + cloneNode.getName() + "   cloneNode.id:" + cloneNode.getId());
-//					System.out.println("-9-==>name:" + name + "     newNode.newName:" + newNode.getName() + "     newNode.id:" + newNode.getId());
+					// Записать созданный Node в БД и сохранить на нег ссылку
+					newNode = repository.save(cloneNode);
+//					System.out.println(" -3.2- newNode.name: \"" + newNode.getName() + "\"   newNode.id: \"" + newNode.getId() + "\"");
+//					System.out.println(" -3.3- newNode.name: \"" + newNode.getName() + "\"   newNode.getNodes().isEmpty(): \"" + newNode.getNodes().isEmpty() + "\"");
+//					System.out.println(" -3.4- newNode.name: \"" + newNode.getName() + "\"   newNode.getItems().isEmpty(): \"" + newNode.getItems().isEmpty() + "\"");
+//
 
-//					for (String str : builder.getListNode()) {
-//						for (Node node1 : nodeList1) {              // ??? nodeList head for
-//							if (str.equals(node1.getName())) {
-//								node1.setId(null);
-////								node1.getListNode().add(repository.save(node1));
-//								++i;
-//							}
-//						}
-//					}
-//					for (String str : builder.getListItem()) {
-//						for (Item item :  itemList) {
-//							if(str.equals(item.getName())) {
-//								item.setId(null);
-//								node.getListItem().add(repository.save(item));
-//								++i;
-//							}
-//						}
-//					}
+					List<String> listNameNode = builder.getNodes();
+					if(!listNameNode.isEmpty()) {
+						for (String str : listNameNode) {
+							for (Node node1 : nodeList1) {              // ??? nodeList head for
+								if (str.equals(node1.getName())) {
+									node1.setId(UUID.fromString("00000000-0000-0000-0000-000000000000"));
+									node1.getNodes().add(repository.save(node1));
+								}
+							}
+						}
+					}
+					List<String> listNameItem = builder.getItems();
+					if(!listNameItem.isEmpty()) {
+						for (String nameItem : listNameItem) { 	// взять следующее имя из заданного в "builder" списка
+							for (Item item : itemList) {	// взять следующее "item" из списка взятого в БД
+								if (nameItem.equals(item.getName())) { // Item с заданным именем найден
+//										System.out.println(" -5.1- nameItem: \"" + nameItem + "\" item.getName():\"" + item.getName() + "\"");
+									Item cloneItem = item.clone();
+									cloneItem.setId(UUID.fromString("00000000-0000-0000-0000-000000000000"));
+									Item newItem = repository.save(cloneItem);
+//										System.out.println(" -5.3.1- nameItem: \"" + nameItem + "\" item.getName():\"" + item.getName() + "\" item.id: \"" + item.getId() + "\"");
+//										System.out.println(" -5.3.2- nameItem: \"" + nameItem + "\" newItem.getName():\"" + newItem.getName() + "\" newItem.id: \"" + newItem.getId() +  "\"");
+//
+//										System.out.println(" -5.3.3- newNode.name: \"" + newNode.getName() + "\" newNode.id: \"" + newNode.getId() + "\"");
+//										System.out.println(" -5.3.4- newNode.name: \"" + newNode.getName() + "\"   newNode.getItems().isEmpty(): \"" + newNode.getItems().isEmpty() + "\"");
+									newNode.getItems().add(newItem);
+//										System.out.println(" -5.5.1- newNode.name: \"" + newNode.getName() + "\"   newNode.getItems().isEmpty(): \"" + newNode.getItems().isEmpty() + "\"");
+//										System.out.println(" -5.5.2- newItem.getName: \"" + newItem.getName() + "\"   newItem.id: \"" + newItem.getId() + "\"");
+//										System.out.println(" -5.5.3- newNode.name: \"" + newNode.getName() + "\"");
+									break;
+								}
+							}
+						}
+					}
+					repository.save(newNode);
+					break;
 				}
-//				if(i>0){
-//					node.setId(null);
-//					repository.save(node);
-//				}
 			}
 		}
-//		System.out.println(" ");
 	}
-
-
-
-
-
-
-
-
-
-
 
 // ///////////////////////////////////////////////////////////////////////////////////////////////
 //        JSON Десериализация нескольких объектов с применением "Jackson" и "com.google.guava"
 //
-	public static ImmutableList<ItemDirectory> getItemDirectory() throws IOException {
-		// JSON Десериализация нескольких объектов
-		ObjectMapper mapper = new ObjectMapper();
-		InputStream inputStream = Resources.getResource("item_directory.json").openStream();
-		List<ItemDirectory> items = mapper.readValue(inputStream, new TypeReference<List<ItemDirectory>>() {});
-		return ImmutableList.copyOf(items);
-	}
-
-// ///////////////////////////////////////////////////////////////////////////////////////////////
-//        JSON Десериализация нескольких объектов с применением "Jackson" и "com.google.guava"
-//                и загрузка их в Базу Данных
-//	public static ImmutableList<T> getData(T t, String resourceName ) throws IOException {
+//	public static ImmutableList<ItemDirectory> getItemDirectory() throws IOException {
 //		// JSON Десериализация нескольких объектов
 //		ObjectMapper mapper = new ObjectMapper();
-//		InputStream inputStream = Resources.getResource(resourceName).openStream();
-//		List<ItemDirectory> lst = mapper.readValue(inputStream, new TypeReference<List<T>>() {});
-//		return ImmutableList.copyOf(lst);
-//	}
-//	// Загрузка объектов в базу данных из JSON файла
-//	private void loadData( T t, String resourceName) throws Exception {
-//		ImmutableList<T> lst = this.getData( t, resourceName);
-//		for (T item : lst) {
-//			repository.save(item);
-//		}
+//		InputStream inputStream = Resources.getResource("item_directory.json").openStream();
+//		List<ItemDirectory> items = mapper.readValue(inputStream, new TypeReference<List<ItemDirectory>>() {});
+//		return ImmutableList.copyOf(items);
 //	}
 
 // ///////////////////////////////////////////////////////////////////////////////////////////////
 //    Сериализация и десериализация JSON
 //
-	public void writeJsonItemDirectory(ItemDirectory itemDirectory) throws Exception {
-		// JSON Сериализация объекта
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			mapper.writeValue( new File("src/test/resources/data/item_directory.json"), itemDirectory);
-		} catch (IOException e) {
-			System.out.println("Исключение при сериализации: " + e);
-		}
-	}
+//	public void writeJsonItemDirectory(ItemDirectory itemDirectory) throws Exception {
+//		// JSON Сериализация объекта
+//		ObjectMapper mapper = new ObjectMapper();
+//		try {
+//			mapper.writeValue( new File("src/test/resources/data/item_directory.json"), itemDirectory);
+//		} catch (IOException e) {
+//			System.out.println("Исключение при сериализации: " + e);
+//		}
+//	}
 
-	public void readJsonItemDirectory() throws Exception {
-		// JSON Десериализация объекта
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-				ItemDirectory itemDirectory1 =
-						mapper.readValue(new File("src/test/resources/data/item_directory.json"), ItemDirectory.class);
-				System.out.println("\n +++++ JSON После чтения из файла --> itemDirectory1:\n" + itemDirectory1);
-		} catch (IOException e) {
-			System.out.println("Исключение при десериализации: " + e);
-		}
-		System.out.println(" ");
-	}
+//	public void readJsonItemDirectory() throws Exception {
+//		// JSON Десериализация объекта
+//		ObjectMapper mapper = new ObjectMapper();
+//		try {
+//				ItemDirectory itemDirectory1 =
+//						mapper.readValue(new File("src/test/resources/data/item_directory.json"), ItemDirectory.class);
+//				System.out.println("\n +++++ JSON После чтения из файла --> itemDirectory1:\n" + itemDirectory1);
+//		} catch (IOException e) {
+//			System.out.println("Исключение при десериализации: " + e);
+//		}
+//		System.out.println(" ");
+//	}
 
 // ///////////////////////////////////////////////////////////////////////////////////////////////
 //    Сериализация и десериализация стандартная библиотека
 //
-	public void serialItemDirectory(ItemDirectory itemDirectory)throws Exception {
-
-		System.out.println("\n >>>>> Перед записью в файл --> itemDirectory:\n" + itemDirectory);
-
-		// Сериализация объекта
-		try {
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream( new FileOutputStream("itemDirectory"));
-			objectOutputStream.writeObject( itemDirectory);
-		} catch (IOException e) {
-			System.out.println("Исключение при сериализации: " + e);
-		}
-
-		// Десериализация объекта
-		try {
-			ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("itemDirectory"));
-			ItemDirectory itemDirectory1 = (ItemDirectory) objectInputStream.readObject();
-
-			System.out.println(" +++++ После чтения из файла --> itemDirectory1:\n" + itemDirectory1 + "\n");
-		} catch (IOException e) {
-			System.out.println("Исключение при десериализации: " + e);
-		}
-	}
-
-// ///////////////////////////////////////////////////////////////////////////////////////////////
+//	public void serialItemDirectory(ItemDirectory itemDirectory)throws Exception {
 //
+//		System.out.println("\n >>>>> Перед записью в файл --> itemDirectory:\n" + itemDirectory);
 //
-
-	public void loadItemDirectory() {
-
-		repository.save(itemDirectory);
-//		repository.save(ItemDirectory.builder()
-//				.category(Category.SERVICE)
-//				.code("Код поставщика2")
-//				.name("Накладные расходы2")
-//				.unit(Unit.STEP)
-//				.price(BigDecimal.valueOf(1.2)
-//				.vendor("Поставщик2"))
+//		// Сериализация объекта
+//		try {
+//			ObjectOutputStream objectOutputStream = new ObjectOutputStream( new FileOutputStream("itemDirectory"));
+//			objectOutputStream.writeObject( itemDirectory);
+//		} catch (IOException e) {
+//			System.out.println("Исключение при сериализации: " + e);
+//		}
 //
-//				.build());
-	}
-
-
+//		// Десериализация объекта
+//		try {
+//			ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("itemDirectory"));
+//			ItemDirectory itemDirectory1 = (ItemDirectory) objectInputStream.readObject();
+//
+//			System.out.println(" +++++ После чтения из файла --> itemDirectory1:\n" + itemDirectory1 + "\n");
+//		} catch (IOException e) {
+//			System.out.println("Исключение при десериализации: " + e);
+//		}
+//	}
 }
 

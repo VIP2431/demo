@@ -8,8 +8,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.vip.demo.entity.*;
-import ru.vip.demo.repository.*;
+import ru.vip.demo.entity.EstimateBuilder;
+import ru.vip.demo.entity.Item;
+import ru.vip.demo.entity.ItemDirectory;
+import ru.vip.demo.entity.Node;
+import ru.vip.demo.repository.ItemDirectoryRepository;
+import ru.vip.demo.repository.ItemRepository;
+import ru.vip.demo.repository.NodeRepository;
 import ru.vip.demo.service.EstimateService;
 
 import java.io.FileOutputStream;
@@ -28,6 +33,8 @@ public class EstimateImpl implements EstimateService {
     private final ItemDirectoryRepository itemDirectoryRepository;
     private final ItemRepository itemRepository;
     private final NodeRepository nodeRepository;
+
+    public ObjectMapper getMapper() { return this.mapper; }
 
     @Override
     public ItemDirectory save(ItemDirectory itemDirectory) {

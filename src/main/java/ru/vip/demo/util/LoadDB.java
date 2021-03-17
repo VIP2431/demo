@@ -96,6 +96,7 @@ public class LoadDB {
 		List<Item> itemList = repository.getAllItem();	// Чтение из базы данных в List
 		List<Node> nodeList = repository.getAllNode();
 		List<Node> nodeList1 = repository.getAllNode();
+		String nullUUID = repository.getIdNullUUID();
 
 		for (EstimateBuilder builder : builders) {		// взять следующей шаблон из заданного в "builder.json" списка
 			Node newNode;
@@ -112,7 +113,7 @@ public class LoadDB {
 
 					boolean flagItems = cloneNode.getItems().isEmpty(); //  ?????????????????????????????????????????
 					boolean flagNodes = cloneNode.getNodes().isEmpty();	//  ?????????????????????????????????????????
-					cloneNode.setId(UUID.fromString("00000000-0000-0000-0000-000000000000"));
+					cloneNode.setId(UUID.fromString(nullUUID));
 
 					// Записать созданный Node в БД и сохранить на нег ссылку
 					newNode = repository.save(cloneNode);
@@ -126,7 +127,7 @@ public class LoadDB {
 						for (String str : listNameNode) {
 							for (Node node1 : nodeList1) {              // ??? nodeList head for
 								if (str.equals(node1.getName())) {
-									node1.setId(UUID.fromString("00000000-0000-0000-0000-000000000000"));
+									node1.setId(UUID.fromString(nullUUID));
 									node1.getNodes().add(repository.save(node1));
 								}
 							}
@@ -139,7 +140,7 @@ public class LoadDB {
 								if (nameItem.equals(item.getName())) { // Item с заданным именем найден
 //										System.out.println(" -5.1- nameItem: \"" + nameItem + "\" item.getName():\"" + item.getName() + "\"");
 									Item cloneItem = item.clone();
-									cloneItem.setId(UUID.fromString("00000000-0000-0000-0000-000000000000"));
+									cloneItem.setId(UUID.fromString(nullUUID));
 									Item newItem = repository.save(cloneItem);
 //										System.out.println(" -5.3.1- nameItem: \"" + nameItem + "\" item.getName():\"" + item.getName() + "\" item.id: \"" + item.getId() + "\"");
 //										System.out.println(" -5.3.2- nameItem: \"" + nameItem + "\" newItem.getName():\"" + newItem.getName() + "\" newItem.id: \"" + newItem.getId() +  "\"");

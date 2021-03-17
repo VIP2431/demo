@@ -28,13 +28,15 @@ import java.util.List;
 @Slf4j
 public class EstimateImpl implements EstimateService {
 
-    ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT); // pretty print JSON
+    private final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT); // pretty print JSON
+    private final String idNullUUID = "00000000-0000-0000-0000-000000000000";
 
     private final ItemDirectoryRepository itemDirectoryRepository;
     private final ItemRepository itemRepository;
     private final NodeRepository nodeRepository;
 
     public ObjectMapper getMapper() { return this.mapper; }
+    public String getIdNullUUID() { return this.idNullUUID; }
 
     @Override
     public ItemDirectory save(ItemDirectory itemDirectory) {

@@ -1,10 +1,10 @@
 package ru.vip.demo.type;
 
-//@Data
+// @Data
 public enum Status {
     STAT_HOUSE("Объект"),
     STAT_ROOM("Комната"),
-    STAT_BLOCK("Блок"),
+    STAT_BLOCK("Блок работ"),
     STAT_SUM("Блок сумм"),
     STAT_COM("Общий блок");
 
@@ -13,4 +13,6 @@ public enum Status {
     Status(String name) {
         this.name = name;
     }
+
+    public String getName() { return this.name; }
 }

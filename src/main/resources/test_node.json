@@ -1,138 +1,152 @@
-[ {
-    "id" : "164018b5-9597-441f-8b7f-f05f676b9cd3",
+[
+     { // *** Блок node: "Объект" -> "Шереметьевская" ***
+    "id" : "1654ee3c-bd56-415d-91b7-520035d0a9d9",
     "name" : "Шереметьевская",
     "title" : "Смета Шереметьевская 8",
-    "status" : "STAT_HOUSE",
+    "status" : "STAT_HOUSE",  //  "Объект"
     "unit" : "UN_METER_2",
     "quantity" : 78.40,
     "price" : 1.10,
     "nodes" : [],
     "items" : []
-}, {
-    "id" : "5d1b3747-d14f-4366-b261-0d4bf0d0853a",
+},
+   { // *** Блок node: "Комната" -> "Гостинная" ***
+    "id" : "7aabc459-fd8f-4004-a959-e9b9e2560114",
     "name" : "Гостинная",
     "title" : "Гостинная",
-    "status" : "STAT_ROOM",
+    "status" : "STAT_ROOM",  //  "Комната"
     "unit" : "UN_METER_2",
     "quantity" : 78.40,
     "price" : 1.20,
     "nodes" : [],
     "items" : []
-}, {
-    "id" : "19c42158-b8ba-4a17-b7ca-b34f0dfb61c0",
+},
+   { // *** Блок node: "Комната" -> "Спальня" ***
+    "id" : "73cc08c4-047e-4ba4-8a12-deec40d01cb4",
     "name" : "Спальня",
     "title" : "Спальня",
-    "status" : "STAT_ROOM",
+    "status" : "STAT_ROOM",  //  "Комната"
     "unit" : "UN_METER_2",
     "quantity" : 78.40,
     "price" : 1.30,
     "nodes" : [],
     "items" : []
-}, {
-    "id" : "f600d1b8-7e28-465e-96ff-87a956cfcf92",
+},
+   { // *** Блок node: "Комната" -> "Детская" ***
+    "id" : "544cadef-e13a-4082-89e0-8833c1d4e5aa",
     "name" : "Детская",
     "title" : "Детская",
-    "status" : "STAT_ROOM",
+    "status" : "STAT_ROOM",  //  "Комната"
     "unit" : "UN_METER_2",
     "quantity" : 78.40,
     "price" : 1.40,
     "nodes" : [],
     "items" : []
-}, {
-    "id" : "e355cb13-8a8f-4155-ac13-311103255f42",
+},
+   { // *** Блок node: "Комната" -> "Ванная" ***
+    "id" : "b73b33a1-14f7-4e35-b820-2026c949f8ba",
     "name" : "Ванная",
     "title" : "Ванная",
-    "status" : "STAT_ROOM",
+    "status" : "STAT_ROOM",  //  "Комната"
     "unit" : "UN_METER_2",
     "quantity" : 78.40,
     "price" : 1.50,
     "nodes" : [],
     "items" : []
-}, {
-    "id" : "680a5195-e946-40f8-b5d1-46f44514fd7d",
+},
+   { // *** Блок node: "Комната" -> "Санузел" ***
+    "id" : "8a74240f-7b3e-49c6-8435-dae3f11c5bd2",
     "name" : "Санузел",
     "title" : "Санузел",
-    "status" : "STAT_ROOM",
+    "status" : "STAT_ROOM",  //  "Комната"
     "unit" : "UN_METER_2",
     "quantity" : 78.40,
     "price" : 1.60,
     "nodes" : [],
     "items" : []
-}, {
-    "id" : "c9f3913a-c9a6-4970-ade1-efe6da6b4286",
+},
+   { // *** Блок node: "Комната" -> "Кухня" ***
+    "id" : "65d12287-7b19-470d-82b4-fa4b4af07b2d",
     "name" : "Кухня",
     "title" : "Кухня",
-    "status" : "STAT_ROOM",
+    "status" : "STAT_ROOM",  //  "Комната"
     "unit" : "UN_METER_2",
     "quantity" : 78.40,
     "price" : 1.70,
     "nodes" : [],
     "items" : []
-}, {
-    "id" : "22b10b2d-28b4-4f08-9c60-203baab64715",
+},
+   { // *** Блок node: "Блок работ" -> "Демонтаж" ***
+    "id" : "35ff6535-77a8-4fc6-b078-b762976fe28e",
     "name" : "Демонтаж",
     "title" : "Демонтаж старых конструкций",
-    "status" : "STAT_BLOCK",
+    "status" : "STAT_BLOCK",  //  "Блок работ"
     "unit" : "UN_METER_2",
     "quantity" : 78.40,
     "price" : 1.80,
     "nodes" : [],
     "items" : []
-}, {
-    "id" : "2e698fa7-38b7-4784-9555-9cdcf77e3f35",
+},
+   { // *** Блок node: "Блок работ" -> "Штукатурка" ***
+    "id" : "2deae3ea-fad8-4905-987c-4ebb96789aec",
     "name" : "Штукатурка",
     "title" : "Штукатурные работы",
-    "status" : "STAT_BLOCK",
+    "status" : "STAT_BLOCK",  //  "Блок работ"
     "unit" : "UN_METER_2",
     "quantity" : 78.40,
     "price" : 1.90,
     "nodes" : [],
     "items" : []
-}, {
-    "id" : "223208ab-0792-49d9-b381-c1f806419a2f",
+},
+   { // *** Блок node: "Блок работ" -> "Малярка" ***
+    "id" : "13d26e50-6dd0-4654-b74e-d2db0f3b576d",
     "name" : "Малярка",
     "title" : "Малярные работы",
-    "status" : "STAT_BLOCK",
+    "status" : "STAT_BLOCK",  //  "Блок работ"
     "unit" : "UN_METER_2",
     "quantity" : 78.40,
     "price" : 2.00,
     "nodes" : [],
     "items" : []
-}, {
-    "id" : "5892ee7f-39da-42af-83eb-c69c6d877c32",
+},
+   { // *** Блок node: "Блок сумм" -> "Итог" ***
+    "id" : "d7b114bf-edb6-4fa1-b232-5bdb3f6de675",
     "name" : "Итог",
     "title" : "Итог по смете",
-    "status" : "STAT_SUM",
+    "status" : "STAT_SUM",  //  "Блок сумм"
     "unit" : "UN_METER_2",
     "quantity" : 78.40,
     "price" : 2.10,
     "nodes" : [],
     "items" : []
-}, {
-    "id" : "50930fef-8558-450d-82c3-3167599eaaad",
+},
+   { // *** Блок node: "Общий блок" -> "Общие" ***
+    "id" : "958b1304-000a-49a4-b7e5-2a38bdf702af",
     "name" : "Общие",
     "title" : "Общие работы",
-    "status" : "STAT_COM",
+    "status" : "STAT_COM",  //  "Общий блок"
     "unit" : "UN_METER_2",
     "quantity" : 78.40,
     "price" : 2.20,
     "nodes" : [],
     "items" : []
-}, {
-    "id" : "61427bdf-9e7d-40f2-809c-e2936527ec3a",
+},
+   { // *** Блок node: "Блок работ" -> "Демонтаж_стен_А1" ***
+    "id" : "d954a8de-88b9-4859-a51d-fd79e8d0f35d",
     "name" : "Демонтаж_стен_А1",
     "title" : "Демонтаж старых кирпичных стен в квартире",
-    "status" : "STAT_BLOCK",
+    "status" : "STAT_BLOCK",  //  "Блок работ"
     "unit" : "UN_METER_2",
     "quantity" : 78.40,
     "price" : 1.80,
     "nodes" : [],
-    "items" :[ {
-  "id" : "e2187d5e-d7df-485f-85c3-12cb761b0730",
+    "items" :  // [ Начало списока items
+[ {
+  "id" : "157df6b5-18ef-4341-ae1b-4d05af3f3b0c",
   "name" : "Демонтаж",
   "quantity" : 0.00,
   "cost" : 0.00,
-  "idItemDirectory" : "0ca4df7c-5e37-4690-9d1d-7f48541c6f81",
+  "idItemDirectory" : "f0790b42-0cde-4464-bbca-47cfc25acee9",
   "category" : "CTG_WORK",
   "code" : "Демонтаж_А1",
   "title" : "Демонтаж кирпичных стен",
@@ -140,11 +154,11 @@
   "price" : 1.50,
   "vendor" : "Хаким"
 }, {
-  "id" : "82134f1f-ebbd-43b1-83d0-bebf8de42664",
+  "id" : "fe87b109-028d-4cf4-b661-5693546746e6",
   "name" : "Кладка",
   "quantity" : 0.00,
   "cost" : 0.00,
-  "idItemDirectory" : "acf10281-f3e2-4ff0-94e3-2f2d23c0b152",
+  "idItemDirectory" : "ad931442-6322-4b88-8e08-900fa9fe3f41",
   "category" : "CTG_WORK",
   "code" : "Кладка_А1",
   "title" : "Кладка стен блоками 100мм",
@@ -152,11 +166,11 @@
   "price" : 1.50,
   "vendor" : "Хаким"
 }, {
-  "id" : "18110ea3-3ba9-4140-962d-21dea98960a2",
+  "id" : "b796be1f-432b-4a64-95e3-9360d465997d",
   "name" : "Цемент_А1",
   "quantity" : 0.00,
   "cost" : 0.00,
-  "idItemDirectory" : "977e431b-c841-4926-8fe0-b7f19443d10a",
+  "idItemDirectory" : "68c0eb2c-699c-4aa6-9140-0c7a10cbb6d7",
   "category" : "CTG_MATERIAL",
   "code" : "Цемент_А1",
   "title" : "Цемент 500",
@@ -164,33 +178,35 @@
   "price" : 1.30,
   "vendor" : "Умид"
 }, {
-  "id" : "a602c336-f4fc-4f2d-974f-9a4647ae4647",
+  "id" : "a2255ba6-5cf9-4eb4-9851-b8877618aab5",
   "name" : "Блоки_А1",
   "quantity" : 0.00,
   "cost" : 0.00,
-  "idItemDirectory" : "571800b3-c28d-424f-bfb9-0f386c3b42e9",
+  "idItemDirectory" : "2698fd3b-1929-49cf-8ea9-7be9df534e56",
   "category" : "CTG_MATERIAL",
   "code" : "Блоки_А1",
   "title" : "Блоки газобетонные 100мм",
   "unit" : "UN_LITRE",
   "price" : 1.30,
   "vendor" : "Умид"
-} ]
-}, {
-    "id" : "8d5dd120-af51-4fbe-adf5-51390067e8db",
+} ]  // ] Конец списка items 
+},
+   { // *** Блок node: "Блок работ" -> "Штукатурка_стен_А1" ***
+    "id" : "bda5ae43-e884-4383-a815-945b2415a32d",
     "name" : "Штукатурка_стен_А1",
     "title" : "Штукатурка_стен",
-    "status" : "STAT_BLOCK",
+    "status" : "STAT_BLOCK",  //  "Блок работ"
     "unit" : "UN_METER_2",
     "quantity" : 78.40,
     "price" : 1.90,
     "nodes" : [],
-    "items" :[ {
-  "id" : "819c81ad-7903-4fae-9a4c-b247b1af6c21",
+    "items" :  // [ Начало списока items
+[ {
+  "id" : "39a8b35c-06d7-4fb4-9b98-00d2a4f2aba4",
   "name" : "Штукатурка",
   "quantity" : 0.00,
   "cost" : 0.00,
-  "idItemDirectory" : "b2b11dc8-df51-4809-90cd-ee94d9684b71",
+  "idItemDirectory" : "b052577c-fd5d-4345-abc4-9cbce796ec94",
   "category" : "CTG_WORK",
   "code" : "Штукатурка_А1",
   "title" : "Штукатурка стен",
@@ -198,33 +214,35 @@
   "price" : 1.50,
   "vendor" : "Хаким"
 }, {
-  "id" : "9bb334ba-cc02-41ca-8a20-11606c521cbe",
+  "id" : "a5632397-4da7-41f5-acda-aa62a5190396",
   "name" : "Штукатурная_смесь",
   "quantity" : 0.00,
   "cost" : 0.00,
-  "idItemDirectory" : "b116d5c6-18c9-46a1-878a-ee6eedc83b1d",
+  "idItemDirectory" : "a0461f73-143f-44a9-a5e7-f00fdb5d6488",
   "category" : "CTG_MATERIAL",
   "code" : "Штукатурная_смесь_А1",
   "title" : "Сухая штукатурная смесь",
   "unit" : "UN_LITRE",
   "price" : 1.30,
   "vendor" : "Умид"
-} ]
-}, {
-    "id" : "21f19466-0c6e-4ea2-93d5-af71ca56e1d3",
+} ]  // ] Конец списка items 
+},
+   { // *** Блок node: "Блок работ" -> "Покраска_стен_А1" ***
+    "id" : "3cc7cdab-b62e-4761-a4ce-5bae057e649d",
     "name" : "Покраска_стен_А1",
     "title" : "Покраска стен",
-    "status" : "STAT_BLOCK",
+    "status" : "STAT_BLOCK",  //  "Блок работ"
     "unit" : "UN_METER_2",
     "quantity" : 78.40,
     "price" : 2.00,
     "nodes" : [],
-    "items" :[ {
-  "id" : "b624d950-c83f-44b7-8ad1-edfb86ebbc32",
+    "items" :  // [ Начало списока items
+[ {
+  "id" : "10d42ece-71dd-4f13-9502-08bf16d8a3ca",
   "name" : "Малярка",
   "quantity" : 0.00,
   "cost" : 0.00,
-  "idItemDirectory" : "aea46440-24ef-4ab5-b6ec-6e4367e15bca",
+  "idItemDirectory" : "9c50b8de-23f9-4ff9-9c0f-916bb13cd778",
   "category" : "CTG_WORK",
   "code" : "Малярка_А1",
   "title" : "Покраска стен",
@@ -232,16 +250,16 @@
   "price" : 1.50,
   "vendor" : "Хаким"
 }, {
-  "id" : "b0e3b0bc-5474-4470-a974-99c92b2753f9",
+  "id" : "eda19974-52be-4740-9bda-6ba7e1b33261",
   "name" : "Краска",
   "quantity" : 0.00,
   "cost" : 0.00,
-  "idItemDirectory" : "460e237a-105f-43e6-b286-8407fa0fa5fd",
+  "idItemDirectory" : "cc689b6b-56b0-48cb-900d-84d65ed724a5",
   "category" : "CTG_MATERIAL",
   "code" : "Краска_А1",
   "title" : "Краска Тикурилла белая Премиум",
   "unit" : "UN_LITRE",
   "price" : 1.30,
   "vendor" : "Умид"
-} ]
+} ]  // ] Конец списка items 
 } ]

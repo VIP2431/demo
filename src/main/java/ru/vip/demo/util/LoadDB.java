@@ -33,14 +33,14 @@ public class LoadDB {
 
 		try (PrintWriter outFile = new PrintWriter(out_node, StandardCharsets.UTF_8)){
 			int n = 0;
-			outFile.print("[");
+			outFile.print("[\n    ");
 			for (Node node : nodeList) {
-				if (n++ > 0) { outFile.print(","); }
-				outFile.print(" {" +
+				if (n++ > 0) { outFile.print(",\n  "); }
+				outFile.print(" { // *** Блок node: \"" + node.getStatus().getName() + "\" -> \"" + node.getName() + "\" ***" +
 						"\n    \"id\" : \"" + node.getId() + "\"," +
 						"\n    \"name\" : \"" + node.getName() + "\"," +
 						"\n    \"title\" : \"" + node.getTitle() + "\"," +
-						"\n    \"status\" : \"" + node.getStatus() + "\"," +
+						"\n    \"status\" : \"" + node.getStatus() + "\"," + "  //  \"" + node.getStatus().getName() + "\"" +
 						"\n    \"unit\" : \"" + node.getUnit() + "\"," +
 						"\n    \"quantity\" : " + node.getQuantity() + "," +
 						"\n    \"price\" : " + node.getPrice() + ",");
@@ -50,9 +50,16 @@ public class LoadDB {
 				else{outFile.print("\n    \"nodes\" :\n" + mapper.writeValueAsString( nodes));}
 
 				List<Item> items = node.getItems();
-				if (items.isEmpty()) { outFile.print("\n    \"items\" : []"); }
-				else { outFile.print("\n    \"items\" :" + mapper.writeValueAsString( items)); }
-				outFile.print("\n}");
+				if (items.isEmpty()) { outFile.print("\n    \"items\" : []\n}"); }
+				else {
+					outFile.print("\n    \"items\" :  // [ Начало списока items\n");
+					outFile.print( mapper.writeValueAsString( items));
+					outFile.print("  // ] Конец списка items \n}");
+				//	outFile.print("\n    \"items\" :" + mapper.writeValueAsString( items));
+				//  outFile.print("\n}");
+				}
+
+
 			}
 			outFile.println(" ]");
 		} catch (IOException e) {

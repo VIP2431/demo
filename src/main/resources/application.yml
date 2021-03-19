@@ -6,10 +6,13 @@ server:
 # Передача переменных в приложение
 file_json:
   in_item: "item.json"
+  init_node: "init_node.json"
   in_node: "node.json"
-  in_builder: "estimate_builder.json"
   in_item_directory: "item_directory.json"
+  in_builder: "estimate_builder.json"
+  init_builder: "init_builder.json"
   out_prefix: "src/main/resources/test_"
+  prefix_: "src/main/resources/"
 
 # Передача блока переменных 4шт (provider.params) в Класс приложения
 provider:
@@ -65,12 +68,16 @@ spring:
 # ===============================
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+    generate-ddl: true
 
-    hibernate.ddl-auto: update #create none update create-drop validate
-    #generate-ddl: true
-    #show-sql: true
     properties:
       default-schema: jpa
+    hibernate:
+      ddl-auto:  create-drop # create none update validate
+
+#show-sql: true
+
 
 
 

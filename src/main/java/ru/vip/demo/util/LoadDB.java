@@ -14,7 +14,6 @@ import ru.vip.demo.serviceimpl.EstimateImpl;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @Transactional
@@ -24,18 +23,52 @@ public class LoadDB {
 
 	public final EstimateImpl repository;
 
+	public void deleteCommentsForJson(String in_nameFile, String out_nameFile) {
+
+		try ( FileReader inFile = new FileReader( in_nameFile, StandardCharsets.UTF_8);
+			  FileWriter outFile = new FileWriter(out_nameFile, StandardCharsets.UTF_8);
+				PushbackReader f = new PushbackReader( inFile);){
+
+			int c, ch;
+			while ( (c = f.read()) != -1) {
+				if(c == '/') {
+					if( (ch = f.read()) == -1) { return; }
+					if( ch == '/') {
+						while ((c = f.read()) != -1 & c >= ' ');
+						if(c == -1) { return; }
+						outFile.write( c);
+						while ((c = f.read()) != -1 & c < ' ') {
+							outFile.write( c);
+						}
+						if(c == -1) { return; }
+						f.unread(c);
+					} else {
+						outFile.write( c);
+						outFile.write( ch);
+					}
+				}else {
+					outFile.write( c);
+				}
+			}
+		} catch (IOException e) {
+			System.out.println("Ошибка удаления комментариев из Json inFile/outFile:\"" + in_nameFile + "\"/\"" + out_nameFile +   "\"   " + e);
+		}
+	}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
-	public void writeNodeToJson(String out_node){
+	public void writeNodeToJson(String out_node) {
 
 		ObjectMapper mapper = repository.getMapper();
 		List<Node> nodeList = repository.getAllNode();
 
-		try (PrintWriter outFile = new PrintWriter(out_node, StandardCharsets.UTF_8)){
+		try (PrintWriter outFile = new PrintWriter(out_node, StandardCharsets.UTF_8)) {
 			int n = 0;
 			outFile.print("[\n    ");
 			for (Node node : nodeList) {
-				if (n++ > 0) { outFile.print(",\n  "); }
+				if (n++ > 0) {
+					outFile.print(",\n  ");
+				}
 				outFile.print(" { // *** Блок node: \"" + node.getStatus().getName() + "\" -> \"" + node.getName() + "\" ***" +
 						"\n    \"id\" : \"" + node.getId() + "\"," +
 						"\n    \"name\" : \"" + node.getName() + "\"," +
@@ -46,17 +79,22 @@ public class LoadDB {
 						"\n    \"price\" : " + node.getPrice() + ",");
 
 				List<Node> nodes = node.getNodes();
-				if(nodes.isEmpty()) { outFile.print("\n    \"nodes\" : [],");}
-				else{outFile.print("\n    \"nodes\" :\n" + mapper.writeValueAsString( nodes));}
+				if (nodes.isEmpty()) {
+					outFile.print("\n    \"nodes\" : [],");
+				} else {
+					outFile.print("\n    \"nodes\" :\n" + mapper.writeValueAsString(nodes));
+					outFile.print("\n    \"nodes\" :  // [ Начало списока nodes\n");
+					outFile.print(mapper.writeValueAsString(nodes));
+					outFile.print("  // ] Конец списка nodes \n}");
+				}
 
 				List<Item> items = node.getItems();
-				if (items.isEmpty()) { outFile.print("\n    \"items\" : []\n}"); }
-				else {
+				if (items.isEmpty()) {
+					outFile.print("\n    \"items\" : []\n}");
+				} else {
 					outFile.print("\n    \"items\" :  // [ Начало списока items\n");
-					outFile.print( mapper.writeValueAsString( items));
+					outFile.print(mapper.writeValueAsString(items));
 					outFile.print("  // ] Конец списка items \n}");
-				//	outFile.print("\n    \"items\" :" + mapper.writeValueAsString( items));
-				//  outFile.print("\n}");
 				}
 
 
@@ -67,20 +105,22 @@ public class LoadDB {
 		}
 	}
 
-//////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////
 //
 	public void itemAndItemDirectToDB(String in_item_directory, String in_item) throws Exception {
 
 		List<ItemDirectory> itemDirectories = repository.readJsonItemDirectory(in_item_directory);
 
-		for (ItemDirectory item : itemDirectories){ repository.save(item);} // Запись из List в базу данных
+		for (ItemDirectory item : itemDirectories) {
+			repository.save(item);
+		} // Запись из List в базу данных
 
 		List<Item> items = repository.readJsonItem(in_item);                // Чтение из JSON file в List
-		List<ItemDirectory>	itemDirs = repository.getAllItemDirectory();	// Чтение из базы данных в List
+		List<ItemDirectory> itemDirs = repository.getAllItemDirectory();    // Чтение из базы данных в List
 		for (Item item : items) {
 			String name = item.getCode();
 			for (ItemDirectory dir : itemDirs) {
-				if(name.equals(dir.getCode())) {
+				if (name.equals(dir.getCode())) {
 					item.setIdItemDirectory(dir.getIdItemDirectory());
 					item.setCategory(dir.getCategory());
 					item.setCode(dir.getCode());
@@ -89,7 +129,7 @@ public class LoadDB {
 					item.setPrice(dir.getPrice());
 					item.setVendor(dir.getVendor());
 
-					repository.save(item);									// Запись из List в базу данных
+					repository.save(item);                                    // Запись из List в базу данных
 				}
 			}
 		}
@@ -97,72 +137,61 @@ public class LoadDB {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
+	private void addNodeToNodeNodes( Node newNode, List<Node> allNodeDB, List<String> listNameNode) throws Exception  {
+
+		if(listNameNode.isEmpty()) { return; }
+		for (String str : listNameNode) {
+			for (Node node : allNodeDB) {              // ??? nodeList head for
+				if (str.equals(node.getName())) {
+					Node cloneNode = node.clone();
+					cloneNode.setId(repository.getUuidNull());
+					newNode.getNodes().add(repository.save(cloneNode));
+					break;
+				}
+			}
+		}
+	}
+
+	private void addItemsToNodeItems( Node newNode, List<String> listNameItem) throws Exception {
+
+		if(listNameItem.isEmpty()) { return; }
+
+		List<Item> itemList = repository.getAllItem();	// Чтение из базы данных в List
+
+		for (String nameItem : listNameItem) { 	// взять следующее имя из заданного в "builder" списка
+			for (Item item : itemList) {	// взять следующее "item" из списка взятого в БД
+				if (nameItem.equals(item.getName())) { // Item с заданным именем найден
+					Item cloneItem = item.clone();
+					cloneItem.setId(repository.getUuidNull());
+					Item newItem = repository.save(cloneItem);
+					newNode.getItems().add(newItem);
+					break;
+				}
+			}
+		}
+	}
+
 	public void builderToDB(String in_builder ) throws Exception {
 
 		List<EstimateBuilder> builders = repository.readJsonBuilder(in_builder);// Чтение из JSON file в List
-		List<Item> itemList = repository.getAllItem();	// Чтение из базы данных в List
-		List<Node> nodeList = repository.getAllNode();
-		List<Node> nodeList1 = repository.getAllNode();
-		String nullUUID = repository.getIdNullUUID();
+		List<Node> allNodeDB = repository.getAllNode();
 
 		for (EstimateBuilder builder : builders) {		// взять следующей шаблон из заданного в "builder.json" списка
 			Node newNode;
 			String nameNode = builder.getNameNode(); 	// взять nameNode из выбранного "builder"
-			for (Node node : nodeList) {				// просмотр списка Node взятого из ВД
+			for (Node node : allNodeDB) {				// просмотр списка Node взятого из ВД
 				if(nameNode.equals(node.getName())) {	// Node с заданным именем найден
 					Node cloneNode = node.clone();// Клонировать  Node
 					cloneNode.setName(builder.getNewName());
 					cloneNode.setTitle(builder.getTitleNode());
-//
-//					System.out.println(" -1.1- cloneNode.getName()" + cloneNode.getName() + "\" cloneNode.id: \"" + cloneNode.getId() + "\"");
-//					System.out.println(" -1.2- cloneNode.name: \"" + cloneNode.getName() + "\"   cloneNode.getNodes().isEmpty(): \"" + cloneNode.getNodes().isEmpty() + "\"");
-//					System.out.println(" -1.3- cloneNode.name: \"" + cloneNode.getName() + "\"   cloneNode.getItems().isEmpty(): \"" + cloneNode.getItems().isEmpty() + "\"");
 
 					boolean flagItems = cloneNode.getItems().isEmpty(); //  ?????????????????????????????????????????
 					boolean flagNodes = cloneNode.getNodes().isEmpty();	//  ?????????????????????????????????????????
-					cloneNode.setId(UUID.fromString(nullUUID));
 
-					// Записать созданный Node в БД и сохранить на нег ссылку
+					cloneNode.setId(repository.getUuidNull());
 					newNode = repository.save(cloneNode);
-//					System.out.println(" -3.2- newNode.name: \"" + newNode.getName() + "\"   newNode.id: \"" + newNode.getId() + "\"");
-//					System.out.println(" -3.3- newNode.name: \"" + newNode.getName() + "\"   newNode.getNodes().isEmpty(): \"" + newNode.getNodes().isEmpty() + "\"");
-//					System.out.println(" -3.4- newNode.name: \"" + newNode.getName() + "\"   newNode.getItems().isEmpty(): \"" + newNode.getItems().isEmpty() + "\"");
-//
-
-					List<String> listNameNode = builder.getNodes();
-					if(!listNameNode.isEmpty()) {
-						for (String str : listNameNode) {
-							for (Node node1 : nodeList1) {              // ??? nodeList head for
-								if (str.equals(node1.getName())) {
-									node1.setId(UUID.fromString(nullUUID));
-									node1.getNodes().add(repository.save(node1));
-								}
-							}
-						}
-					}
-					List<String> listNameItem = builder.getItems();
-					if(!listNameItem.isEmpty()) {
-						for (String nameItem : listNameItem) { 	// взять следующее имя из заданного в "builder" списка
-							for (Item item : itemList) {	// взять следующее "item" из списка взятого в БД
-								if (nameItem.equals(item.getName())) { // Item с заданным именем найден
-//										System.out.println(" -5.1- nameItem: \"" + nameItem + "\" item.getName():\"" + item.getName() + "\"");
-									Item cloneItem = item.clone();
-									cloneItem.setId(UUID.fromString(nullUUID));
-									Item newItem = repository.save(cloneItem);
-//										System.out.println(" -5.3.1- nameItem: \"" + nameItem + "\" item.getName():\"" + item.getName() + "\" item.id: \"" + item.getId() + "\"");
-//										System.out.println(" -5.3.2- nameItem: \"" + nameItem + "\" newItem.getName():\"" + newItem.getName() + "\" newItem.id: \"" + newItem.getId() +  "\"");
-//
-//										System.out.println(" -5.3.3- newNode.name: \"" + newNode.getName() + "\" newNode.id: \"" + newNode.getId() + "\"");
-//										System.out.println(" -5.3.4- newNode.name: \"" + newNode.getName() + "\"   newNode.getItems().isEmpty(): \"" + newNode.getItems().isEmpty() + "\"");
-									newNode.getItems().add(newItem);
-//										System.out.println(" -5.5.1- newNode.name: \"" + newNode.getName() + "\"   newNode.getItems().isEmpty(): \"" + newNode.getItems().isEmpty() + "\"");
-//										System.out.println(" -5.5.2- newItem.getName: \"" + newItem.getName() + "\"   newItem.id: \"" + newItem.getId() + "\"");
-//										System.out.println(" -5.5.3- newNode.name: \"" + newNode.getName() + "\"");
-									break;
-								}
-							}
-						}
-					}
+					addNodeToNodeNodes( newNode, allNodeDB, builder.getNodes());
+					addItemsToNodeItems( newNode, builder.getItems());
 					repository.save(newNode);
 					break;
 				}

@@ -1,6 +1,6 @@
 [
      { // *** Блок node: "Объект" -> "Шереметьевская" ***
-    "id" : "1654ee3c-bd56-415d-91b7-520035d0a9d9",
+    "id" : "c0289c8b-9120-4038-8d36-b3a3e6e9500f",
     "name" : "Шереметьевская",
     "title" : "Смета Шереметьевская 8",
     "status" : "STAT_HOUSE",  //  "Объект"
@@ -11,7 +11,7 @@
     "items" : []
 },
    { // *** Блок node: "Комната" -> "Гостинная" ***
-    "id" : "7aabc459-fd8f-4004-a959-e9b9e2560114",
+    "id" : "7a960ebc-b40c-465b-ba40-2ac4b1b28a1d",
     "name" : "Гостинная",
     "title" : "Гостинная",
     "status" : "STAT_ROOM",  //  "Комната"
@@ -22,7 +22,7 @@
     "items" : []
 },
    { // *** Блок node: "Комната" -> "Спальня" ***
-    "id" : "73cc08c4-047e-4ba4-8a12-deec40d01cb4",
+    "id" : "60f1c5cc-ad8e-46d0-9397-e32db5931852",
     "name" : "Спальня",
     "title" : "Спальня",
     "status" : "STAT_ROOM",  //  "Комната"
@@ -33,7 +33,7 @@
     "items" : []
 },
    { // *** Блок node: "Комната" -> "Детская" ***
-    "id" : "544cadef-e13a-4082-89e0-8833c1d4e5aa",
+    "id" : "f4dbb8e4-0c2f-4906-9a71-6234f6bfe688",
     "name" : "Детская",
     "title" : "Детская",
     "status" : "STAT_ROOM",  //  "Комната"
@@ -44,7 +44,7 @@
     "items" : []
 },
    { // *** Блок node: "Комната" -> "Ванная" ***
-    "id" : "b73b33a1-14f7-4e35-b820-2026c949f8ba",
+    "id" : "a0882a94-4b53-489f-b20c-567eb6e047e1",
     "name" : "Ванная",
     "title" : "Ванная",
     "status" : "STAT_ROOM",  //  "Комната"
@@ -55,7 +55,7 @@
     "items" : []
 },
    { // *** Блок node: "Комната" -> "Санузел" ***
-    "id" : "8a74240f-7b3e-49c6-8435-dae3f11c5bd2",
+    "id" : "27170b37-f7d7-4f4b-87cd-9af42d6da3c5",
     "name" : "Санузел",
     "title" : "Санузел",
     "status" : "STAT_ROOM",  //  "Комната"
@@ -66,7 +66,7 @@
     "items" : []
 },
    { // *** Блок node: "Комната" -> "Кухня" ***
-    "id" : "65d12287-7b19-470d-82b4-fa4b4af07b2d",
+    "id" : "da8669df-7e67-4c8c-be9d-18935fff5172",
     "name" : "Кухня",
     "title" : "Кухня",
     "status" : "STAT_ROOM",  //  "Комната"
@@ -77,7 +77,7 @@
     "items" : []
 },
    { // *** Блок node: "Блок работ" -> "Демонтаж" ***
-    "id" : "35ff6535-77a8-4fc6-b078-b762976fe28e",
+    "id" : "a964c70f-2fc4-41b8-943d-165138909e79",
     "name" : "Демонтаж",
     "title" : "Демонтаж старых конструкций",
     "status" : "STAT_BLOCK",  //  "Блок работ"
@@ -88,7 +88,7 @@
     "items" : []
 },
    { // *** Блок node: "Блок работ" -> "Штукатурка" ***
-    "id" : "2deae3ea-fad8-4905-987c-4ebb96789aec",
+    "id" : "c199bc86-408f-4673-8fce-2eb8c803856f",
     "name" : "Штукатурка",
     "title" : "Штукатурные работы",
     "status" : "STAT_BLOCK",  //  "Блок работ"
@@ -99,7 +99,7 @@
     "items" : []
 },
    { // *** Блок node: "Блок работ" -> "Малярка" ***
-    "id" : "13d26e50-6dd0-4654-b74e-d2db0f3b576d",
+    "id" : "d4955c8d-0539-4828-9516-51c41e3c4568",
     "name" : "Малярка",
     "title" : "Малярные работы",
     "status" : "STAT_BLOCK",  //  "Блок работ"
@@ -110,7 +110,7 @@
     "items" : []
 },
    { // *** Блок node: "Блок сумм" -> "Итог" ***
-    "id" : "d7b114bf-edb6-4fa1-b232-5bdb3f6de675",
+    "id" : "ed6d65a0-753e-4b9e-aeb9-b628db4bb897",
     "name" : "Итог",
     "title" : "Итог по смете",
     "status" : "STAT_SUM",  //  "Блок сумм"
@@ -121,7 +121,7 @@
     "items" : []
 },
    { // *** Блок node: "Общий блок" -> "Общие" ***
-    "id" : "958b1304-000a-49a4-b7e5-2a38bdf702af",
+    "id" : "7bc8a494-7aa0-4cff-bcd8-83eb230f55af",
     "name" : "Общие",
     "title" : "Общие работы",
     "status" : "STAT_COM",  //  "Общий блок"
@@ -132,7 +132,7 @@
     "items" : []
 },
    { // *** Блок node: "Блок работ" -> "Демонтаж_стен_А1" ***
-    "id" : "d954a8de-88b9-4859-a51d-fd79e8d0f35d",
+    "id" : "6b1558cc-0a12-4360-aef7-c20c24bcf07a",
     "name" : "Демонтаж_стен_А1",
     "title" : "Демонтаж старых кирпичных стен в квартире",
     "status" : "STAT_BLOCK",  //  "Блок работ"
@@ -142,11 +142,11 @@
     "nodes" : [],
     "items" :  // [ Начало списока items
 [ {
-  "id" : "157df6b5-18ef-4341-ae1b-4d05af3f3b0c",
+  "id" : "98b30f93-619f-4167-949c-51790f9a39ca",
   "name" : "Демонтаж",
   "quantity" : 0.00,
   "cost" : 0.00,
-  "idItemDirectory" : "f0790b42-0cde-4464-bbca-47cfc25acee9",
+  "idItemDirectory" : "9649ea31-9f2a-40ea-ac3d-179df6b37d38",
   "category" : "CTG_WORK",
   "code" : "Демонтаж_А1",
   "title" : "Демонтаж кирпичных стен",
@@ -154,11 +154,11 @@
   "price" : 1.50,
   "vendor" : "Хаким"
 }, {
-  "id" : "fe87b109-028d-4cf4-b661-5693546746e6",
+  "id" : "8e374c92-7f3f-4cf4-b2b2-e3526cb3c2a6",
   "name" : "Кладка",
   "quantity" : 0.00,
   "cost" : 0.00,
-  "idItemDirectory" : "ad931442-6322-4b88-8e08-900fa9fe3f41",
+  "idItemDirectory" : "3c58bab3-a6df-4ace-914a-46ab33b83154",
   "category" : "CTG_WORK",
   "code" : "Кладка_А1",
   "title" : "Кладка стен блоками 100мм",
@@ -166,11 +166,11 @@
   "price" : 1.50,
   "vendor" : "Хаким"
 }, {
-  "id" : "b796be1f-432b-4a64-95e3-9360d465997d",
+  "id" : "be578f77-ac61-40de-9fa7-2311d4919b9a",
   "name" : "Цемент_А1",
   "quantity" : 0.00,
   "cost" : 0.00,
-  "idItemDirectory" : "68c0eb2c-699c-4aa6-9140-0c7a10cbb6d7",
+  "idItemDirectory" : "801a6cfe-de1f-4d13-91f0-2bffaac71d0c",
   "category" : "CTG_MATERIAL",
   "code" : "Цемент_А1",
   "title" : "Цемент 500",
@@ -178,11 +178,11 @@
   "price" : 1.30,
   "vendor" : "Умид"
 }, {
-  "id" : "a2255ba6-5cf9-4eb4-9851-b8877618aab5",
+  "id" : "faa1107b-66bc-4898-9024-3a89027de322",
   "name" : "Блоки_А1",
   "quantity" : 0.00,
   "cost" : 0.00,
-  "idItemDirectory" : "2698fd3b-1929-49cf-8ea9-7be9df534e56",
+  "idItemDirectory" : "0e929522-81b3-4774-a0e2-4f432e3bbaed",
   "category" : "CTG_MATERIAL",
   "code" : "Блоки_А1",
   "title" : "Блоки газобетонные 100мм",
@@ -192,7 +192,7 @@
 } ]  // ] Конец списка items 
 },
    { // *** Блок node: "Блок работ" -> "Штукатурка_стен_А1" ***
-    "id" : "bda5ae43-e884-4383-a815-945b2415a32d",
+    "id" : "290b6bc7-67b1-4ec5-bcbe-a953617b0b28",
     "name" : "Штукатурка_стен_А1",
     "title" : "Штукатурка_стен",
     "status" : "STAT_BLOCK",  //  "Блок работ"
@@ -202,11 +202,11 @@
     "nodes" : [],
     "items" :  // [ Начало списока items
 [ {
-  "id" : "39a8b35c-06d7-4fb4-9b98-00d2a4f2aba4",
+  "id" : "70b6a6f4-5b40-42cc-bde7-d530fd8c9022",
   "name" : "Штукатурка",
   "quantity" : 0.00,
   "cost" : 0.00,
-  "idItemDirectory" : "b052577c-fd5d-4345-abc4-9cbce796ec94",
+  "idItemDirectory" : "f26d9eee-0835-481b-9835-fb15be2e647f",
   "category" : "CTG_WORK",
   "code" : "Штукатурка_А1",
   "title" : "Штукатурка стен",
@@ -214,11 +214,11 @@
   "price" : 1.50,
   "vendor" : "Хаким"
 }, {
-  "id" : "a5632397-4da7-41f5-acda-aa62a5190396",
+  "id" : "1c33eb6e-cf04-4de1-83cd-cca1303ea650",
   "name" : "Штукатурная_смесь",
   "quantity" : 0.00,
   "cost" : 0.00,
-  "idItemDirectory" : "a0461f73-143f-44a9-a5e7-f00fdb5d6488",
+  "idItemDirectory" : "f1882325-7533-4055-9f49-ac8c2346ae8f",
   "category" : "CTG_MATERIAL",
   "code" : "Штукатурная_смесь_А1",
   "title" : "Сухая штукатурная смесь",
@@ -228,7 +228,7 @@
 } ]  // ] Конец списка items 
 },
    { // *** Блок node: "Блок работ" -> "Покраска_стен_А1" ***
-    "id" : "3cc7cdab-b62e-4761-a4ce-5bae057e649d",
+    "id" : "49cf7462-6054-4c01-87ac-0180baab8102",
     "name" : "Покраска_стен_А1",
     "title" : "Покраска стен",
     "status" : "STAT_BLOCK",  //  "Блок работ"
@@ -238,11 +238,11 @@
     "nodes" : [],
     "items" :  // [ Начало списока items
 [ {
-  "id" : "10d42ece-71dd-4f13-9502-08bf16d8a3ca",
+  "id" : "5af00c24-cb9a-423e-8087-c43bec04c3fc",
   "name" : "Малярка",
   "quantity" : 0.00,
   "cost" : 0.00,
-  "idItemDirectory" : "9c50b8de-23f9-4ff9-9c0f-916bb13cd778",
+  "idItemDirectory" : "4797c9c7-bf4e-466a-b279-b76858824fe8",
   "category" : "CTG_WORK",
   "code" : "Малярка_А1",
   "title" : "Покраска стен",
@@ -250,11 +250,11 @@
   "price" : 1.50,
   "vendor" : "Хаким"
 }, {
-  "id" : "eda19974-52be-4740-9bda-6ba7e1b33261",
+  "id" : "5ad4c86c-e3d6-4525-a465-b4628c83a852",
   "name" : "Краска",
   "quantity" : 0.00,
   "cost" : 0.00,
-  "idItemDirectory" : "cc689b6b-56b0-48cb-900d-84d65ed724a5",
+  "idItemDirectory" : "8a08a371-3fc6-470b-8c64-21c03225de06",
   "category" : "CTG_MATERIAL",
   "code" : "Краска_А1",
   "title" : "Краска Тикурилла белая Премиум",

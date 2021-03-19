@@ -21,11 +21,20 @@ public class DemoApplicationTests {
 	@Value("${file_json.in_item}")  			// Передача параметра из application.yml
 	String in_item;
 
+	@Value("${file_json.init_node}") 				 // Передача параметра из application.yml
+	String init_node;
+
 	@Value("${file_json.in_node}") 				 // Передача параметра из application.yml
 	String in_node;
 
 	@Value("${file_json.in_builder}") 			 // Передача параметра из application.yml
 	String in_builder;
+
+	@Value("${file_json.init_builder}") 			 // Передача параметра из application.yml
+	String init_builder;
+
+	@Value("${file_json.prefix_}") 			 // Передача параметра из application.yml
+	String prefix_;
 
 	@Value("${file_json.in_item_directory}")  	// Передача параметра из application.yml
 	String in_item_directory;
@@ -44,6 +53,9 @@ public class DemoApplicationTests {
 //
 	@Test
 	public void dataTest()throws Exception {
+
+		loadDB.deleteCommentsForJson(prefix_ + init_builder, prefix_ + in_builder);
+		loadDB.deleteCommentsForJson(prefix_ + init_node, prefix_ + in_node);
 
 		loadDB.itemAndItemDirectToDB(in_item_directory, in_item);
 

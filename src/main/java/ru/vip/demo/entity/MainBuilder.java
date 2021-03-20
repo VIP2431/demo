@@ -1,7 +1,6 @@
 package ru.vip.demo.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,8 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 //@Entity
-@Builder
-public class EstimateBuilder {
+public class MainBuilder {
     private String nameNode;
     private String newName;
     private String titleNode;

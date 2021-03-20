@@ -5,12 +5,12 @@ server:
 
 # Передача переменных в приложение
 file_json:
-  in_item: "item.json"
   init_node: "init_node.json"
-  in_node: "node.json"
-  in_item_directory: "item_directory.json"
-  in_builder: "estimate_builder.json"
   init_builder: "init_builder.json"
+  in_node: "node.json"
+  in_builder: "main_builder.json"
+  in_item: "item.json"
+  in_item_directory: "item_directory.json"
   out_prefix: "src/main/resources/test_"
   prefix_: "src/main/resources/"
 

@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.vip.demo.entity.EstimateBuilder;
+import ru.vip.demo.entity.MainBuilder;
 import ru.vip.demo.entity.Item;
 import ru.vip.demo.entity.ItemDirectory;
 import ru.vip.demo.entity.Node;
@@ -77,8 +77,8 @@ public class EstimateImpl implements EstimateService {
         return mapper.readValue(inputStream(resourceName), new TypeReference<List<Item>>() {});
     }
 
-    public List<EstimateBuilder> readJsonBuilder( String resourceName) throws IOException {
-        return mapper.readValue(inputStream(resourceName), new TypeReference<List<EstimateBuilder>>() {});
+    public List<MainBuilder> readJsonBuilder(String resourceName) throws IOException {
+        return mapper.readValue(inputStream(resourceName), new TypeReference<List<MainBuilder>>() {});
     }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,7 +95,7 @@ public class EstimateImpl implements EstimateService {
         mapper.writeValue( new FileOutputStream(outFile), itemList);
     }
 
-   public void writeJsonBuilder (String outFile, List<EstimateBuilder> builderList) throws IOException {
+   public void writeJsonBuilder (String outFile, List<MainBuilder> builderList) throws IOException {
         mapper.writeValue( new FileOutputStream(outFile), builderList);
     }
 

@@ -29,7 +29,7 @@ public interface EstimateService {
 
     public void writeJsonNode( String outFile, List<Node> nodeList) throws IOException;
 
-    public List<EstimateBuilder> readJsonBuilder( String resourceName) throws IOException;
+    public List<MainBuilder> readJsonBuilder(String resourceName) throws IOException;
 
-    public void writeJsonBuilder( String outFile, List<EstimateBuilder> builderList) throws IOException;
+    public void writeJsonBuilder( String outFile, List<MainBuilder> builderList) throws IOException;
 }

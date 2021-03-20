@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.vip.demo.entity.EstimateBuilder;
+import ru.vip.demo.entity.MainBuilder;
 import ru.vip.demo.entity.Item;
 import ru.vip.demo.entity.ItemDirectory;
 import ru.vip.demo.entity.Node;
@@ -42,11 +42,25 @@ public class LoadDB {
 						}
 						if(c == -1) { return; }
 						f.unread(c);
-					} else {
-						outFile.write( c);
-						outFile.write( ch);
 					}
-				}else {
+					else {
+						if( ch == '*'){
+							do {
+								while ((c = f.read()) != -1 & c != '*') ;
+								if (c == -1) {return;}
+								if ((c = f.read()) != -1) {
+									if(c == -1) { return; }
+									if (c == '/') { break; }
+								}
+							}while (true);
+						}
+						else {
+							outFile.write(c);
+							outFile.write(ch);
+						}
+					}
+				}
+				else {
 					outFile.write( c);
 				}
 			}
@@ -173,10 +187,12 @@ public class LoadDB {
 
 	public void builderToDB(String in_builder ) throws Exception {
 
-		List<EstimateBuilder> builders = repository.readJsonBuilder(in_builder);// Чтение из JSON file в List
+//		System.out.println(" -2- file in_builder:\"" + in_builder + "\"");
+
+		List<MainBuilder> builders = repository.readJsonBuilder(in_builder);// Чтение из JSON file в List
 		List<Node> allNodeDB = repository.getAllNode();
 
-		for (EstimateBuilder builder : builders) {		// взять следующей шаблон из заданного в "builder.json" списка
+		for (MainBuilder builder : builders) {		// взять следующей шаблон из заданного в "builder.json" списка
 			Node newNode;
 			String nameNode = builder.getNameNode(); 	// взять nameNode из выбранного "builder"
 			for (Node node : allNodeDB) {				// просмотр списка Node взятого из ВД

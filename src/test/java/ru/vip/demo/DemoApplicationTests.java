@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.vip.demo.entity.Item;
 import ru.vip.demo.entity.ItemDirectory;
+import ru.vip.demo.entity.MainBuilder;
 import ru.vip.demo.entity.Node;
 import ru.vip.demo.serviceimpl.EstimateImpl;
 import ru.vip.demo.util.LoadDB;
@@ -39,8 +40,8 @@ public class DemoApplicationTests {
 	@Value("${file_json.prefix_}") 			 		// Передача параметра из application.yml
 	String prefix_;
 
-	@Value("${file_json.out_prefix}")         		// Передача параметра из application.yml
-	String out_prefix;
+	@Value("${file_json.prefix_test}")         		// Передача параметра из application.yml
+	String prefix_test;
 
 	@Autowired
 	public LoadDB loadDB;
@@ -55,28 +56,31 @@ public class DemoApplicationTests {
 	public void dataTest()throws Exception {
 
 		loadDB.deleteCommentsForJson(prefix_ + init_builder, prefix_ + in_builder);
+
 		loadDB.deleteCommentsForJson(prefix_ + init_node, prefix_ + in_node);
 
-		loadDB.itemAndItemDirectToDB(in_item_directory, in_item);
+		loadDB.itemAndItemDirectToDB(prefix_ + in_item_directory, prefix_ + in_item);
 
-		List<ItemDirectory> dirsJson = repository.readJsonItemDirectory(in_item_directory);
+		List<ItemDirectory> dirsJson = repository.readJsonItemDirectory(prefix_ + in_item_directory);
 		List<ItemDirectory> dirsBD = repository.getAllItemDirectory();
 		itemDirectoryTest( dirsJson, dirsBD);
 
-		repository.writeJsonItemDirectory( out_prefix + in_item_directory, dirsBD); 	// Запмсь из List в JSON файл
-		List<ItemDirectory> test_dirsJson = repository.readJsonItemDirectory("test_" + in_item_directory);
+		repository.writeJsonItemDirectory( prefix_test + in_item_directory, dirsBD); 	// Запмсь из List в JSON файл
+		List<ItemDirectory> test_dirsJson = repository.readJsonItemDirectory(prefix_test + in_item_directory);
 		itemDirectoryTest( dirsJson, test_dirsJson);
 
 		List<Item>	itemList = repository.getAllItem();						// Чтение из базы данных в List
-		repository.writeJsonItem(out_prefix + in_item, itemList); 	// Запмсь из List в JSON файл
+		repository.writeJsonItem(prefix_test + in_item, itemList); 	// Запмсь из List в JSON файл
 
-		List<Node> nodes = repository.readJsonNode(in_node);				// Чтение из JSON file в List
+		List<Node> nodes = repository.readJsonNode(prefix_ + in_node);				// Чтение из JSON file в List
 		for (Node node : nodes) {	repository.save(node);	}				// Запись из List в базу данных
-//		System.out.println(" -1- file in_builder:\"" + in_builder + "\"");
 
-		loadDB.builderToDB(in_builder);  // Запуск "builder.json" конструктора-инициатора
+		List<MainBuilder> builders = repository.readJsonBuilder(prefix_ + in_builder);
+		repository.writeJsonBuilder(prefix_test + in_builder, builders);
 
-		loadDB.writeNodeToJson(out_prefix + in_node);
+		loadDB.builderToDB( builders);  // Запуск "builder.json" конструктора-инициатора
+
+		loadDB.writeNodeToJson(prefix_ + "NEW_" + in_node);
 	}
 
 

@@ -3,23 +3,21 @@ package ru.vip.demo.serviceimpl;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.google.common.io.Resources;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.vip.demo.entity.MainBuilder;
 import ru.vip.demo.entity.Item;
 import ru.vip.demo.entity.ItemDirectory;
+import ru.vip.demo.entity.MainBuilder;
 import ru.vip.demo.entity.Node;
 import ru.vip.demo.repository.ItemDirectoryRepository;
 import ru.vip.demo.repository.ItemRepository;
 import ru.vip.demo.repository.NodeRepository;
 import ru.vip.demo.service.EstimateService;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.UUID;
 
@@ -61,8 +59,13 @@ public class EstimateImpl implements EstimateService {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //        JSON Десериализация в List объектов из JSON файла
-    private InputStream inputStream( String resourceName) throws IOException { // Открыть поток чтения
-        return Resources.getResource(resourceName).openStream();
+
+//    private InputStream inputStream( String resourceName) throws IOException { // Открыть поток чтения
+//        return Resources.getResource(resourceName).openStream();
+//    }
+
+    private PushbackReader inputStream(String resourceName) throws IOException { // Открыть поток чтения
+        return new PushbackReader( new FileReader( resourceName, StandardCharsets.UTF_8));
     }
 
     public List<ItemDirectory> readJsonItemDirectory( String resourceName) throws IOException {

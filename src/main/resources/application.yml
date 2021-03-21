@@ -8,10 +8,10 @@ file_json:
   init_node: "init_node.json"
   init_builder: "init_builder.json"
   in_node: "node.json"
-  in_builder: "main_builder.json"
+  in_builder: "builder.json"
   in_item: "item.json"
   in_item_directory: "item_directory.json"
-  out_prefix: "src/main/resources/test_"
+  prefix_test: "src/main/resources/test_"
   prefix_: "src/main/resources/"
 
 # Передача блока переменных 4шт (provider.params) в Класс приложения

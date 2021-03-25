@@ -28,8 +28,8 @@ public class NodeDto implements Serializable {
     private BigDecimal quantity = BigDecimal.valueOf(0);// Количество
     private BigDecimal price = BigDecimal.valueOf(0);   // Цена еденицы
 
-    private List<NodeDto> listNode;                     //Список Комнат/Разделов
-
     private List <ItemDto> listItem;                    //Список Позиций
+
+    private List<NodeDto> listNode;                     //Список Комнат/Разделов
 
 }

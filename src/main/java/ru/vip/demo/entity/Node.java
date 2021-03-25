@@ -31,14 +31,14 @@ public class Node implements Serializable, Cloneable {
     private BigDecimal quantity = BigDecimal.valueOf(0);// Количество
     private BigDecimal price = BigDecimal.valueOf(0);   // Цена еденицы
 
+    @OneToMany (cascade = CascadeType.ALL)  //, fetch = FetchType.EAGER)
+    @JoinColumn(name = "node_id")
+    private List<Item> items;                        //Список Позиций
+
 //    @SuppressWarnings("JpaDataSourceORMInspection")
     @OneToMany (cascade = CascadeType.ALL) //, fetch = FetchType.EAGER)
     @JoinColumn(name = "node_id")
     private List<Node> nodes;                        //Список Комнат/Разделов
-
-    @OneToMany (cascade = CascadeType.ALL)  //, fetch = FetchType.EAGER)
-    @JoinColumn(name = "node_id")
-    private List<Item> items;                        //Список Позиций
 
     public Node clone() throws CloneNotSupportedException{ return (Node) super.clone(); }
 }

@@ -14,6 +14,7 @@ import ru.vip.demo.serviceimpl.EstimateImpl;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -22,7 +23,7 @@ import java.util.List;
 public class LoadDB {
 
 	static private int recCount = 0;
-	static private final int recMax   = 3;
+	static private final int recMax   = 15;
 
 	public final EstimateImpl repository;
 
@@ -157,6 +158,7 @@ public class LoadDB {
 			Node cloneNode = node.clone();
 			cloneNode.setId(repository.getUuidNull());
 			Node cloneNode1 = repository.save(cloneNode);
+
 			cloneNode1.getItems().clear();
 			if (!items.isEmpty()) {
 				for (Item item : items) { newItemAddNode( item, cloneNode1); }
@@ -173,49 +175,29 @@ public class LoadDB {
 /////////////////////////////////////////////////////////////////////////////////////////////
 //
 	private void nodesAddNode( Node subNode, List<Node> allNodeDB) throws Exception  {
-//		System.out.println(" -1.0.1- recCount:" + recCount);
-		ObjectMapper mapper = repository.getMapper();
-//		System.out.println(" -1.0.2- recCount:" + recCount);
-		if(subNode == null) { return; }
-//		System.out.println(" -1.0.3- recCount:" + recCount);
-		List<Node> nodes = subNode.getNodes();
-//		System.out.println(" -1.0.4- recCount:" + recCount);
 
-		if(nodes.isEmpty() || recCount > recMax) { return; }
-//		System.out.println(" -1.0.5- recCount:" + recCount);
+		if(subNode == null) { return; }
+		List<Node> nodes1 = subNode.getNodes();
+		if(nodes1.isEmpty() || recCount > recMax) { return; }
+
+		List<Node> nodes = nodes1.stream().collect(Collectors.toList());
+
+		subNode.getNodes().clear();
 		++recCount;
 		for(Node node : nodes) {
-//			System.out.println(" 1-1- " + mapper.writeValueAsString(subNode));
-//			System.out.println(" 1-2- " + mapper.writeValueAsString(node));
-			subNode.getNodes().clear();
 			Node cloneNode = newNodeAddNode( node, subNode);
-//			System.out.println(" 1-5- " + mapper.writeValueAsString(cloneNode));
-			nodesAddNode( cloneNode , allNodeDB);
-//			System.out.println(" 1-7- " + mapper.writeValueAsString(cloneNode));
+			nodesAddNode( cloneNode , allNodeDB);		// Рекурсия. "recCount" глубина Рекурсии
 		}
 	}
 	private void nodeListAddNode( List<String> listNameNode, Node newNode) throws Exception  {
-		ObjectMapper mapper = repository.getMapper();
 		List<Node> allNodeDB = repository.getAllNode();
 
 		recCount = 0;
 		for (String nameNode : listNameNode) {
 			for (Node node : allNodeDB) {
 				if ( nameNode.equals(node.getName())) {
-//					System.out.println(" -2.1- " + mapper.writeValueAsString(newNode));
-//					System.out.println(" -2.2- " + mapper.writeValueAsString(node));
-
 					Node subNode = newNodeAddNode( node, newNode);
-//
-//					System.out.println(" -2.3- " + mapper.writeValueAsString(newNode));
-//					System.out.println(" -2.4- " + mapper.writeValueAsString(subNode));
-
 					nodesAddNode(subNode, allNodeDB);
-//					System.out.println(" -2.4.1- recCount:" + recCount);
-//
-//					System.out.println(" -2.5- " + mapper.writeValueAsString(newNode));
-//					System.out.println(" -2.6- " + mapper.writeValueAsString(subNode));
-
 					break;
 				}
 			}

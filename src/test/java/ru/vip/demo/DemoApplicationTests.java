@@ -80,7 +80,7 @@ public class DemoApplicationTests {
 
 		loadDB.builderToDB( builders);  // Запуск "builder.json" конструктора-инициатора
 
-		loadDB.writeNodeToJson(prefix_ + "NEW_" + in_node);
+		loadDB.writeNodeToJson("Шереметьевская_1", prefix_ + "NEW_" + in_node);
 	}
 
 

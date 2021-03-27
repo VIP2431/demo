@@ -21,13 +21,16 @@ import java.util.List;
 @Slf4j
 public class LoadDB {
 
+	static private int recCount = 0;
+	static private final int recMax   = 3;
+
 	public final EstimateImpl repository;
+
+	private ObjectMapper map = new ObjectMapper();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
 	public void deleteCommentsForJson(String in_nameFile, String out_nameFile) {
-
-//		System.out.println("[deleteCommentsForJson]-->in_file:\"" + in_nameFile + "                   out_file:\"" + out_nameFile + "\"");
 
 		try ( FileReader inFile = new FileReader( in_nameFile, StandardCharsets.UTF_8);
 			  PushbackReader f = new PushbackReader( inFile);
@@ -69,60 +72,28 @@ public class LoadDB {
 			System.out.println("Ошибка удаления комментариев из Json inFile/outFile:\"" + in_nameFile + "\"/\"" + out_nameFile +   "\"   " + e);
 		}
 	}
-
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
-	public void writeNodeToJson(String out_node) {
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//
+	public void writeNodeToJson(String nameNode, String out_json){
 
 		ObjectMapper mapper = repository.getMapper();
 		List<Node> nodeList = repository.getAllNode();
 		Node node = null;
 		for ( Node nd : nodeList) {
-			if (nd.getName().equals( "Шереметьевская_1")) { node = nd; break; }
+			if (nd.getName().equals( nameNode)) { node = nd; break; }
 		}
+		if(node == null) return;
 
-		try (PrintWriter outFile = new PrintWriter(out_node, StandardCharsets.UTF_8)) {
-			int n = 0;
-			outFile.print("[  // [ Начало файла\n");
-//			for (Node node : nodeList) {
-			if(node != null) {
-				if (n++ > 0) {
-					outFile.print(",\n  ");
-				}
-				outFile.print(" { // *** Блок node: \"" + node.getStatus().getName() + "\" -> \"" + node.getName() + "\" ***" +
-						"\n    \"id\" : \"" + node.getId() + "\"," +
-						"\n    \"name\" : \"" + node.getName() + "\"," +
-						"\n    \"title\" : \"" + node.getTitle() + "\"," +
-						"\n    \"status\" : \"" + node.getStatus() + "\"," + "  //  \"" + node.getStatus().getName() + "\"" +
-						"\n    \"unit\" : \"" + node.getUnit() + "\"," +
-						"\n    \"quantity\" : " + node.getQuantity() + "," +
-						"\n    \"price\" : " + node.getPrice() + ",");
-
-				List<Item> items = node.getItems();
-				if (items.isEmpty()) {
-					outFile.print("\n    \"items\" : [],\n");
-				} else {
-					outFile.print("\n    \"items\" :  // [ Начало списока позиций\n");
-					outFile.print(mapper.writeValueAsString(items));
-					outFile.print(",  // ] Конец списка позиций \n");
-				}
-
-				List<Node> nodes = node.getNodes();
-				if (nodes.isEmpty()) {
-					outFile.print("\n    \"nodes\" : []\n}");
-				} else {
-					outFile.print("\n    \"nodes\" :  // [ Начало списока (комнат/блоков работ)\n");
-					outFile.print(mapper.writeValueAsString(nodes));
-					outFile.print(" // ] Конец списка (комнат/блоков работ)\n}");
-				}
-			}
-			outFile.println("\n ]// ] Конец файла");
+		try (PrintWriter outFile = new PrintWriter(out_json, StandardCharsets.UTF_8)) {
+			 outFile.print(mapper.writeValueAsString(node));
 		} catch (IOException e) {
-			System.out.println("Ошибка сериализации \"Node\" в файл Json:" + e);
+			System.out.println("Ошибка сериализации в файл Json:" + e);
 		}
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
 //
 	public void itemAndItemDirectToDB(String in_item_directory, String in_item) throws Exception {
 
@@ -156,23 +127,17 @@ public class LoadDB {
 
 		Item cloneItem = item.clone();
 		cloneItem.setId(repository.getUuidNull());
-	//	System.out.println(" -2.2-  + <newItemAddNode> + \n" + repository.getMapper().writeValueAsString(cloneItem));
-
 		try {
 			Item cloneItem1 = repository.save(cloneItem);
 			dNode.getItems().add(cloneItem1);
-//				System.out.println(" -2.5-  item:\"" + cloneItem1.getName() + "\"  id=\"" + cloneItem1.getId() + "\"");
-
 		}catch (NullPointerException e) {
 			System.out.println(" -2.8- ***** Error -->nameNod:\"" +dNode.getName() + "\"  Ex:" + "\"" + e.getMessage() + "\" *****");
 		}catch (IndexOutOfBoundsException ex) {
-			System.out.println(" -2.9- ***** Error -->nameNod:\"" +dNode.getName() + "\"  ExIndx:" + "\"" + ex + "\" *****");
+			System.out.println(" -2.9- ***** Error -->nameNod:\"" +dNode.getName() + "\"  ExInd:" + "\"" + ex + "\" *****");
 		}
 	}
 
 	private void itemListAddNode( List<String> listNameItem, List<Item> allItemDB, Node dNode) throws Exception {
-//		System.out.println(" -2- +++++ <itemListAddNode> +++++");
-
 		for (String nameItem : listNameItem) { 			// взять следующее имя из заданного в "builder" списка
 			for (Item item : allItemDB) {				// взять следующее "item" из списка взятого в БД
 				if (nameItem.equals(item.getName())) { 	// Item с заданным именем найден
@@ -182,12 +147,9 @@ public class LoadDB {
 			}
 		}
 	}
-	//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
 //
-	private void newNodeAddNode( Node node, Node newNode) throws Exception  {
-
-//		String name = node.getName();
-//		System.out.println(" -3.1- node:\"" + name + "\" ++ <nodeAddNode> ++");
+	private Node newNodeAddNode( Node node, Node newNode) throws Exception  {
 
 		try {
 			List<Item> items = node.getItems();
@@ -197,44 +159,71 @@ public class LoadDB {
 			Node cloneNode1 = repository.save(cloneNode);
 			cloneNode1.getItems().clear();
 			if (!items.isEmpty()) {
-				for (Item item : items) {
-					newItemAddNode( item, cloneNode1);
-				}
+				for (Item item : items) { newItemAddNode( item, cloneNode1); }
 			}
 			cloneNode = repository.save(cloneNode1);
 			newNode.getNodes().add(repository.save( cloneNode));
+			return cloneNode;
 
-//			System.out.println(repository.getMapper().writeValueAsString(cloneNode));
-//
-//			if (name.equals("Демонтаж_1")) {
-//				System.out.println("\n -3.3- +++  \"" + name + "\"");
-//				System.out.println(repository.getMapper().writeValueAsString(newNode));
-//			}
 		}catch (IndexOutOfBoundsException ex) {
 			System.out.println(" -3.9- ***** Error -->nameNod:\"" + newNode.getName() + "\"  Ex:" + "\"" + ex + "\" *****");
 		}
+		return null;
 	}
+/////////////////////////////////////////////////////////////////////////////////////////////
+//
+	private void nodesAddNode( Node subNode, List<Node> allNodeDB) throws Exception  {
+//		System.out.println(" -1.0.1- recCount:" + recCount);
+		ObjectMapper mapper = repository.getMapper();
+//		System.out.println(" -1.0.2- recCount:" + recCount);
+		if(subNode == null) { return; }
+//		System.out.println(" -1.0.3- recCount:" + recCount);
+		List<Node> nodes = subNode.getNodes();
+//		System.out.println(" -1.0.4- recCount:" + recCount);
 
+		if(nodes.isEmpty() || recCount > recMax) { return; }
+//		System.out.println(" -1.0.5- recCount:" + recCount);
+		++recCount;
+		for(Node node : nodes) {
+//			System.out.println(" 1-1- " + mapper.writeValueAsString(subNode));
+//			System.out.println(" 1-2- " + mapper.writeValueAsString(node));
+			subNode.getNodes().clear();
+			Node cloneNode = newNodeAddNode( node, subNode);
+//			System.out.println(" 1-5- " + mapper.writeValueAsString(cloneNode));
+			nodesAddNode( cloneNode , allNodeDB);
+//			System.out.println(" 1-7- " + mapper.writeValueAsString(cloneNode));
+		}
+	}
 	private void nodeListAddNode( List<String> listNameNode, Node newNode) throws Exception  {
-
-//		System.out.println(" -3- +++++ <nodeListAddNode> +++++");
-
+		ObjectMapper mapper = repository.getMapper();
 		List<Node> allNodeDB = repository.getAllNode();
 
+		recCount = 0;
 		for (String nameNode : listNameNode) {
-			for (Node node : allNodeDB) {              // ??? nodeList head for
+			for (Node node : allNodeDB) {
 				if ( nameNode.equals(node.getName())) {
-					newNodeAddNode( node, newNode);
+//					System.out.println(" -2.1- " + mapper.writeValueAsString(newNode));
+//					System.out.println(" -2.2- " + mapper.writeValueAsString(node));
+
+					Node subNode = newNodeAddNode( node, newNode);
+//
+//					System.out.println(" -2.3- " + mapper.writeValueAsString(newNode));
+//					System.out.println(" -2.4- " + mapper.writeValueAsString(subNode));
+
+					nodesAddNode(subNode, allNodeDB);
+//					System.out.println(" -2.4.1- recCount:" + recCount);
+//
+//					System.out.println(" -2.5- " + mapper.writeValueAsString(newNode));
+//					System.out.println(" -2.6- " + mapper.writeValueAsString(subNode));
+
 					break;
 				}
 			}
 		}
 	}
-
+/////////////////////////////////////////////////////////////////////////////////////////////
+//
 	public void builderToDB( List<MainBuilder> builders ) throws Exception {
-
-//		ObjectMapper mapper = new ObjectMapper();
-//		StringBuilder buff = new StringBuilder(2000);
 
 		List<Item> allItemDB = repository.getAllItem();
 		List<Node> allNodeDB = repository.getAllNode();
@@ -243,49 +232,25 @@ public class LoadDB {
 			Node newNode;
 			String nameNode = builder.getNameNode();
 			for (Node node : allNodeDB) {
-				if(nameNode.equals(node.getName())) {
-//					System.out.println("\n ===   builderToDB 1 ===============>\"" + nameNode + "\"      id=\"" + node.getId() + "\"");
-					Node cloneNode = node.clone();						// Клонировать  Node
-					cloneNode.setName(builder.getNewName());
-					cloneNode.setTitle(builder.getTitleNode());
+				if(!nameNode.equals(node.getName())) { continue; }
 
-					boolean flagItems = cloneNode.getItems().isEmpty(); //  ?????????????????????????????????????????
-					boolean flagNodes = cloneNode.getNodes().isEmpty();	//  ?????????????????????????????????????????
+				Node cloneNode = node.clone();						// Клонировать  Node
+				cloneNode.setName(builder.getNewName());
+				cloneNode.setTitle(builder.getTitleNode());
 
-					cloneNode.setId(repository.getUuidNull());
-					newNode = repository.save(cloneNode);
+				boolean flagItems = cloneNode.getItems().isEmpty(); //  ?????????????????????????????????????????
+				boolean flagNodes = cloneNode.getNodes().isEmpty();	//  ?????????????????????????????????????????
 
-					List<String> listNameItem = builder.getItems();
-					if(!listNameItem.isEmpty()) {
-						itemListAddNode( listNameItem, allItemDB, newNode);
-					}
+				cloneNode.setId(repository.getUuidNull());
+				newNode = repository.save(cloneNode);
 
-					List<String> listNameNode = builder.getNodes();
-					if(!listNameNode.isEmpty()) {
-						nodeListAddNode( listNameNode, newNode);
-					}
+				List<String> listNameItem = builder.getItems();
+				if(!listNameItem.isEmpty()) { itemListAddNode( listNameItem, allItemDB, newNode); }
 
-					repository.save(newNode);
-
-//					String name = newNode.getName();
-//					if(newNode.getStatus() != Status.STAT_HOUSE) {
-//						System.out.print("\n  ===   builderToDB	5 -->\"" + name + "\"               id=\"" + newNode.getId() + "\"");
-//						int n = newNode.getNodes().size();
-//						int i = newNode.getItems().size();
-//						Item itm = newNode.getItems().get(i - 1);
-//						System.out.print(" nodes:items=[" + n + ":" + i + "]   items[i].getName():" + itm.getName());
-//
-//						if (name.equals("Демонтаж_1")) {
-//							System.out.println("\n" + repository.getMapper().writeValueAsString(newNode));
-//						}
-//					}
-//					else {
-//						System.out.println("  === 	***** Объект: Дом-Квартира:\"" + name + "\"   id=\"" + newNode.getId() + "\"");
-//					}
-////					System.out.println(repository.getMapper().writeValueAsString(newNode));
-//					System.out.println(" ");
-					break;
-				}
+				List<String> listNameNode = builder.getNodes();
+				if(!listNameNode.isEmpty()) { nodeListAddNode( listNameNode, newNode); }
+				repository.save(newNode);
+				break;
 			}
 		}
 	}

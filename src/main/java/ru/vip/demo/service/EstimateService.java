@@ -5,6 +5,8 @@ import ru.vip.demo.entity.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public interface EstimateService {
@@ -16,6 +18,7 @@ public interface EstimateService {
     public List<ItemDirectory> getAllItemDirectory();
     public List<Item> getAllItem();
     public List<Node> getAllNode();
+    public Optional<Node> findByIdNode(UUID id);
 
     public List<ItemDirectory> readJsonItemDirectory( String resourceName) throws IOException;
 

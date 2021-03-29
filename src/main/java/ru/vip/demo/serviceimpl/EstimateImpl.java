@@ -19,6 +19,7 @@ import ru.vip.demo.service.EstimateService;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -56,6 +57,10 @@ public class EstimateImpl implements EstimateService {
     public List<Item> getAllItem() { return itemRepository.findAll(); }
     @Override
     public List<Node> getAllNode() { return nodeRepository.findAll(); }
+    @Override
+    public Optional<Node> findByIdNode(UUID id) { return nodeRepository.findById(id); }
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //        JSON Десериализация в List объектов из JSON файла

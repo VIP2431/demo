@@ -14,6 +14,8 @@ import ru.vip.demo.serviceimpl.EstimateImpl;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,14 +24,18 @@ import java.util.stream.Collectors;
 @Slf4j
 public class LoadDB {
 
+	static private final String sTab = "    ";
+	static private  int nTab = 0;
+
 	static private int recCount = 0;
-	static private final int recMax   = 15;
+	static private final int recMax = 9;
 
 	public final EstimateImpl repository;
 
 	private ObjectMapper map = new ObjectMapper();
+	//private Object StringBuilder;
 
-//////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////
 //
 	public void deleteCommentsForJson(String in_nameFile, String out_nameFile) {
 
@@ -75,20 +81,66 @@ public class LoadDB {
 	}
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
+	private void printItems(List<Item> items, int nTab) {
+		if(!items.isEmpty()) {
+			StringBuilder tab = new StringBuilder(80);
+			nTab = nTab + 2;
+			for (int i = 0; i++ <= nTab;) {tab.append(sTab); }
+			for (Item item : items) {
+				System.out.println(tab + item.getName() + " id=\"" + item.getId() + "\"");
+			}
+		}
+	}
+
+	private void printHeadNode(Node node, int nTab) {
+		StringBuilder tab = new StringBuilder(80);
+		for (int i = 0; i++ <= nTab;) { tab.append(sTab); }
+		System.out.println(tab + "<" + node.getStatus().getName() + ">  \"" + node.getName() + "\"   id=\"" + node.getId() + "\"");
+	}
+
+	private void printNode(Node srcNode, int nTab) {
+		printHeadNode(srcNode, nTab);
+		printItems(srcNode.getItems(), nTab);
+	}
+
+	private void printTreeNodes(Node srcNode){
+		List<Node> nodes = srcNode.getNodes();
+		if(!nodes.isEmpty()) {
+			for (Node node : nodes) {
+				printNode(node, nTab++);
+				printTreeNodes(node);
+				--nTab;
+			}
+		}
+	}
+
+	private void printNodes(Node srcNode){
+		printNode( srcNode, nTab++);
+		printTreeNodes(srcNode);
+	}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
-	public void writeNodeToJson(String nameNode, String out_json){
+	public void writeNodeToJson(String nameNode, String out_json) throws Exception  {
 
-		ObjectMapper mapper = repository.getMapper();
-		List<Node> nodeList = repository.getAllNode();
-		Node node = null;
-		for ( Node nd : nodeList) {
-			if (nd.getName().equals( nameNode)) { node = nd; break; }
-		}
-		if(node == null) return;
+		List<Node> nodes = repository.getAllNode();
 
 		try (PrintWriter outFile = new PrintWriter(out_json, StandardCharsets.UTF_8)) {
-			 outFile.print(mapper.writeValueAsString(node));
+			for (Node node : nodes) {
+				if (node.getName().equals(nameNode)) {
+					UUID idSrc = node.getId();
+					outFile.print( repository.getMapper().writeValueAsString(node));
+					UUID id = cloneNodeForId( idSrc);
+					Optional<Node> optional = repository.findByIdNode(id);
+					if(optional.isPresent()) {
+						Node cloneNode = optional.get();
+						outFile.print( repository.getMapper().writeValueAsString(cloneNode));
+//						System.out.println("--<writeNodeToJson>-- kodNode:[" + node.hashCode() +
+//								        "]\n                 KodCloneNode:[" + cloneNode.hashCode() + "]");
+						printNodes(cloneNode);
+					}
+				}
+			}
 		} catch (IOException e) {
 			System.out.println("Ошибка сериализации в файл Json:" + e);
 		}
@@ -124,87 +176,129 @@ public class LoadDB {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-	private void newItemAddNode( Item item, Node dNode) throws Exception {
+	private Node cloneNodeToDB(Node node) throws Exception {
+		Node cloneNode = node.clone();
+		cloneNode.setId(repository.getUuidNull());
+		Node saveNode = repository.save(cloneNode);
+		return saveNode;
+	}
 
+	private Item cloneItemToDB( Item item) throws Exception {
 		Item cloneItem = item.clone();
 		cloneItem.setId(repository.getUuidNull());
-		try {
-			Item cloneItem1 = repository.save(cloneItem);
-			dNode.getItems().add(cloneItem1);
-		}catch (NullPointerException e) {
-			System.out.println(" -2.8- ***** Error -->nameNod:\"" +dNode.getName() + "\"  Ex:" + "\"" + e.getMessage() + "\" *****");
-		}catch (IndexOutOfBoundsException ex) {
-			System.out.println(" -2.9- ***** Error -->nameNod:\"" +dNode.getName() + "\"  ExInd:" + "\"" + ex + "\" *****");
-		}
+		Item saveItem = repository.save(cloneItem);
+		return saveItem;
 	}
 
-	private void itemListAddNode( List<String> listNameItem, List<Item> allItemDB, Node dNode) throws Exception {
-		for (String nameItem : listNameItem) { 			// взять следующее имя из заданного в "builder" списка
-			for (Item item : allItemDB) {				// взять следующее "item" из списка взятого в БД
-				if (nameItem.equals(item.getName())) { 	// Item с заданным именем найден
-					newItemAddNode( item, dNode);
-					break;
-				}
+	private void cloneItemAddNode( Item item, Node dNode) throws Exception {
+		Item cloneItem = cloneItemToDB(item);
+		dNode.getItems().add(cloneItem);
+	}
+
+	private Node cloneNodeAddNode( Node node, Node newNode) throws Exception  {
+		Node cloneNode = cloneNodeToDB(node);
+		cloneListItemAddNode( cloneNode);
+		Node saveNode = repository.save(cloneNode);
+		newNode.getNodes().add(repository.save( saveNode));
+		return saveNode;
+	}
+
+	private void cloneListItemAddNode (Node cloneNode) throws Exception {
+		List<Item> items = cloneNode.getItems().stream().collect(Collectors.toList());
+		cloneNode.getItems().clear();
+		if (!items.isEmpty()) {
+			for (Item item : items) {
+				cloneItemAddNode(item, cloneNode);
 			}
 		}
 	}
-//////////////////////////////////////////////////////////////////////////////////////////////////
-//
-	private Node newNodeAddNode( Node node, Node newNode) throws Exception  {
 
-		try {
-			List<Item> items = node.getItems();
-
-			Node cloneNode = node.clone();
-			cloneNode.setId(repository.getUuidNull());
-			Node cloneNode1 = repository.save(cloneNode);
-
-			cloneNode1.getItems().clear();
-			if (!items.isEmpty()) {
-				for (Item item : items) { newItemAddNode( item, cloneNode1); }
-			}
-			cloneNode = repository.save(cloneNode1);
-			newNode.getNodes().add(repository.save( cloneNode));
-			return cloneNode;
-
-		}catch (IndexOutOfBoundsException ex) {
-			System.out.println(" -3.9- ***** Error -->nameNod:\"" + newNode.getName() + "\"  Ex:" + "\"" + ex + "\" *****");
-		}
-		return null;
-	}
-/////////////////////////////////////////////////////////////////////////////////////////////
-//
-	private void nodesAddNode( Node subNode, List<Node> allNodeDB) throws Exception  {
+	private void cloneListNodeAddNode( Node subNode) throws Exception  {
 
 		if(subNode == null) { return; }
 		List<Node> nodes1 = subNode.getNodes();
-		if(nodes1.isEmpty() || recCount > recMax) { return; }
+		if(nodes1.isEmpty()) { return; }
+		if( recCount > recMax) {
+			System.out.println("** <nodesAddNode> node: \"" + subNode.getName() + "\""
+					+ " Превышена глубина рекурсии [recCount>=recMax]:" + recCount + ">=" + recMax);
+			return;
+		}
 
 		List<Node> nodes = nodes1.stream().collect(Collectors.toList());
 
 		subNode.getNodes().clear();
 		++recCount;
 		for(Node node : nodes) {
-			Node cloneNode = newNodeAddNode( node, subNode);
-			nodesAddNode( cloneNode , allNodeDB);		// Рекурсия. "recCount" глубина Рекурсии
+			Node cloneNode = cloneNodeAddNode( node, subNode);
+			cloneListNodeAddNode( cloneNode );	// Рекурсия. "recCount" глубина Рекурсии
 		}
 	}
-	private void nodeListAddNode( List<String> listNameNode, Node newNode) throws Exception  {
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+//
+	private void cloneNodesAddNode( Node cloneNode) throws Exception  {
+
+		if(cloneNode == null) { return; }
+		List<Node> cloneNodes = cloneNode.getNodes();
+		if(cloneNodes.isEmpty()) { return; }
+		if( recCount > recMax) {
+			System.out.println("** <nodesAddNode> node: \"" + cloneNode.getName() + "\""
+					+ " Превышена глубина рекурсии [recCount>=recMax]:" + recCount + ">=" + recMax);
+			return;
+		}
+
+		List<Node> nodes = cloneNodes.stream().collect(Collectors.toList());
+
+		cloneNode.getNodes().clear();
+		++recCount;
+		for(Node node : nodes) {
+			Node newNode = cloneNodeAddNode( node, cloneNode);
+			cloneNodesAddNode( newNode);		// Рекурсия. "recCount" глубина Рекурсии
+		}
+	}
+
+
+	private UUID cloneNodeForId( UUID idNode) throws Exception  {
+
+		UUID id = repository.getUuidNull();
+		Optional<Node> optional = repository.findByIdNode(idNode);
+		if(optional.isPresent()) {
+			Node node = optional.get();
+			Node cloneNode = cloneNodeToDB(node);
+			id = cloneNode.getId();
+			cloneNodesAddNode( cloneNode);
+		}
+		return id;
+	}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+//
+	private void builderItemListAddNode( List<String> listNameItem, List<Item> allItemDB, Node dNode) throws Exception {
+		for (String nameItem : listNameItem) { 			// взять следующее имя из заданного в "builder" списка
+			for (Item item : allItemDB) {				// взять следующее "item" из списка взятого в БД
+				if (nameItem.equals(item.getName())) { 	// Item с заданным именем найден
+					cloneItemAddNode( item, dNode);
+					break;
+				}
+			}
+		}
+	}
+
+	private void builderNodeListAddNode( List<String> listNameNode, Node newNode) throws Exception  {
 		List<Node> allNodeDB = repository.getAllNode();
 
 		recCount = 0;
 		for (String nameNode : listNameNode) {
 			for (Node node : allNodeDB) {
 				if ( nameNode.equals(node.getName())) {
-					Node subNode = newNodeAddNode( node, newNode);
-					nodesAddNode(subNode, allNodeDB);
+					Node subNode = cloneNodeAddNode( node, newNode);
+					cloneListNodeAddNode(subNode);
 					break;
 				}
 			}
 		}
 	}
-/////////////////////////////////////////////////////////////////////////////////////////////
-//
+
 	public void builderToDB( List<MainBuilder> builders ) throws Exception {
 
 		List<Item> allItemDB = repository.getAllItem();
@@ -215,23 +309,26 @@ public class LoadDB {
 			String nameNode = builder.getNameNode();
 			for (Node node : allNodeDB) {
 				if(!nameNode.equals(node.getName())) { continue; }
-
 				Node cloneNode = node.clone();						// Клонировать  Node
 				cloneNode.setName(builder.getNewName());
 				cloneNode.setTitle(builder.getTitleNode());
 
-				boolean flagItems = cloneNode.getItems().isEmpty(); //  ?????????????????????????????????????????
-				boolean flagNodes = cloneNode.getNodes().isEmpty();	//  ?????????????????????????????????????????
+				try {
+					boolean flagItems = cloneNode.getItems().isEmpty(); //  ?????????????????????????????????????????
+					boolean flagNodes = cloneNode.getNodes().isEmpty();	//  ?????????????????????????????????????????
 
-				cloneNode.setId(repository.getUuidNull());
-				newNode = repository.save(cloneNode);
+					cloneNode.setId(repository.getUuidNull());
+					newNode = repository.save(cloneNode);
 
-				List<String> listNameItem = builder.getItems();
-				if(!listNameItem.isEmpty()) { itemListAddNode( listNameItem, allItemDB, newNode); }
+					List<String> listNameItem = builder.getItems();
+					if(!listNameItem.isEmpty()) { builderItemListAddNode( listNameItem, allItemDB, newNode); }
 
-				List<String> listNameNode = builder.getNodes();
-				if(!listNameNode.isEmpty()) { nodeListAddNode( listNameNode, newNode); }
-				repository.save(newNode);
+					List<String> listNameNode = builder.getNodes();
+					if(!listNameNode.isEmpty()) { builderNodeListAddNode( listNameNode, newNode); }
+					repository.save(newNode);
+				} catch ( Exception e) {
+					System.out.println("** <builderToDB> Exception node:\"" + cloneNode.getName() + "\"  " + e);
+				}
 				break;
 			}
 		}

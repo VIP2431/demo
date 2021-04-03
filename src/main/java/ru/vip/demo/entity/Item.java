@@ -15,7 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-//@Table(name = "item_t")
+@Table(name = "item_t")
 public class Item implements Serializable, Cloneable {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

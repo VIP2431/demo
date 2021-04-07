@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 import ru.vip.demo.type.Status;
 import ru.vip.demo.type.Unit;
 
@@ -17,10 +18,10 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-//@Transactional
+@Transactional
 @Builder
 //@Table(name = "node_t")
-public class Node implements Serializable, Cloneable {
+public class Node extends HeadId implements Serializable, Cloneable{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private UUID id;
@@ -32,13 +33,13 @@ public class Node implements Serializable, Cloneable {
     private BigDecimal quantity = BigDecimal.valueOf(0);// Количество
     private BigDecimal price = BigDecimal.valueOf(0);   // Цена еденицы
 
-    @OneToMany ( cascade = CascadeType.ALL) // , fetch = FetchType.EAGER,)
- //   @JoinColumn(name = "node_id")
-    private List<Item> items;                        //Список Позиций
+    @OneToMany ( cascade = CascadeType.ALL) //, fetch = FetchType.EAGER) //
+ //   @JoinColumn(name = "item_id")
+    private List<Item> items;                           //Список Позиций
 
   //  @SuppressWarnings("JpaDataSourceORMInspection")
-    @OneToMany ( cascade = CascadeType.ALL) //fetch = FetchType.EAGER,
-//    @JoinColumn(name = "node_id")
+    @OneToMany ( cascade = CascadeType.ALL) //, fetch = FetchType.EAGER)
+    //  @JoinColumn(name = "node_id")
     private List<Node> nodes;                        //Список Комнат/Разделов
 
     public Node clone() throws CloneNotSupportedException{ return (Node) super.clone(); }

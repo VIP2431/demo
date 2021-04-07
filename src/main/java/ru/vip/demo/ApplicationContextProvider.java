@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
-import ru.vip.demo.param.ProviderParamsConfig;
 import ru.vip.demo.aop.LogExecutionTime;
-import ru.vip.demo.parse.SimpleName;
+import ru.vip.demo.param.ProviderParamsConfig;
+import ru.vip.demo.util.UtilStr;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -21,7 +21,7 @@ public class ApplicationContextProvider {
     private int countBeans = 0;
     private int count = 0;
     private final StringBuffer strBuffer = new StringBuffer( 1000);
-    private final SimpleName simpleName = new SimpleName();
+//    private final SimpleName simpleName = new SimpleName();
 
     private final ApplicationContext applicationContext;
     private final ConfigurableListableBeanFactory factory;
@@ -148,7 +148,7 @@ public class ApplicationContextProvider {
 
             printAnnotation( annotations);
 
-            System.out.println("  " + simpleName.get(str, strBuffer) + "{\n  }");
+            System.out.println("  " + UtilStr.clearToPoint(str, strBuffer) + "{\n  }");
         }
     }
 
@@ -158,7 +158,7 @@ public class ApplicationContextProvider {
             if (prm.isORIGINAL_STRING()) {  // Распечатка исходной строки Анотации
                 System.out.println("->[" + str + "];");
             }
-            System.out.println("  " + simpleName.get( str, strBuffer));
+            System.out.println("  " + UtilStr.clearToPoint( str, strBuffer));
         }
     }
 

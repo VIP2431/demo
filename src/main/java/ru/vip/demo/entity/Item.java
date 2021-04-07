@@ -15,10 +15,11 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "item_t")
-public class Item implements Serializable, Cloneable {
+// @Table(name = "item_t")
+public class Item extends HeadId implements Serializable, Cloneable {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+ //   @Column(name = "item_id")
     private UUID id;
     private String name;            // Имя
     private BigDecimal quantity;    // Количество

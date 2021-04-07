@@ -9,7 +9,9 @@ import ru.vip.demo.entity.ItemDirectory;
 import ru.vip.demo.entity.MainBuilder;
 import ru.vip.demo.entity.Node;
 import ru.vip.demo.serviceimpl.EstimateImpl;
+import ru.vip.demo.util.InitBuilder;
 import ru.vip.demo.util.LoadDB;
+import ru.vip.demo.util.UtilStr;
 
 import java.util.List;
 
@@ -49,15 +51,17 @@ public class DemoApplicationTests {
 	@Autowired
 	public EstimateImpl repository;
 
+	@Autowired
+	public InitBuilder initBuilder;
+
 ////////////////////////////////////////////////////////////////////////////
 //
 //
 	@Test
 	public void dataTest()throws Exception {
 
-		loadDB.deleteCommentsForJson(prefix_ + init_builder, prefix_ + in_builder);
-
-		loadDB.deleteCommentsForJson(prefix_ + init_node, prefix_ + in_node);
+		UtilStr.deleteComment(prefix_ + init_builder, prefix_ + in_builder);
+		UtilStr.deleteComment(prefix_ + init_node, prefix_ + in_node);
 
 		loadDB.itemAndItemDirectToDB(prefix_ + in_item_directory, prefix_ + in_item);
 
@@ -78,7 +82,7 @@ public class DemoApplicationTests {
 		List<MainBuilder> builders = repository.readJsonBuilder(prefix_ + in_builder);
 		repository.writeJsonBuilder(prefix_test + in_builder, builders);
 
-		loadDB.builderToDB( builders);  // Запуск "builder.json" конструктора-инициатора
+		initBuilder.builderToDB( builders);  // Запуск "builder.json" конструктора-инициатора
 
 		loadDB.writeNodeToJson("Шереметьевская_1", prefix_ + "NEW_" + in_node);
 	}

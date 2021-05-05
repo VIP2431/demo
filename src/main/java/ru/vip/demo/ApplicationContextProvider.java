@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import ru.vip.demo.aop.LogExecutionTime;
 import ru.vip.demo.param.ProviderParamsConfig;
-import ru.vip.demo.util.UtilStr;
+import ru.vip.demo.util.StrUtil;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -148,7 +148,7 @@ public class ApplicationContextProvider {
 
             printAnnotation( annotations);
 
-            System.out.println("  " + UtilStr.clearToPoint(str, strBuffer) + "{\n  }");
+            System.out.println("  " + StrUtil.clearToPoint(str, strBuffer) + "{\n  }");
         }
     }
 
@@ -158,7 +158,7 @@ public class ApplicationContextProvider {
             if (prm.isORIGINAL_STRING()) {  // Распечатка исходной строки Анотации
                 System.out.println("->[" + str + "];");
             }
-            System.out.println("  " + UtilStr.clearToPoint( str, strBuffer));
+            System.out.println("  " + StrUtil.clearToPoint( str, strBuffer));
         }
     }
 

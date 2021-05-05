@@ -11,7 +11,7 @@ import ru.vip.demo.entity.Node;
 import ru.vip.demo.serviceimpl.EstimateImpl;
 import ru.vip.demo.util.InitBuilder;
 import ru.vip.demo.util.LoadDB;
-import ru.vip.demo.util.UtilStr;
+import ru.vip.demo.util.StrUtil;
 
 import java.util.List;
 
@@ -60,8 +60,8 @@ public class DemoApplicationTests {
 	@Test
 	public void dataTest()throws Exception {
 
-		UtilStr.deleteComment(prefix_ + init_builder, prefix_ + in_builder);
-		UtilStr.deleteComment(prefix_ + init_node, prefix_ + in_node);
+		StrUtil.deleteComment(prefix_ + init_builder, prefix_ + in_builder);
+		StrUtil.deleteComment(prefix_ + init_node, prefix_ + in_node);
 
 		loadDB.itemAndItemDirectToDB(prefix_ + in_item_directory, prefix_ + in_item);
 

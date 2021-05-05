@@ -36,7 +36,7 @@ public class LoadDB {
 	static private PrintWriter outFile;
 	public final EstimateImpl repository;
 
-	public void setRecCount(int n) { recCount = n; }
+	public void clearRecCount() { recCount = 0; }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //

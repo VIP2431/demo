@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.vip.demo.entity.Item;
 import ru.vip.demo.entity.ItemDirectory;
 import ru.vip.demo.entity.MainBuilder;
 import ru.vip.demo.entity.Node;
@@ -56,37 +55,47 @@ public class DemoApplicationTests {
 
 ////////////////////////////////////////////////////////////////////////////
 //
-//
 	@Test
 	public void dataTest()throws Exception {
-
-		StrUtil.deleteComment(prefix_ + init_builder, prefix_ + in_builder);
-		StrUtil.deleteComment(prefix_ + init_node, prefix_ + in_node);
-
+// Удалить комментарии и пустые строки из файлов инициализации БД
+		clearComment();
+// Загрузить Справочники <ItemDirectory> и <Item>
 		loadDB.itemAndItemDirectToDB(prefix_ + in_item_directory, prefix_ + in_item);
-
-		List<ItemDirectory> dirsJson = repository.readJsonItemDirectory(prefix_ + in_item_directory);
-		List<ItemDirectory> dirsBD = repository.getAllItemDirectory();
-		itemDirectoryTest( dirsJson, dirsBD);
-
-		repository.writeJsonItemDirectory( prefix_test + in_item_directory, dirsBD); 	// Запмсь из List в JSON файл
-		List<ItemDirectory> test_dirsJson = repository.readJsonItemDirectory(prefix_test + in_item_directory);
-		itemDirectoryTest( dirsJson, test_dirsJson);
-
-		List<Item>	itemList = repository.getAllItem();						// Чтение из базы данных в List
-		repository.writeJsonItem(prefix_test + in_item, itemList); 	// Запмсь из List в JSON файл
-
-		List<Node> nodes = repository.readJsonNode(prefix_ + in_node);				// Чтение из JSON file в List
-		for (Node node : nodes) {	repository.save(node);	}				// Запись из List в базу данных
-
+// Тест загрузки и выгрузки <ItemDirectory> в БД из Jason и обратно
+		testLoadAndUnloadItemToDB();
+// Запмсь <Item> из БД в test_JSON для визуальног контроля
+		repository.writeJsonItem(prefix_test + in_item, repository.getAllItem());
+// Запись в БД Блоков <Node>
+		List<Node> nodes = repository.readJsonNode(prefix_ + in_node);// Чтение из JSON file в List
+		for (Node node : nodes) {	repository.save(node);	}				     // Запись из List в базу данных
+// Тест чтения и записи из/в Jason в List builder
 		List<MainBuilder> builders = repository.readJsonBuilder(prefix_ + in_builder);
 		repository.writeJsonBuilder(prefix_test + in_builder, builders);
-
-		initBuilder.builderToDB( builders);  // Запуск "builder.json" конструктора-инициатора
-
+// Запуск "builder.json" конструктора-инициатора
+		initBuilder.builderToDB( builders);
+// Распечатка сметы сгенерированной и загруженной в БД конструктором-инициаторм init_builder
 		loadDB.writeNodeToJson("Шереметьевская_1", prefix_ + "NEW_" + in_node);
 	}
 
+	//////////////////////////////////////////////////////////////////////////////////////////////
+//  Убрать комментарии и пустые строки из входных файлов Init Jason
+	private void clearComment() {
+		StrUtil.deleteComment(prefix_ + init_builder, prefix_ + in_builder);
+		StrUtil.deleteComment(prefix_ + init_node, prefix_ + in_node);
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////
+//   test_1 Тест загрузки Справочника <ItemDirectory> в БД из Jason и обратно из БД в Jason
+	private void testLoadAndUnloadItemToDB() throws Exception {
+// Сравниваем данные загруженные в БД с данными из загрузочного файла Jason
+		List<ItemDirectory> dirsJson = repository.readJsonItemDirectory(prefix_ + in_item_directory);
+		List<ItemDirectory> dirsBD = repository.getAllItemDirectory();
+		itemDirectoryTest(dirsJson, dirsBD); // Сравнение данных из файла и БД
+// Сравниваем данные загруженныев в БД с из первичного файла Jason с данными загруженными БД из test_Jason
+		repository.writeJsonItemDirectory( prefix_test + in_item_directory, dirsBD); 	// Запмсь из List в JSON файл
+		List<ItemDirectory> test_dirsJson = repository.readJsonItemDirectory(prefix_test + in_item_directory);
+		itemDirectoryTest( dirsJson, test_dirsJson);
+	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //

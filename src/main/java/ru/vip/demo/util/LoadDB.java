@@ -10,6 +10,8 @@ import ru.vip.demo.serviceimpl.EstimateImpl;
 
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -118,6 +120,7 @@ public class LoadDB {
 //
     public void writeNodeToJson(String nameNode, String out_json) {
 
+        final long start = System.currentTimeMillis();
         List<Node> nodes = repository.getAllNode();
         try (PrintWriter outFl = new PrintWriter(out_json, StandardCharsets.UTF_8)) {
             outFile = outFl;
@@ -129,14 +132,16 @@ public class LoadDB {
                     Optional<Node> optional = repository.findByIdNode(idClone);
                     if (optional.isPresent()) {
                         Node cloneNode = optional.get();
-                        outFile.println(" // Начало теста cloneNode:[" + cloneNode.getName() + "]\n");
+                        outFile.println( "// " + ZonedDateTime.now() + " Начало теста cloneNode:[" + cloneNode.getName() + "]\n");
                         printNodes(cloneNode);
-                        outFile.println("\n // Конец теста  cloneNode:[" + node.getName() + "]");
+                        outFile.println("\n // Конец теста  cloneNode:[" + node.getName() + "]  " + ZonedDateTime.now().format(DateTimeFormatter.RFC_1123_DATE_TIME));
                     }
                 }
             }
+            final long executionTime = System.currentTimeMillis() - start;
+            outFile.println("\n // Время исполнения теста=[" + executionTime + "ms]" );
         } catch (Exception e) {
-            System.out.println("** <writeNodeToJson> Ошибка сериализации в файл Json:" + e); // err=[" + err + "]
+            System.out.println("** <writeNodeToJson> Ошибка сериализации в файл Json:" + e);
         }
     }
 

@@ -4,9 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.vip.demo.entity.ItemDirectory;
-import ru.vip.demo.entity.MainBuilder;
-import ru.vip.demo.entity.Node;
+import ru.vip.demo.entity.*;
 import ru.vip.demo.serviceimpl.EstimateImpl;
 import ru.vip.demo.util.InitBuilder;
 import ru.vip.demo.util.LoadDB;
@@ -58,7 +56,7 @@ public class DemoApplicationTests {
 	@Test
 	public void dataTest()throws Exception {
 // Удалить комментарии и пустые строки из файлов инициализации БД
-		clearComment();
+		clearCommentFileInitJason();
 // Загрузить Справочники <ItemDirectory> и <Item>
 		loadDB.itemAndItemDirectToDB(prefix_ + in_item_directory, prefix_ + in_item);
 // Тест загрузки и выгрузки <ItemDirectory> в БД из Jason и обратно
@@ -68,18 +66,18 @@ public class DemoApplicationTests {
 // Запись в БД Блоков <Node>
 		List<Node> nodes = repository.readJsonNode(prefix_ + in_node);// Чтение из JSON file в List
 		for (Node node : nodes) {	repository.save(node);	}				     // Запись из List в базу данных
-// Тест чтения и записи из/в Jason в List builder
+// Чтения из Jason в List builders и запись из List в test_Jason для визуального контроля
 		List<MainBuilder> builders = repository.readJsonBuilder(prefix_ + in_builder);
 		repository.writeJsonBuilder(prefix_test + in_builder, builders);
 // Запуск "builder.json" конструктора-инициатора
 		initBuilder.builderToDB( builders);
-// Распечатка сметы сгенерированной и загруженной в БД конструктором-инициаторм init_builder
+// Распечатка сметы сгенерированной и загруженной в БД конструктором-инициатором init_builder
 		loadDB.writeNodeToJson("Шереметьевская_1", prefix_ + "NEW_" + in_node);
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////
 //  Убрать комментарии и пустые строки из входных файлов Init Jason
-	private void clearComment() {
+	private void clearCommentFileInitJason() {
 		StrUtil.deleteComment(prefix_ + init_builder, prefix_ + in_builder);
 		StrUtil.deleteComment(prefix_ + init_node, prefix_ + in_node);
 	}
@@ -120,5 +118,37 @@ public class DemoApplicationTests {
 			}
 		}
 	}
+
+	private boolean compareItem(Item itemA, Item itemB){
+
+		if(itemA == null || itemB == null) return false;
+		if(itemA == itemB) return true;
+
+		String headMSG = "Item.code.\"" + itemA.getCode() + "\"  field:\"";
+
+		assertEquals(itemA.getIdHead(), itemB.getIdHead(), headMSG + "IdHead\"");
+		assertEquals(itemA.getIndexPos(), itemB.getIndexPos(), headMSG + "IndexPos\"");
+		assertEquals(itemA.getSavePos(), itemB.getSavePos(), headMSG + "SavePos\"");
+		assertEquals(itemA.getLoadPos(), itemB.getLoadPos(), headMSG + "LoadPos\"");
+
+		String idItemA = itemA.getIdItemDirectory().toString();
+		String idItemB = itemB.getIdItemDirectory().toString();
+		assertEquals(idItemA.length(), idItemB.length(), headMSG + "id\"");
+
+		assertEquals(itemA.getName(), itemB.getName(), headMSG + "Name\"");
+		assertEquals(itemA.getQuantity(),itemB.getQuantity(), headMSG + "Quantity\"");
+		assertEquals(itemA.getCost(),itemB.getCost(), headMSG + "Cost\"");
+
+		assertEquals(itemA.getIdItemDirectory(), itemA.getIdItemDirectory(), headMSG + "id\"");
+		assertEquals(itemA.getCategory(),itemB.getCategory(),  headMSG + "Category\"");
+		assertEquals(itemA.getCode(),itemB.getCode(), headMSG + "Code\"");
+		assertEquals(itemA.getTitle(),itemB.getTitle(), headMSG + "Title\"");
+		assertEquals(itemA.getUnit(),itemB.getUnit(), headMSG + "Unit\"");
+		assertEquals(itemA.getPrice(),itemB.getPrice(), headMSG + "Price\"");
+		assertEquals(itemA.getVendor(),itemB.getVendor(), headMSG + "Vendor\"");
+		return true;
+	}
 }
+
+
 

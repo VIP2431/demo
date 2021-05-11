@@ -12,6 +12,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Data
@@ -21,7 +22,7 @@ import java.util.UUID;
 @Transactional
 @Builder
 //@Table(name = "node_t")
-public class Node extends HeadId implements Serializable, Cloneable{
+public class Node extends HeadingItem implements Serializable, Cloneable{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private UUID id;
@@ -41,6 +42,20 @@ public class Node extends HeadId implements Serializable, Cloneable{
     @OneToMany ( cascade = CascadeType.ALL) //, fetch = FetchType.EAGER)
     //  @JoinColumn(name = "node_id")
     private List<Node> nodes;                        //Список Комнат/Разделов
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Node)) return false;
+        if (!super.equals(o)) return false;
+        Node node = (Node) o;
+        return getId().equals(node.getId()) && getName().equals(node.getName()) && getTitle().equals(node.getTitle()) && getStatus() == node.getStatus() && getUnit() == node.getUnit() && Objects.equals(getQuantity(), node.getQuantity()) && Objects.equals(getPrice(), node.getPrice()) && Objects.equals(getItems(), node.getItems()) && Objects.equals(getNodes(), node.getNodes());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getId(), getName(), getTitle(), getStatus(), getUnit(), getQuantity(), getPrice(), getItems(), getNodes());
+    }
 
     public Node clone() throws CloneNotSupportedException{ return (Node) super.clone(); }
 }

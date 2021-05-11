@@ -38,14 +38,33 @@ public class LoadDB {
         recCount = 0;
     }
 
+
+
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+//
+    private void doPrintItem(Item item){
+        outFile.println(bufTab.substring(endBuf - (sizeTab * (nTab + 2)))
+                        + item.getName() + " id=\"" + item.getId() + "\"");
+    }
+
+   private void doPrintNode(Node srcNode){
+       outFile.println(bufTab.substring(endBuf - (sizeTab * nTab))
+               + "<" + srcNode.getStatus().getName() + ">  \""
+               + srcNode.getName()
+               + "\"   id=\"" + srcNode.getId() + "\"");
+       List<Item> items = srcNode.getItems();
+       if (items != null) {
+           printItems(items);
+       }
+   }
+
     //////////////////////////////////////////////////////////////////////////////////////////////////
 //
     private void printItems(List<Item> items) {
         try {
-            for (Item item : items) {
-                outFile.println(bufTab.substring(endBuf - (sizeTab * (nTab + 2)))
-                        + item.getName() + " id=\"" + item.getId() + "\"");
-            }
+            for (Item item : items) { doPrintItem( item); }
         } catch (NullPointerException e) {
             System.out.println("** <printItems>  Ex:" + e);
         }
@@ -53,16 +72,20 @@ public class LoadDB {
 
     private void printNode(Node srcNode) {
         try {
-            outFile.println(bufTab.substring(endBuf - (sizeTab * nTab))
-                    + "<" + srcNode.getStatus().getName() + ">  \""
-                    + srcNode.getName()
-                    + "\"   id=\"" + srcNode.getId() + "\"");
-            List<Item> items = srcNode.getItems();
-            if (items != null) {
-                printItems(items);
-            }
-        } catch (Exception e) {
+            doPrintNode( srcNode);
+       } catch (Exception e) {
             System.out.println("** <printNode> srcNode:[" + srcNode.getName() + "] Ex:" + e); // "] n=[" + n +
+        }
+    }
+
+    private void printNodes(Node srcNode) {
+        try {
+            nTab = 0;
+            printNode(srcNode);
+            ++nTab;
+            printTreeNodes(srcNode);
+        } catch (Exception e) {
+            System.out.println("** <printNodes> srcNode:[" + srcNode.getName() + "] Ex:" + e);
         }
     }
 
@@ -80,17 +103,6 @@ public class LoadDB {
             } catch (Exception e) {
                 System.out.println("** <printTreeNodes> srcNode:[" + srcNode.getName() + "]  nTab:[" + nTab + "] Ex:" + e);
             }
-        }
-    }
-
-    private void printNodes(Node srcNode) {
-        try {
-            nTab = 0;
-            printNode(srcNode);
-            ++nTab;
-            printTreeNodes(srcNode);
-        } catch (Exception e) {
-            System.out.println("** <printNodes> srcNode:[" + srcNode.getName() + "] Ex:" + e);
         }
     }
 

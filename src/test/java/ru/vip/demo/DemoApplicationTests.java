@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.vip.demo.entity.*;
+import ru.vip.demo.entity.ItemDirectory;
+import ru.vip.demo.entity.MainBuilder;
+import ru.vip.demo.entity.Node;
 import ru.vip.demo.serviceimpl.EstimateImpl;
 import ru.vip.demo.util.InitBuilder;
 import ru.vip.demo.util.LoadDB;
@@ -117,36 +119,6 @@ public class DemoApplicationTests {
 				}
 			}
 		}
-	}
-
-	private boolean compareItem(Item itemA, Item itemB){
-
-		if(itemA == null || itemB == null) return false;
-		if(itemA == itemB) return true;
-
-		String headMSG = "Item.code.\"" + itemA.getCode() + "\"  field:\"";
-
-		assertEquals(itemA.getIdHead(), itemB.getIdHead(), headMSG + "IdHead\"");
-		assertEquals(itemA.getIndexPos(), itemB.getIndexPos(), headMSG + "IndexPos\"");
-		assertEquals(itemA.getSavePos(), itemB.getSavePos(), headMSG + "SavePos\"");
-		assertEquals(itemA.getLoadPos(), itemB.getLoadPos(), headMSG + "LoadPos\"");
-
-		String idItemA = itemA.getIdItemDirectory().toString();
-		String idItemB = itemB.getIdItemDirectory().toString();
-		assertEquals(idItemA.length(), idItemB.length(), headMSG + "id\"");
-
-		assertEquals(itemA.getName(), itemB.getName(), headMSG + "Name\"");
-		assertEquals(itemA.getQuantity(),itemB.getQuantity(), headMSG + "Quantity\"");
-		assertEquals(itemA.getCost(),itemB.getCost(), headMSG + "Cost\"");
-
-		assertEquals(itemA.getIdItemDirectory(), itemA.getIdItemDirectory(), headMSG + "id\"");
-		assertEquals(itemA.getCategory(),itemB.getCategory(),  headMSG + "Category\"");
-		assertEquals(itemA.getCode(),itemB.getCode(), headMSG + "Code\"");
-		assertEquals(itemA.getTitle(),itemB.getTitle(), headMSG + "Title\"");
-		assertEquals(itemA.getUnit(),itemB.getUnit(), headMSG + "Unit\"");
-		assertEquals(itemA.getPrice(),itemB.getPrice(), headMSG + "Price\"");
-		assertEquals(itemA.getVendor(),itemB.getVendor(), headMSG + "Vendor\"");
-		return true;
 	}
 }
 

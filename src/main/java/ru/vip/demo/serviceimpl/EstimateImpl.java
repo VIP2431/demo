@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.vip.demo.entity.Item;
@@ -16,19 +16,23 @@ import ru.vip.demo.repository.ItemRepository;
 import ru.vip.demo.repository.NodeRepository;
 import ru.vip.demo.service.EstimateService;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PushbackReader;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
+@Repository
 @Transactional
 @RequiredArgsConstructor
-@Slf4j
+//@Slf4j
 public class EstimateImpl implements EstimateService {
 
-    private ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT); // pretty print JSON
+    private final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT); // pretty print JSON
 
     private final String idNullUUID = "00000000-0000-0000-0000-000000000000";
     private final UUID uuidNull = UUID.fromString(idNullUUID);
@@ -37,14 +41,14 @@ public class EstimateImpl implements EstimateService {
     private final ItemRepository itemRepository;
     private final NodeRepository nodeRepository;
 
-    public ObjectMapper getMapper() { return this.mapper; }
+//    public ObjectMapper getMapper() { return this.mapper; }
 
     public String getIdNullUUID() { return this.idNullUUID; }
-    public UUID getUuidNull() { return  this.uuidNull; };
+    public UUID getUuidNull() { return  this.uuidNull; }
 
     @Override
-    public ItemDirectory save(ItemDirectory itemDirectory) {
-        return itemDirectoryRepository.save(itemDirectory);
+    public void save(ItemDirectory itemDirectory) {
+        itemDirectoryRepository.save(itemDirectory);
     }
     @Override
     public Item save(Item item) { return itemRepository.save(item); }
@@ -53,8 +57,12 @@ public class EstimateImpl implements EstimateService {
 
     @Override
     public List<ItemDirectory> getAllItemDirectory() { return itemDirectoryRepository.findAll(); }
+
     @Override
     public List<Item> getAllItem() { return itemRepository.findAll(); }
+    @Override
+    public Optional<Item> findByIdItem(UUID id) { return itemRepository.findById(id); }
+
     @Override
     public List<Node> getAllNode() { return nodeRepository.findAll(); }
     @Override
@@ -64,29 +72,24 @@ public class EstimateImpl implements EstimateService {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //        JSON Десериализация в List объектов из JSON файла
-
-//    private InputStream inputStream( String resourceName) throws IOException { // Открыть поток чтения
-//        return Resources.getResource(resourceName).openStream();
-//    }
-
     private PushbackReader inputStream(String resourceName) throws IOException { // Открыть поток чтения
         return new PushbackReader( new FileReader( resourceName, StandardCharsets.UTF_8));
     }
 
     public List<ItemDirectory> readJsonItemDirectory( String resourceName) throws IOException {
-        return mapper.readValue(inputStream(resourceName), new TypeReference<List<ItemDirectory>>() {});
+        return mapper.readValue(inputStream(resourceName), new TypeReference<>() {});
     }
 
     public List<Node> readJsonNode( String resourceName) throws IOException {
-        return mapper.readValue(inputStream(resourceName), new TypeReference<List<Node>>() {});
+        return mapper.readValue(inputStream(resourceName), new TypeReference<>() {});
     }
 
     public List<Item> readJsonItem( String resourceName) throws IOException {
-        return mapper.readValue(inputStream(resourceName), new TypeReference<List<Item>>() {});
+        return mapper.readValue(inputStream(resourceName), new TypeReference<>() { });
     }
 
     public List<MainBuilder> readJsonBuilder(String resourceName) throws IOException {
-        return mapper.readValue(inputStream(resourceName), new TypeReference<List<MainBuilder>>() {});
+        return mapper.readValue(inputStream(resourceName), new TypeReference<>() { });
     }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////

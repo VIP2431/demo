@@ -1,30 +1,34 @@
 package ru.vip.demo.service;
 
-import org.springframework.stereotype.Service;
-import ru.vip.demo.entity.*;
+import ru.vip.demo.entity.Item;
+import ru.vip.demo.entity.ItemDirectory;
+import ru.vip.demo.entity.MainBuilder;
+import ru.vip.demo.entity.Node;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Service
+@SuppressWarnings("ALL")
 public interface EstimateService {
 
-    public Item save(Item item);
-    public ItemDirectory save(ItemDirectory itemDirectory);
-    public Node save(Node node);
+    Item save(Item item);
+    void save(ItemDirectory itemDirectory);
+    Node save(Node node);
 
-    public List<ItemDirectory> getAllItemDirectory();
-    public List<Item> getAllItem();
-    public List<Node> getAllNode();
-    public Optional<Node> findByIdNode(UUID id);
+    List<ItemDirectory> getAllItemDirectory();
+    List<Item> getAllItem();
+    Optional<Item> findByIdItem(UUID id);
 
-    public List<ItemDirectory> readJsonItemDirectory( String resourceName) throws IOException;
+    List<Node> getAllNode();
+    Optional<Node> findByIdNode(UUID id);
 
-    public void writeJsonItemDirectory( String outFile, List<ItemDirectory> itemDirectories) throws IOException;
+    List<ItemDirectory> readJsonItemDirectory( String resourceName) throws IOException;
 
-    public List<Item> readJsonItem( String resourceName) throws IOException;
+    void writeJsonItemDirectory( String outFile, List<ItemDirectory> itemDirectories) throws IOException;
+
+    List<Item> readJsonItem( String resourceName) throws IOException;
 
     public void writeJsonItem( String outFile, List<Item> itemList) throws IOException;
 

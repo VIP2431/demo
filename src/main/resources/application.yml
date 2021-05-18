@@ -4,6 +4,7 @@ server:
   port: 8091
 
 # Передача переменных в приложение
+
 file_json:
   init_node: "init_node.json"
   init_builder: "init_builder.json"
@@ -27,7 +28,7 @@ provider:
 #==========================================
 logging:
   level:
-    # root: off #
+    root: off #
     ru.vip.demo: debug                                                      # Уровень DEBUG
   pattern:                                                                  # Формат вывода
     console: "%d{HH:mm:ss} [%thread] %-5level %logger{44} - %msg%n"         # В консоль
@@ -35,12 +36,12 @@ logging:
   file:
     name: application.log     # Файл вывода логов
 # JPA logging
- #   org:
- #     hibernate:
-#        SQL: DEBUG
-#        type:
-#          descriptor:
-#            sql: TRACE
+#org:
+#  hibernate:
+#    SQL: DEBUG
+#    type:
+#      descriptor:
+#        sql: TRACE
 
 #==========================================
 #     DB H2 -настройка Базы Данных
@@ -76,7 +77,7 @@ spring:
     hibernate:
       ddl-auto:  create-drop # create none update validate
 
-#show-sql: true
+  #  show-sql: true
 
 
 

@@ -1,0 +1,84 @@
+
+---
+server:
+  port: 8091
+
+# Передача переменных в приложение
+
+file_json:
+  init_node: "init_node.json"
+  init_builder: "init_builder.json"
+  in_node: "node.json"
+  in_builder: "builder.json"
+  in_item: "item.json"
+  in_item_directory: "item_directory.json"
+  prefix_test: "src/main/resources/test_"
+  prefix_: "src/main/resources/"
+
+# Передача блока переменных 4шт (provider.params) в Класс приложения
+provider:
+  params:
+    TARGET_BEAN: "?"
+    COUNT_METHOD: 1
+    LIST_BEAN: 10, 20
+    ORIGINAL_STRING: false
+
+#==========================================
+#     LOGGING -настройка логирования
+#==========================================
+logging:
+  level:
+    root: off #
+    ru.vip.demo: debug                                                      # Уровень DEBUG
+  pattern:                                                                  # Формат вывода
+    console: "%d{HH:mm:ss} [%thread] %-5level %logger{44} - %msg%n"         # В консоль
+    file: "%d{yyyy-MM-DD HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" # В файл
+  file:
+    name: application.log     # Файл вывода логов
+# JPA logging
+#org:
+#  hibernate:
+#    SQL: DEBUG
+#    type:
+#      descriptor:
+#        sql: TRACE
+
+#==========================================
+#     DB H2 -настройка Базы Данных
+#==========================================
+spring:
+  #main:
+  #  log-startup-info: true
+
+  datasource:
+    driverClassName: org.h2.Driver
+    # БД в файле demo
+    #url:  jdbc:h2:file:./demo;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE;DB_CLOSE_DELAY=-1
+    # БД в памяти
+    url: jdbc:h2:mem:demo;DB_CLOSE_ON_EXIT=FALSE
+
+    username: sa
+    password:
+
+  #h2:
+  #  console:
+  #    enabled: true
+
+# ===============================
+# JPA / HIBERNATE
+# ===============================
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+    generate-ddl: true
+
+    properties:
+      default-schema: jpa
+    hibernate:
+      ddl-auto:  create-drop # create none update validate
+
+  #  show-sql: true
+
+
+
+

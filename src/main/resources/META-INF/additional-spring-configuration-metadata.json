@@ -1,0 +1,43 @@
+{
+  "properties": [
+    {
+      "name": "file_json.in_node",
+      "type": "java.lang.String",
+      "description": "Description for file_json.in_node."
+    },
+    {
+      "name": "file_json.in_builder",
+      "type": "java.lang.String",
+      "description": "Description for file_json.in_builder."
+    },
+    {
+      "name": "file_json.in_item",
+      "type": "java.lang.String",
+      "description": "Description for file_json.in_item."
+    },
+    {
+      "name": "file_json.in_item_directory",
+      "type": "java.lang.String",
+      "description": "Description for file_json.in_item_directory."
+    },
+    {
+      "name": "file_json.prefix_test",
+      "type": "java.lang.String",
+      "description": "Description for file_json.prefix_test."
+    },
+    {
+      "name": "file_json.prefix_",
+      "type": "java.lang.String",
+      "description": "Description for file_json.prefix_."
+    },
+    {
+      "name": "org.hibernate.SQL",
+      "type": "java.lang.String",
+      "description": "Description for org.hibernate.SQL."
+    },
+    {
+      "name": "org.hibernate.type.descriptor.sql",
+      "type": "java.lang.String",
+      "description": "Description for org.hibernate.type.descriptor.sql."
+    }
+  ] }

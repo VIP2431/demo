@@ -1,5 +1,5 @@
 [ {
-  "idItemDirectory" : "0759b96a-d820-4efc-a724-c2b06e7ba905",
+  "idItemDirectory" : "62c7e573-3346-4eba-a3b1-b8f4d8d37d34",
   "category" : "CTG_NOT",
   "code" : "CODE_NOT",
   "title" : "Пустая позиция",
@@ -7,7 +7,7 @@
   "price" : 1.10,
   "vendor" : "Поставщика нет"
 }, {
-  "idItemDirectory" : "2696358a-d50c-4c3e-9867-4570b9b1bec0",
+  "idItemDirectory" : "a47d8eac-8abc-4d7e-aef9-0978ed4089fa",
   "category" : "CTG_WORK",
   "code" : "Кладка_А1",
   "title" : "Кладка стен блоками 100мм",
@@ -15,7 +15,7 @@
   "price" : 1.50,
   "vendor" : "Хаким"
 }, {
-  "idItemDirectory" : "6d8d1383-36cd-4f87-a959-a792f9996c4b",
+  "idItemDirectory" : "93fcb6d6-8789-4c43-96b9-c2fa203ab33c",
   "category" : "CTG_WORK",
   "code" : "Демонтаж_А1",
   "title" : "Демонтаж кирпичных стен",
@@ -23,7 +23,7 @@
   "price" : 1.50,
   "vendor" : "Хаким"
 }, {
-  "idItemDirectory" : "2d84a7c0-58bd-4936-87ee-a3aacc1f260f",
+  "idItemDirectory" : "e2c354bd-3ebb-4007-8f90-cf206016db43",
   "category" : "CTG_WORK",
   "code" : "Штукатурка_А1",
   "title" : "Штукатурка стен",
@@ -31,7 +31,7 @@
   "price" : 1.50,
   "vendor" : "Хаким"
 }, {
-  "idItemDirectory" : "eecc4909-2180-4852-8399-ec6fd9dfa694",
+  "idItemDirectory" : "b6f4de66-d222-474d-b731-1b39933012a1",
   "category" : "CTG_WORK",
   "code" : "Малярка_А1",
   "title" : "Покраска стен",
@@ -39,7 +39,7 @@
   "price" : 1.50,
   "vendor" : "Хаким"
 }, {
-  "idItemDirectory" : "e5a8b45f-1d95-480e-817e-afcc882a643e",
+  "idItemDirectory" : "d3d78ca9-af22-447e-bbb5-8a79bca9be8d",
   "category" : "CTG_SERVICE",
   "code" : "Дизайн_А1",
   "title" : "Дизайн квартиры",
@@ -47,7 +47,7 @@
   "price" : 1.20,
   "vendor" : "Максим"
 }, {
-  "idItemDirectory" : "c160431d-e52a-4f4f-b306-bc1c886d8dc5",
+  "idItemDirectory" : "fc42de7f-7fe0-447c-bdcf-d4120b82690e",
   "category" : "CTG_MATERIAL",
   "code" : "Краска_А1",
   "title" : "Краска Тикурилла белая Премиум",
@@ -55,7 +55,7 @@
   "price" : 1.30,
   "vendor" : "Умид"
 }, {
-  "idItemDirectory" : "21884da0-365f-4f5a-b855-b46ae291deae",
+  "idItemDirectory" : "e94b685b-9d27-4dd2-93e1-0d6f92ac4c91",
   "category" : "CTG_MATERIAL",
   "code" : "Штукатурная_смесь_А1",
   "title" : "Сухая штукатурная смесь",
@@ -63,7 +63,7 @@
   "price" : 1.30,
   "vendor" : "Умид"
 }, {
-  "idItemDirectory" : "04937ef5-1bde-48d8-8762-bc356b18e82e",
+  "idItemDirectory" : "5fae1cf9-423a-48bd-b1f0-015e315aa89f",
   "category" : "CTG_MATERIAL",
   "code" : "Цемент_А1",
   "title" : "Цемент 500",
@@ -71,7 +71,7 @@
   "price" : 1.30,
   "vendor" : "Умид"
 }, {
-  "idItemDirectory" : "23252c2c-bd52-400d-b4f8-14992c37ebf7",
+  "idItemDirectory" : "52c45acb-a913-495a-bc0d-61abdc4b2f4a",
   "category" : "CTG_MATERIAL",
   "code" : "Блоки_А1",
   "title" : "Блоки газобетонные 100мм",
@@ -79,7 +79,7 @@
   "price" : 1.30,
   "vendor" : "Умид"
 }, {
-  "idItemDirectory" : "47287555-6071-43eb-974e-f6344ae213c6",
+  "idItemDirectory" : "e45ab6f3-0b3f-4763-8935-a20c33be7bca",
   "category" : "CTG_TOOLS",
   "code" : "Шр_Макита_А1",
   "title" : "Шуруповерт Макита",
@@ -87,7 +87,7 @@
   "price" : 1.40,
   "vendor" : "Федя"
 }, {
-  "idItemDirectory" : "fcf1ea6e-6a9a-4180-a697-d2175cb941ab",
+  "idItemDirectory" : "97a66382-552e-4d4c-99be-563252fef2a7",
   "category" : "CTG_TOOLS",
   "code" : "Перфоратор_А1",
   "title" : "Перфоратор средний Макита",
@@ -95,7 +95,7 @@
   "price" : 1.40,
   "vendor" : "Федя"
 }, {
-  "idItemDirectory" : "c4c28c08-acce-4d72-82f6-95ee447e27b1",
+  "idItemDirectory" : "a8cb21a0-6b6f-4773-8da9-7cc57b940f89",
   "category" : "CTG_SUM",
   "code" : "Итоги_А1",
   "title" : "Сумма накладных расходов",
@@ -103,7 +103,7 @@
   "price" : 1.40,
   "vendor" : "Михаил"
 }, {
-  "idItemDirectory" : "fcd03976-e2fb-4cb3-a758-c317900a3a15",
+  "idItemDirectory" : "9e81fa12-5712-4ac3-8d7f-1ee592e78123",
   "category" : "CTG_COM",
   "code" : "Общий_А1",
   "title" : "Расходы на материалы по смете",

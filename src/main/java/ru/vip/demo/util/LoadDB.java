@@ -12,8 +12,6 @@ import ru.vip.demo.type.TypeItem;
 
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -142,23 +140,23 @@ public class LoadDB {
                 if (node.getName().equals(nameNode)) {
                     createListHeadingItemFromTreeNodes( node);
 
-                    UUID idSrc = node.getId();
-                    UUID idClone = cloneNodeForId(idSrc);
-                    Optional<Node> optional = repository.findByIdNode(idClone);
-                    if (optional.isPresent()) {
-                        Node cloneNode = optional.get();
-                        outFile.println( "// " + ZonedDateTime.now() + " Начало теста cloneNode:[" + cloneNode.getName() + "]\n");
-
-                        headingItems = createListHeadingItemFromTreeNodes( cloneNode);
-
-                        printNodes(cloneNode);
-                        outFile.println("\n // Конец теста  cloneNode:[" + node.getName() + "]  " + ZonedDateTime.now().format(DateTimeFormatter.RFC_1123_DATE_TIME));
-                    }
+//                    UUID idSrc = node.getId();
+//                    UUID idClone = cloneNodeForId(idSrc);
+//                    Optional<Node> optional = repository.findByIdNode(idClone);
+//                    if (optional.isPresent()) {
+//                        Node cloneNode = optional.get();
+//                        System.out.println( "// " + ZonedDateTime.now() + " Начало теста cloneNode:[" + cloneNode.getName() + "]\n");
+//
+//                        headingItems = createListHeadingItemFromTreeNodes( cloneNode);
+//
+//                        printNodes(cloneNode);
+//                        System.out.println("\n // Конец теста  cloneNode:[" + node.getName() + "]  " + ZonedDateTime.now().format(DateTimeFormatter.RFC_1123_DATE_TIME));
+//                    }
                     break;
                 }
             }
             final long executionTime = System.currentTimeMillis() - start;
-            outFile.println("\n // Время исполнения теста=[" + executionTime + "ms]" );
+            System.out.println("\n // Время исполнения теста=[" + executionTime + "ms]" );
         } catch (Exception e) {
             System.out.println("** <writeNodeToJson> Ошибка сериализации в файл Json:" + e);
         }
@@ -167,18 +165,18 @@ public class LoadDB {
     //////////////////////////////////////////////////////////////////////////////////////////////////
 //
     public List<HeadingItem> createListHeadingItemFromTreeNodes(Node srcNode) {
-        final long start =  System.nanoTime();
+        final long start =  System.currentTimeMillis();
 
         List<HeadingItem> headingItems = new ArrayList<>();
         headingItems.add(srcNode);
         createListHeadingItem(srcNode, headingItems);
 
-        final long executionTime =  System.nanoTime() - start;
-        System.out.println("\n // Время создания List=[" + (executionTime / 1000 ) + "mks]" );
+        final long executionTime =  System.currentTimeMillis() - start;
+        System.out.println("\n // Время создания List=[" + executionTime + "ms]" );
         printListHeadingItem( headingItems);
 
-        final long executionTime2 =  System.nanoTime() - start;
-        System.out.println("\n // Время создания и распечатки List=[" + (executionTime2/ 1000 ) + "mks]" );
+        final long executionTime2 =  System.currentTimeMillis() - start;
+        System.out.println("\n // Время создания и распечатки List=[" + executionTime2 + "ms]" );
 
         return headingItems;
     }
@@ -201,20 +199,42 @@ public class LoadDB {
     }
 
     public void printListHeadingItem(List<HeadingItem> headingItems) {
-        System.out.println("--");
-        System.out.println("   ================================================================================");
+        int key = 0;
+        outFile.println("[");
+        for(HeadingItem headingItem : headingItems) {
+             if(key++ != 0)  outFile.print(",");
+            outFile.print("{\n"
+                     +  " \"key\": " + key + ",\n"
+                     +  " \"id\": \"" + headingItem.getId() + "\",\n"
+                     +  " \"type\": \"" + headingItem.getType().name() + "\",\n"
+                     +  " \"status\": \"" + headingItem.getStatus().name() + "\",\n"
+                     +  " \"title\": \"" + headingItem.getTitle() + "\",\n"
+                     +  " \"name\": \"" + headingItem.getName() + "\",\n"
+                     +  " \"percentItem\": " + headingItem.getPercentItem() + ",\n"
+                     +  " \"unit\": \"" + headingItem.getUnit().name() + "\",\n"
+                     +  " \"quantity\": " + headingItem.getQuantity() + ",\n"
+                     +  " \"price\": " + headingItem.getPrice() + ",\n"
+                     +  " \"cost\": " + headingItem.getCost() + ",\n"
+                     +  " \"sum\": " + headingItem.getSum() + ",\n"
+             );
 
-        headingItems.stream()
-                    .filter( headingItem -> headingItem.getType() != TypeItem.TYPE_ITEM)
-                    .forEach( (headingItem) -> System.out.println("-- "
-                            + "<" + headingItem.getType().getName() + ">  "
-                            + "<" + headingItem.getStatus().getName() + ">  \""
-                            + headingItem.getName()
-                            + "\"   id=\"" + headingItem.getId() + "\""));
-
-        System.out.println("   ================================================================================");
-        System.out.println("   Size=[" + headingItems.size() + "]");
-        System.out.println("--");
+            if(headingItem.getType().name().equals("TYPE_ITEM")) {
+                Item item = (Item) headingItem;
+                outFile.print(" \"idItemDirectory\": \"" + item.getIdItemDirectory() + "\",\n"
+                        + " \"category\": \"" + item.getCategory().name() + "\",\n"
+                        + " \"code\": \"" + item.getCode() + "\",\n"
+                        + " \"vendor\": \"" + item.getVendor() + "\"\n"
+                );
+            }else {
+                outFile.print(" \"idItemDirectory\": \"\",\n"
+                        + " \"category\": \"\",\n"
+                        + " \"code\": \"\",\n"
+                        + " \"vendor\": \"\"\n"
+                );
+            }
+            outFile.print("}");
+        }
+        outFile.println("]");
      }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////

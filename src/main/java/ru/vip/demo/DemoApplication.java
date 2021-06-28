@@ -4,13 +4,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication { // Вариант 3 implements CommandLineRunner {
+public class DemoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
+	}
+}
+
 /*
  * Варианты запуска приложения для организации доступа к applicationContext
  *
  * Вариант 1   Доступ к applicationContext из других Классов
  *
-*/
+
 
 	static private ApplicationContextProvider provider;
 
@@ -26,7 +32,7 @@ public class DemoApplication { // Вариант 3 implements CommandLineRunner 
 			provider.handleApplicationContext();
 			provider.handleApplicationContext();
 		}
-
+*/
 /*
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DemoApplication.class);
 
@@ -39,9 +45,9 @@ public class DemoApplication { // Вариант 3 implements CommandLineRunner 
 		int i = 0;
 		for (String str : ctx.getBeanDefinitionNames()){
 			System.out.println("-- [" + ++i + "] " + str);
-*/
-	}
 
+	}
+*/
 /*
  * Вариант 2.
  *
@@ -66,6 +72,7 @@ public class DemoApplication { // Вариант 3 implements CommandLineRunner 
 		applicationContextProvider.printBeanContext();
 	}
 
-*/
+
 
 }
+		*/

@@ -50,6 +50,10 @@ spring:
   #main:
   #  log-startup-info: true
 
+  data:
+    rest:
+      base-path: /api
+
   datasource:
     driverClassName: org.h2.Driver
     # БД в файле demo

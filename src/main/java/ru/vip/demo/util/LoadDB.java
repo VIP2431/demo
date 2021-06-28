@@ -5,10 +5,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import ru.vip.demo.entity.HeadingItem;
 import ru.vip.demo.entity.Item;
-import ru.vip.demo.entity.ItemDirectory;
 import ru.vip.demo.entity.Node;
 import ru.vip.demo.serviceimpl.EstimateImpl;
-import ru.vip.demo.type.TypeItem;
 
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
@@ -359,37 +357,6 @@ public class LoadDB {
                     + "]\r\n**   NullPointerException:" + e);
         }
         return id;
-    }
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////
-//
-    public void itemAndItemDirectToDB(String in_item_directory, String in_item) throws Exception {
-
-        List<ItemDirectory> itemDirectories = repository.readJsonItemDirectory(in_item_directory);
-
-        for (ItemDirectory itemDirectory : itemDirectories) {
-            repository.save(itemDirectory);
-        } // Запись из List в базу данных
-
-        List<Item> items = repository.readJsonItem(in_item);                // Чтение из JSON file в List
-        List<ItemDirectory> itemDirs = repository.getAllItemDirectory();    // Чтение из базы данных в List
-        for (Item item : items) {
-            String name = item.getCode();
-            for (ItemDirectory dir : itemDirs) {
-                if (name.equals(dir.getCode())) {
-                    item.setIdItemDirectory(dir.getIdItemDirectory());
-                    item.setCategory(dir.getCategory());
-                    item.setCode(dir.getCode());
-                    item.setTitle(dir.getTitle());
-                    item.setUnit(dir.getUnit());
-                    item.setPrice(dir.getPrice());
-                    item.setVendor(dir.getVendor());
-
-                    item.setType(TypeItem.TYPE_ITEM);
-                    repository.save(item);                                    // Запись из List в базу данных
-                }
-            }
-        }
     }
 
 }

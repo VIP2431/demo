@@ -1,13 +1,13 @@
 package ru.vip.demo;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.vip.demo.entity.ItemDirectory;
 import ru.vip.demo.entity.MainBuilder;
 import ru.vip.demo.entity.Node;
 import ru.vip.demo.serviceimpl.EstimateImpl;
+import ru.vip.demo.util.CreatNewDateBase;
 import ru.vip.demo.util.InitBuilder;
 import ru.vip.demo.util.LoadDB;
 import ru.vip.demo.util.StrUtil;
@@ -44,23 +44,19 @@ public class DemoApplicationTests {
 	@Value("${file_json.prefix_test}")         	// Передача параметра из application.yml
 	String prefix_test;
 
-	@Autowired
 	public LoadDB loadDB;
-
-	@Autowired
 	public EstimateImpl repository;
-
-	@Autowired
 	public InitBuilder initBuilder;
+	public CreatNewDateBase creatNewDateBase;
 
-////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 //
 	@Test
 	public void dataTest()throws Exception {
 // Удалить комментарии и пустые строки из файлов инициализации БД
 		clearCommentFileInitJason();
 // Загрузить Справочники <ItemDirectory> и <Item>
-		loadDB.itemAndItemDirectToDB(prefix_ + in_item_directory, prefix_ + in_item);
+		creatNewDateBase.itemAndItemDirectToDB(prefix_ + in_item_directory, prefix_ + in_item);
 // Тест загрузки и выгрузки <ItemDirectory> в БД из Jason и обратно
 		testLoadAndUnloadItemToDB();
 // Запмсь <Item> из БД в test_JSON для визуальног контроля
@@ -75,6 +71,8 @@ public class DemoApplicationTests {
 		initBuilder.builderToDB( builders);
 // Распечатка сметы сгенерированной и загруженной в БД конструктором-инициатором init_builder
 		loadDB.writeNodeToJson("Шереметьевская_1", prefix_ + "NEW_" + in_node);
+// Распечатка Items из базы данных
+		repository.writeJsonItem( prefix_test + in_item, repository.getAllItem()); 	// Запмсь из BD в JSON файл
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////
@@ -120,7 +118,5 @@ public class DemoApplicationTests {
 			}
 		}
 	}
+
 }
-
-
-

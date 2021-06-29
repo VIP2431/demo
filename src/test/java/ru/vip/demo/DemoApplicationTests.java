@@ -1,6 +1,7 @@
 package ru.vip.demo;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.vip.demo.entity.ItemDirectory;
@@ -10,7 +11,6 @@ import ru.vip.demo.serviceimpl.EstimateImpl;
 import ru.vip.demo.util.CreatNewDateBase;
 import ru.vip.demo.util.InitBuilder;
 import ru.vip.demo.util.LoadDB;
-import ru.vip.demo.util.StrUtil;
 
 import java.util.List;
 
@@ -44,17 +44,28 @@ public class DemoApplicationTests {
 	@Value("${file_json.prefix_test}")         	// Передача параметра из application.yml
 	String prefix_test;
 
+	@Autowired
 	public LoadDB loadDB;
+	@Autowired
 	public EstimateImpl repository;
+	@Autowired
 	public InitBuilder initBuilder;
+	@Autowired
 	public CreatNewDateBase creatNewDateBase;
 
 	////////////////////////////////////////////////////////////////////////////
 //
 	@Test
+	public void dataTest2()throws Exception {
+		creatNewDateBase.initDataBase();
+// Распечатка сметы сгенерированной и загруженной в БД конструктором-инициатором init_builder
+		loadDB.writeNodeToJson("Шереметьевская_3", prefix_ + "NEW_2" + in_node);
+	}
+
+	@Test
 	public void dataTest()throws Exception {
 // Удалить комментарии и пустые строки из файлов инициализации БД
-		clearCommentFileInitJason();
+		creatNewDateBase.clearCommentFileInitJason();
 // Загрузить Справочники <ItemDirectory> и <Item>
 		creatNewDateBase.itemAndItemDirectToDB(prefix_ + in_item_directory, prefix_ + in_item);
 // Тест загрузки и выгрузки <ItemDirectory> в БД из Jason и обратно
@@ -70,17 +81,11 @@ public class DemoApplicationTests {
 // Запуск "builder.json" конструктора-инициатора
 		initBuilder.builderToDB( builders);
 // Распечатка сметы сгенерированной и загруженной в БД конструктором-инициатором init_builder
-		loadDB.writeNodeToJson("Шереметьевская_1", prefix_ + "NEW_" + in_node);
+		loadDB.writeNodeToJson("Шереметьевская_3", prefix_ + "NEW_" + in_node);
 // Распечатка Items из базы данных
 		repository.writeJsonItem( prefix_test + in_item, repository.getAllItem()); 	// Запмсь из BD в JSON файл
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////
-//  Убрать комментарии и пустые строки из входных файлов Init Jason
-	private void clearCommentFileInitJason() {
-		StrUtil.deleteComment(prefix_ + init_builder, prefix_ + in_builder);
-		StrUtil.deleteComment(prefix_ + init_node, prefix_ + in_node);
-	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////
 //   test_1 Тест загрузки Справочника <ItemDirectory> в БД из Jason и обратно из БД в Jason

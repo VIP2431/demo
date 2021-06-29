@@ -49,8 +49,7 @@ public class CreatNewDateBase {
 //
     public void initDataBase() throws Exception {
 //  Убрать комментарии и пустые строки из входных файлов Init Jason
-        StrUtil.deleteComment(prefix_ + init_builder, prefix_ + in_builder);
-        StrUtil.deleteComment(prefix_ + init_node, prefix_ + in_node);
+        clearCommentFileInitJason();
 // Загрузить Справочники <ItemDirectory> и <Item> в Базу Данных
         itemAndItemDirectToDB(prefix_ + in_item_directory, prefix_ + in_item);
 // Запись в БД Блоков <Node>
@@ -60,6 +59,12 @@ public class CreatNewDateBase {
         List<MainBuilder> builders = repository.readJsonBuilder(prefix_ + in_builder);
 // Запуск "builder.json" конструктора-инициатора
         initBuilder.builderToDB( builders);
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////
+//  Убрать комментарии и пустые строки из входных файлов Init Jason
+    public void clearCommentFileInitJason() {
+        StrUtil.deleteComment(prefix_ + init_builder, prefix_ + in_builder);
+        StrUtil.deleteComment(prefix_ + init_node, prefix_ + in_node);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////

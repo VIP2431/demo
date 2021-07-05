@@ -7,11 +7,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.vip.demo.dto.ItemDto;
 import ru.vip.demo.entity.Item;
-import ru.vip.demo.entity.ItemDirectory;
 import ru.vip.demo.entity.MainBuilder;
 import ru.vip.demo.entity.Node;
-import ru.vip.demo.repository.ItemDirectoryRepository;
 import ru.vip.demo.repository.ItemRepository;
 import ru.vip.demo.repository.NodeRepository;
 import ru.vip.demo.service.EstimateService;
@@ -30,33 +29,29 @@ import java.util.UUID;
 @Transactional
 @RequiredArgsConstructor
 //@Slf4j
-public class EstimateImpl implements EstimateService {
+public class EstimateImpl implements EstimateService{
 
     private final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT); // pretty print JSON
 
-    private final String idNullUUID = "00000000-0000-0000-0000-000000000000";
-    private final UUID uuidNull = UUID.fromString(idNullUUID);
+    private final String ID_NULL_UUID = "00000000-0000-0000-0000-000000000000";
+    private final UUID UUID_NULL = UUID.fromString(ID_NULL_UUID);
 
-    private final ItemDirectoryRepository itemDirectoryRepository;
     private final ItemRepository itemRepository;
     private final NodeRepository nodeRepository;
 
-//    public ObjectMapper getMapper() { return this.mapper; }
+//    private final NodeService nodeService;
+//
+//    public Node cloneNode(Node node) { return nodeService.cloneNode(node); }
+//    public Node addNodeToNode(Node node, int poz) { return nodeService.addNodeToNode(node, poz); }
+//    public Node addItemToNode(Node node, Item item) { return nodeService.addItemToNode(node,item); }
 
-    public String getIdNullUUID() { return this.idNullUUID; }
-    public UUID getUuidNull() { return  this.uuidNull; }
+    public String getID_NULL_UUID() { return this.ID_NULL_UUID; }
+    public UUID getUUID_NULL() { return  this.UUID_NULL; }
 
-    @Override
-    public void save(ItemDirectory itemDirectory) {
-        itemDirectoryRepository.save(itemDirectory);
-    }
     @Override
     public Item save(Item item) { return itemRepository.save(item); }
-      @Override
-    public Node save(Node node) { return nodeRepository.save(node); }
-
     @Override
-    public List<ItemDirectory> getAllItemDirectory() { return itemDirectoryRepository.findAll(); }
+    public Node save(Node node) { return nodeRepository.save(node); }
 
     @Override
     public List<Item> getAllItem() { return itemRepository.findAll(); }
@@ -76,10 +71,6 @@ public class EstimateImpl implements EstimateService {
         return new PushbackReader( new FileReader( resourceName, StandardCharsets.UTF_8));
     }
 
-    public List<ItemDirectory> readJsonItemDirectory( String resourceName) throws IOException {
-        return mapper.readValue(inputStream(resourceName), new TypeReference<>() {});
-    }
-
     public List<Node> readJsonNode( String resourceName) throws IOException {
         return mapper.readValue(inputStream(resourceName), new TypeReference<>() {});
     }
@@ -94,9 +85,6 @@ public class EstimateImpl implements EstimateService {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //        JSON Сериализация из List объектов в JSON файл
-    public void writeJsonItemDirectory( String outFile, List<ItemDirectory> itemDirectories) throws IOException {
-        mapper.writeValue( new FileOutputStream(outFile), itemDirectories);
-    }
 
    public void writeJsonNode( String outFile, List<Node> nodeList) throws IOException {
         mapper.writeValue( new FileOutputStream(outFile), nodeList);
@@ -104,6 +92,10 @@ public class EstimateImpl implements EstimateService {
 
    public void writeJsonItem( String outFile, List<Item> itemList) throws IOException {
         mapper.writeValue( new FileOutputStream(outFile), itemList);
+    }
+
+   public void writeJsonItemDto( String outFile, List<ItemDto> itemDtoList) throws IOException {
+        mapper.writeValue( new FileOutputStream(outFile), itemDtoList);
     }
 
    public void writeJsonBuilder (String outFile, List<MainBuilder> builderList) throws IOException {

@@ -8,14 +8,13 @@ import ru.vip.demo.type.Category;
 import javax.persistence.Entity;
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Item extends HeadingItem implements Serializable, Cloneable {
-    private UUID idItemDirectory;
+
     private Category category;      // Категория товара
     private String code;            // Код товара
     private String vendor;          // Код поставщика товара
@@ -26,16 +25,14 @@ public class Item extends HeadingItem implements Serializable, Cloneable {
         if (!(o instanceof Item)) return false;
         if (!super.equals(o)) return false;
         Item item = (Item) o;
-        return getIdItemDirectory().equals(item.getIdItemDirectory())
-                && getCategory() == item.getCategory()
-                && getCode().equals(item.getCode())
-                && getVendor().equals(item.getVendor());
+        return getCategory() == item.getCategory()
+                && Objects.equals(getCode(), item.getCode())
+                && Objects.equals(getVendor(), item.getVendor());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getIdItemDirectory()
-                , getCategory(), getCode(), getVendor());
+        return Objects.hash(super.hashCode(), getCategory(), getCode(), getVendor());
     }
 
     public Item clone() throws CloneNotSupportedException{ return (Item) super.clone(); }

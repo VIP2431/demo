@@ -1,7 +1,7 @@
 package ru.vip.demo.type;
 
 public enum Category {
-    CTG_NOT("Без категории"),
+    CTG_NOT(" "),
     CTG_WORK("Работа"),
     CTG_SERVICE("Сервис"),
     CTG_MATERIAL("Материалы"),

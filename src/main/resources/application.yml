@@ -6,12 +6,14 @@ server:
 # Передача переменных в приложение
 
 file_json:
+  init_item: "init_item.json"
   init_node: "init_node.json"
   init_builder: "init_builder.json"
+
+  in_item: "item.json"
   in_node: "node.json"
   in_builder: "builder.json"
-  in_item: "item.json"
-  in_item_directory: "item_directory.json"
+
   prefix_test: "src/main/resources/test_"
   prefix_: "src/main/resources/"
 

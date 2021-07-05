@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -23,41 +22,44 @@ public class HeadingItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    //    @NonNull
-    private TypeItem type = TypeItem.TYPE_ITEM;         // Тип Блока/позиции
-    private Status status = Status.STAT_PUBLIC;         // Статус
+    private TypeItem type = TypeItem.TYPE_ITEM; // Тип Блок/Позиция
+    private Status status = Status.STAT_PUBLIC; // Статус
+    private Unit unit = Unit.UN_NOT;            // Еденица измерения
+    private String name;                        // Имя
+    private String title;                       // Title
 
-    private String title;                               // Title
-    private String name;                                // Имя
-
-    private int percentItem;                            // Процент исполнения - процентовка
-    private Unit unit = Unit.UN_METER_2;                // Еденица измерения
-    private BigDecimal quantity;                        // Количество
-    private BigDecimal price; //= BigDecimal.valueOf(0);// Цена еденицы
-    private BigDecimal cost;                            // Стоимость
-    private BigDecimal sum;
+    private int flags;
+    private int i1;
+    private int i2;
+    private int i3;
+    private double d1;
+    private double d2;
+    private double d3;
+    private double d4;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof HeadingItem)) return false;
         HeadingItem that = (HeadingItem) o;
-        return getPercentItem() == that.getPercentItem()
+        return getFlags() == that.getFlags()
+                && getI1() == that.getI1()
+                && getI2() == that.getI2()
+                && getI3() == that.getI3()
+                && Double.compare(that.getD1(), getD1()) == 0
+                && Double.compare(that.getD2(), getD2()) == 0
+                && Double.compare(that.getD3(), getD3()) == 0
+                && Double.compare(that.getD4(), getD4()) == 0
                 && getType() == that.getType()
                 && getStatus() == that.getStatus()
-                && getTitle().equals(that.getTitle())
-                && getName().equals(that.getName())
                 && getUnit() == that.getUnit()
-                && Objects.equals(getQuantity(), that.getQuantity())
-                && Objects.equals(getPrice(), that.getPrice())
-                && Objects.equals(getCost(), that.getCost())
-                && Objects.equals(getSum(), that.getSum());
+                && getName().equals(that.getName())
+                && Objects.equals(getTitle(), that.getTitle());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getType(), getStatus(), getTitle(), getName()
-                , getPercentItem(), getUnit(), getQuantity()
-                , getPrice(), getCost(), getSum());
+        return Objects.hash(getType(), getStatus(), getUnit(), getName(), getTitle(),
+                getFlags(), getI1(), getI2(), getI3(), getD1(), getD2(), getD3(), getD4());
     }
 }

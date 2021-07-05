@@ -6,11 +6,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.vip.demo.type.Status;
+import ru.vip.demo.type.TypeItem;
 import ru.vip.demo.type.Unit;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -19,17 +18,23 @@ import java.util.UUID;
 @NoArgsConstructor
 public class NodeDto implements Serializable {
 
+    private int key;
+    private int keyParent;
+    private String codePoz;
+
     private UUID id;
-    private String name;                                // Имя блока
-    private String title;                               // Наименование
-    private Status status;                              // Статус узла
+    private TypeItem type; // Тип Блок/Позиция
+    private Status status; // Статус
+    private Unit unit;     // Еденица измерения
+    private String name;   // Имя
+    private String title;  // Title
 
-    private Unit unit = Unit.UN_NOT;                    // Еденица измерения
-    private BigDecimal quantity = BigDecimal.valueOf(0);// Количество
-    private BigDecimal price = BigDecimal.valueOf(0);   // Цена еденицы
-
-    private List <ItemDto> listItem;                    //Список Позиций
-
-    private List<NodeDto> listNode;                     //Список Комнат/Разделов
-
+    private int flags;
+    private int i1;
+    private int i2;
+    private int i3;
+    private double d1;
+    private double d2;
+    private double d3;
+    private double d4;
 }

@@ -4,124 +4,74 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.vip.demo.entity.ItemDirectory;
 import ru.vip.demo.entity.MainBuilder;
-import ru.vip.demo.entity.Node;
 import ru.vip.demo.serviceimpl.EstimateImpl;
-import ru.vip.demo.util.CreatNewDateBase;
-import ru.vip.demo.util.InitBuilder;
+import ru.vip.demo.util.CreatDateBaseEstimate;
 import ru.vip.demo.util.LoadDB;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 //@RunWith(SpringRunner.class)
 @SpringBootTest
 public class DemoApplicationTests {
-
-	@Value("${file_json.init_node}") 			// Передача параметра из application.yml
-	String init_node;
-
-	@Value("${file_json.init_builder}") 		// Передача параметра из application.yml
-	String init_builder;
-
-	@Value("${file_json.in_node}") 				// Передача параметра из application.yml
-	String in_node;
-
-	@Value("${file_json.in_builder}") 		 	// Передача параметра из application.yml
-	String in_builder;
-
-	@Value("${file_json.in_item}")  			// Передача параметра из application.yml
-	String in_item;
-
-	@Value("${file_json.in_item_directory}")  	// Передача параметра из application.yml
-	String in_item_directory;
-
-	@Value("${file_json.prefix_}") 			 	// Передача параметра из application.yml
-	String prefix_;
-
-	@Value("${file_json.prefix_test}")         	// Передача параметра из application.yml
-	String prefix_test;
 
 	@Autowired
 	public LoadDB loadDB;
 	@Autowired
 	public EstimateImpl repository;
 	@Autowired
-	public InitBuilder initBuilder;
-	@Autowired
-	public CreatNewDateBase creatNewDateBase;
+	public CreatDateBaseEstimate creatDateBaseEstimate;
+
+	@Value("${file_json.init_item}")  	// Передача параметра из application.yml
+	String init_item;
+
+	@Value("${file_json.init_node}") 	// Передача параметра из application.yml
+	String init_node;
+
+	@Value("${file_json.init_builder}")
+	String init_builder;
+
+	@Value("${file_json.in_node}")
+	String in_node;
+
+	@Value("${file_json.in_builder}")
+	String in_builder;
+
+	@Value("${file_json.in_item}")
+	String in_item;
+
+	@Value("${file_json.prefix_}")
+	String prefix_;
+
+	@Value("${file_json.prefix_test}")
+	String prefix_test;
 
 	////////////////////////////////////////////////////////////////////////////
 //
-	@Test
 	public void dataTest2()throws Exception {
-		creatNewDateBase.initDataBase();
-// Распечатка сметы сгенерированной и загруженной в БД конструктором-инициатором init_builder
+		creatDateBaseEstimate.initDataBase();
+		// Распечатка сметы сгенерированной и загруженной в БД конструктором-инициатором init_builder
 		loadDB.writeNodeToJson("Шереметьевская_3", prefix_ + "NEW_2" + in_node);
 	}
 
 	@Test
 	public void dataTest()throws Exception {
-// Удалить комментарии и пустые строки из файлов инициализации БД
-		creatNewDateBase.clearCommentFileInitJason();
-// Загрузить Справочники <ItemDirectory> и <Item>
-		creatNewDateBase.itemAndItemDirectToDB(prefix_ + in_item_directory, prefix_ + in_item);
-// Тест загрузки и выгрузки <ItemDirectory> в БД из Jason и обратно
-		testLoadAndUnloadItemToDB();
-// Запмсь <Item> из БД в test_JSON для визуальног контроля
+		// Удалить комментарии и пустые строки из файлов инициализации БД
+		creatDateBaseEstimate.clearCommentFileInitJason();
+
+		creatDateBaseEstimate.loadItemToDB();// Загрузить Справочник <Item>
+		// Запмсь <Item> из БД в test_JSON для визуальног контроля
 		repository.writeJsonItem(prefix_test + in_item, repository.getAllItem());
-// Запись в БД Блоков <Node>
-		List<Node> nodes = repository.readJsonNode(prefix_ + in_node);// Чтение из JSON file в List
-		for (Node node : nodes) {	repository.save(node);	}				     // Запись из List в базу данных
-// Чтения из Jason в List builders и запись из List в test_Jason для визуального контроля
+		creatDateBaseEstimate.loadNodeToDB();// Запись в БД Блоков <Node>
+
+		// Чтения из Jason в List builders и запись из List в test_Jason для визуального контроля
 		List<MainBuilder> builders = repository.readJsonBuilder(prefix_ + in_builder);
 		repository.writeJsonBuilder(prefix_test + in_builder, builders);
-// Запуск "builder.json" конструктора-инициатора
-		initBuilder.builderToDB( builders);
-// Распечатка сметы сгенерированной и загруженной в БД конструктором-инициатором init_builder
+
+		// Запуск "builder.json" конструктора-инициатора
+		creatDateBaseEstimate.builderToDB( builders);
+
+		// Распечатка сметы сгенерированной и загруженной в БД конструктором-инициатором init_builder
 		loadDB.writeNodeToJson("Шереметьевская_3", prefix_ + "NEW_" + in_node);
-// Распечатка Items из базы данных
-		repository.writeJsonItem( prefix_test + in_item, repository.getAllItem()); 	// Запмсь из BD в JSON файл
 	}
-
-
-	//////////////////////////////////////////////////////////////////////////////////////////////
-//   test_1 Тест загрузки Справочника <ItemDirectory> в БД из Jason и обратно из БД в Jason
-	private void testLoadAndUnloadItemToDB() throws Exception {
-// Сравниваем данные загруженные в БД с данными из загрузочного файла Jason
-		List<ItemDirectory> dirsJson = repository.readJsonItemDirectory(prefix_ + in_item_directory);
-		List<ItemDirectory> dirsBD = repository.getAllItemDirectory();
-		itemDirectoryTest(dirsJson, dirsBD); // Сравнение данных из файла и БД
-// Сравниваем данные загруженныев в БД с из первичного файла Jason с данными загруженными БД из test_Jason
-		repository.writeJsonItemDirectory( prefix_test + in_item_directory, dirsBD); 	// Запмсь из List в JSON файл
-		List<ItemDirectory> test_dirsJson = repository.readJsonItemDirectory(prefix_test + in_item_directory);
-		itemDirectoryTest( dirsJson, test_dirsJson);
-	}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
-//
-	public void itemDirectoryTest(List<ItemDirectory> dirsJson, List<ItemDirectory> dirsBD){
-
-		int lengthID = repository.getIdNullUUID().length();
-
-		for (ItemDirectory dJson : dirsJson) {
-			String name = dJson.getCode();
-			for (ItemDirectory dBD : dirsBD) {
-				if(name.equals(dBD.getCode())) {
-					String headMSG = "itemDirectory.code.\"" + name + "\"  field:\"";
-					String idDB = dBD.getIdItemDirectory().toString();
-					assertEquals(lengthID, idDB.length(), headMSG + "id\"");
-					assertEquals(dJson.getCategory(), dBD.getCategory(),  headMSG + "Category\"");
-					assertEquals(dJson.getCode(),dBD.getCode(), headMSG + "Code\"");
-					assertEquals(dJson.getTitle(),dBD.getTitle(), headMSG + "Title\"");
-					assertEquals(dJson.getUnit(),dBD.getUnit(), headMSG + "Unit\"");
-					assertEquals(dJson.getPrice(),dBD.getPrice(), headMSG + "Price\"");
-					assertEquals(dJson.getVendor(),dBD.getVendor(), headMSG + "Vendor\"");
-				}
-			}
-		}
-	}
-
 }

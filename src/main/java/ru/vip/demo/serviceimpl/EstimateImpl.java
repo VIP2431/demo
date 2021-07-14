@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +15,7 @@ import ru.vip.demo.entity.Node;
 import ru.vip.demo.repository.ItemRepository;
 import ru.vip.demo.repository.NodeRepository;
 import ru.vip.demo.service.EstimateService;
+import ru.vip.demo.type.TypeItem;
 
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -39,12 +41,6 @@ public class EstimateImpl implements EstimateService{
     private final ItemRepository itemRepository;
     private final NodeRepository nodeRepository;
 
-//    private final NodeService nodeService;
-//
-//    public Node cloneNode(Node node) { return nodeService.cloneNode(node); }
-//    public Node addNodeToNode(Node node, int poz) { return nodeService.addNodeToNode(node, poz); }
-//    public Node addItemToNode(Node node, Item item) { return nodeService.addItemToNode(node,item); }
-
     public String getID_NULL_UUID() { return this.ID_NULL_UUID; }
     public UUID getUUID_NULL() { return  this.UUID_NULL; }
 
@@ -62,8 +58,10 @@ public class EstimateImpl implements EstimateService{
     public List<Node> getAllNode() { return nodeRepository.findAll(); }
     @Override
     public Optional<Node> findByIdNode(UUID id) { return nodeRepository.findById(id); }
-
-
+    public Optional<List<Node>>  findByType(TypeItem typeItem, Sort name) {
+        System.out.println("--EstimateImpl->findByType:" + typeItem + "  Sort-name:" + name);
+        return nodeRepository.findByType(typeItem, name);
+    }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //        JSON Десериализация в List объектов из JSON файла
